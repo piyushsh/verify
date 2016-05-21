@@ -1,0 +1,445 @@
+<%@ Master Language="VB" CodeFile="ProjectMain_Responsive.master.vb" Inherits="ProjectMain_Responsive" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+    <script type="text/javascript" src="<%= Session("_VT_JQueryFileLocation")%>Scripts/jquery-1.10.1.min.js"></script>
+
+
+
+<script type="text/javascript">
+
+    var VTEvent_isPostBack = false;
+
+    $(document).ready(function () {
+
+        window.onbeforeunload = HandleBeforeUnloadEvent;
+        function HandleBeforeUnloadEvent() {
+            Yvalue = event.clientY;
+            Xvalue = event.clientX;
+
+            if (VTEvent_isPostBack == true) {
+                return;
+            }
+
+            // if the page is unloading and the Y coordinate of the mouse click is < -10 then we are clicking the X button so do a shutdown
+            if (window.event) {
+                if (Yvalue < -10) {
+                    //alert('Shutting down');
+                    var hdn1 = document.getElementById("<%=hdnProjectMainCurrentFormInstanceId.ClientID%>");
+                    var OrderId = hdn1.value;
+                    var hdn2 = document.getElementById("<%=hdnDID.ClientID%>");
+                    var DID = hdn2.value;
+                    ClearLockedFormIdInsessionStorage();
+                    CloseCurrentWindow(OrderId, DID);
+                    }
+
+                }
+
+            }
+
+
+    });
+
+    function ClearLockedFormIdInsessionStorage() {
+            if (supports_local_storage()) {
+                // localStorage/sessionStorage is supported on this browser so we can use it
+                //
+                // This function checks to see if the VersionManager has put anything in sessionStorage to indicate that an item had been locked for editting
+                // If it finds something it clears the lock by using a PageMethod to write to the database and also clears the item in sessionStorage
+                var CallingPortal = '<%= Session("_VT_ThisPortalName").ToString()%>'
+                // remove any spaces from the CallingPortal name
+                var LockedItemName = CallingPortal.replace(/ /g, '') + '_LockedItemId';
+                var CurrentLockedItem = sessionStorage.getItem(LockedItemName);
+
+                // the locked formId (if it exists) is in the form Table:Id
+                if ((CurrentLockedItem != null) && (CurrentLockedItem != '')) {
+                    //parse out the table and Id
+                    var res = CurrentLockedItem.split(':');
+                    var FormDataTable = res[0];
+                    var ItemId = res[1];
+
+                    // clear the item in the sessionStorage
+                    sessionStorage.setItem(LockedItemName, '');
+                    // 
+                    PageMethods.WriteToMatrix(FormDataTable, ItemId, 'FormEditLock', '', WriteToMatrixSuccess, WriteToMatrixFailed);
+                }
+            }
+        }
+
+
+    // there were no errors found in the PageMethod call so process the result here
+    function WriteToMatrixSuccess(result, sender) {
+    }
+
+    // alert message on some failure
+    function WriteToMatrixFailed(result, destCtrl) {
+        alert("Error in WriteToMatrix: " + res.get_message());
+    }
+
+
+
+
+
+
+
+    </script>
+
+    <script type="text/javascript">
+
+        function HideModalPopupMsg() {
+            var modal = $find("<%=ModalPopupExtenderMsg.BehaviorID%>");
+            modal.hide();
+        }
+
+            
+            var nIdleTime = new Number(0);
+            var nTimeout = new Number(0);  //The timeout value in minutes
+            var docTitleKeep = document.title;
+
+            $(document).ready(function () {
+                       
+                var nInitialTimeout = '<%= Session("_VT_SessionTimeoutValue").ToString()%>'
+                nTimeout = nInitialTimeout;  //The timeout value in minutes
+                //nTimeout *= 60000;  //milliseconds
+                timerIncrement();
+                //Increment the idle time counter every minute.
+                var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+
+                //Zero the idle timer on mouse click or keypress.
+                $(this).click(function (e) {
+                    nIdleTime = 0;
+                    timerIncrement();
+                });
+                $(this).keypress(function (e) {
+                    nIdleTime = 0;
+                    timerIncrement();
+                });
+            });
+
+            function timerIncrement() {
+                // if the TimeoutRunnibg flag is set increment the timer
+                var nTimeoutRunning = '<%= Session("_VT_TimeoutRunning").ToString()%>'
+                if (nTimeoutRunning == "YES") {
+                    var nCountDownValue = new Number(nTimeout - nIdleTime);
+                    //var nCountDownMinutes = Math.ceil(nCountDownValue / 60);
+                    //window.status = "Timeout = " + nCountDownValue;
+                    window.status = 'The current session will timeout in ' + nCountDownValue.toString();
+                    if (nCountDownValue > 1)
+                        window.status += ' minutes.'
+                    else
+                        window.status += ' minute.'
+                    //document.title = docTitleKeep + "  (" + nCountDownMinutes + ")"
+
+                    if (nIdleTime >= nTimeout) { // nTimeout is the timeout limit value
+                        alertSessionTimeout();
+                    }
+                    nIdleTime = nIdleTime + 1;
+                }
+
+
+            }
+            function alertSessionTimeout() {
+                //alert("Your session has timed out !");
+
+                ////Clear up the session and Close the browser
+                //window.parent.close();
+
+                //show message box
+                alert("Your browser Session has timed out.\n\rThis is because your system has been idle for longer than the system time-out period.\n\rThis is a basic security feature of this Online system.\n\rYou must login again to continue the process.\n\r\n\rThis window will now close.");
+                CloseCurrentWindow();
+
+
+            }
+            function CloseCurrentWindow(OrderId, DID) {
+               
+               window.opener = top;
+                var windowtoOpen = '<%=Page.ResolveClientUrl("~/TabPages/Shutdown.aspx")%>'
+                window.open(windowtoOpen + '?OrderIdToClear=' + OrderId.toString() + '&DID=' + DID, '_parent', '');
+             
+            }
+
+
+        </script>
+        
+
+        
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Sales & Dispatches Portal - Powered by Verify Technologies</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <link href="../jg_styles.css" rel="stylesheet" type="text/css" />
+    <link href="../Verify_Infragistics.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        .auto-style1
+        {
+            width: 1024px;
+        }
+    </style>
+
+    </head>
+<body style="margin-top:0px" onbeforeunload="busyBox.Show();">
+
+<script language="javascript" type="text/javascript" src="../BusyBox.js"></script>
+
+    
+    <center>
+
+            <form id="form1" runat="server" style="width: 100%">
+            <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" AsyncPostBackTimeout="360000">
+                <Scripts>
+                    <asp:ScriptReference Path="../Scripts/CommonScripts.js" />
+                    <asp:ScriptReference Path="../Scripts/VT_Infragistics.js" />
+                </Scripts>
+            </asp:ScriptManager>
+           
+
+             <asp:HiddenField ID="hdnProjectMainCurrentFormInstanceId" runat="server" />
+             <asp:HiddenField ID="hdnDID" runat="server" />
+ 
+
+               <iframe id="BusyBox1" name="BusyBox1" frameborder="0" scrolling="no" ondrop="return false;">
+                </iframe>
+            
+
+            <script language="javascript" type="text/javascript">
+
+                imagePath = "/" + '<%= PortalRootNode %>' + "/images/gears_ani_";
+                var busyBox = new BusyBox("BusyBox1", "busyBox", 4, imagePath, ".gif", 125, 147, 207);
+            </script>
+
+
+                <div style="width: 1024px; height: 4px; background-color: #b28700; position: static;"  id="GoldStripTop">
+
+                </div>
+
+
+                <table cellpadding="0" cellspacing="0" style="font-family: Arial; font-size: 8px; padding: 0px; margin: 0px;border-collapse:collapse; border-spacing: 0; width: 100%; margin-top:0px; ">
+                    <tr style =" background-image: url('../App_Themes/Top%20Bar/VerifyBanner_1024.jpg'); background-repeat: no-repeat;">
+                        <td style="font-family: Arial; font-size: 8px; padding: 0px; margin: 0px;border-collapse:collapse; border-spacing: 0; width: 1024px; margin-top:0px; float: right; height: 98px;">
+
+                             <table id="HeaderText" cellpadding="0" cellspacing="0" class="auto-style1" style="background-color: transparent;  width: 1024px; vertical-align: bottom; text-align: right;">
+                                <tr >
+                                <td> </td>
+                                <td> </td>
+                                <td> 
+
+                                <table style= " border-collapse:collapse; border-spacing: 0; padding: 0px; margin: 0px; border-width: 0px; width: 800px; float: right; " id="Table1">
+                                    <tr>
+                                        <td align="left" style="vertical-align: middle; background-color: transparent; text-align: left; height: 28px;" valign="top">
+                                            
+                                            <asp:Label ID="Label1" runat="server" Font-Names="Arial" Font-Size="10pt"
+                                                ForeColor="Black" Text="Welcome:"></asp:Label>
+                                                                &nbsp;
+                                                                <asp:Label ID="lblUserName" runat="server" Font-Bold="True" 
+                                                Font-Names="Arial" Font-Size="10pt"
+                                                ForeColor="Black" Text="Name Here" Width="157px"></asp:Label>
+                                                                &nbsp; &nbsp;<asp:Label 
+                                                ID="Label3" runat="server" Font-Names="Arial" Font-Size="10pt"
+                                                ForeColor="Black" Text="Today: " BorderStyle="None"></asp:Label>
+                                                                &nbsp;&nbsp;<asp:Label 
+                                                ID="lblTodayDate" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="10pt"
+                                                ForeColor="White" Text="Date Here" Width="75px" BorderWidth="0px"></asp:Label>
+                                                            &nbsp; &nbsp;<asp:Label ID="lblVer" runat="server" 
+                                                Font-Bold="True" Font-Names="Arial" Font-Size="8pt"
+                                                            ForeColor="White" Text="Ver Here" Width="56px"></asp:Label>
+                                            &nbsp; &nbsp; &nbsp; &nbsp;
+                                                                <asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Italic="True"
+                                                Font-Names="Arial" Font-Size="14pt" ForeColor="#9B8518" 
+                                                Text="Sales and Dispatches Portal" BorderWidth="0px"></asp:Label>
+                                            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<asp:ImageButton ID="btnLogout" runat="server" ImageUrl="~/App_Themes/Billing/Buttons/Logout.gif" />
+
+
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size: 10pt; font-family: Arial; height: 30px;">
+                                        <td align="left" 
+                                            style="vertical-align: middle; text-align: right; height: 10px; font-family: Arial; font-size: 10px;" 
+                                            valign="top">
+                                            &nbsp;&nbsp;<asp:Label 
+                                                ID="lblDataBaseName" runat="server" ForeColor="White" Text="Label" 
+                                                 Font-Size="8pt" BorderWidth="0px"></asp:Label>
+                                                &nbsp;&nbsp;&nbsp
+                                        </td>
+                                    </tr>
+                                    
+                            </table>
+
+                            </td>
+                        </tr>
+                       
+                   </table>
+
+                            <table id="Tabs" style="border-collapse:collapse; border-spacing: 0; padding: 0px; margin: 0px; background-color: transparent; width: 1024px; height: 30px; vertical-align: bottom; text-align: right;">
+                                    <tr style="padding: 0px; margin: 0px; border-width: 0px; border-collapse:collapse; border-spacing: 0; ">
+                                    <td> </td>
+                                    <td> </td>
+                                    <td style="border-collapse:collapse; border-spacing: 0; padding: 0px; margin: 0px; vertical-align: bottom; text-align: right; float:right">
+                                    
+                                        <table style="border-width: 0px; border-collapse:collapse; border-spacing: 0; padding: 0px; margin: 0px; width: 200px; vertical-align: bottom; text-align: right; height: 10px;" id="Table_Buttons">
+                                            <tr>
+                                        
+                                                <td style="padding: 0px; margin: 0px; border-collapse:collapse; border-spacing: 0; border-width: 0px; width: 2px; height: 2px; background-color: transparent; vertical-align: bottom; text-align: right;" >
+                                                    <asp:ImageButton ID="btnTOP_Quotes" runat="server" 
+                                                        ImageUrl="~/App_Themes/TabButtons/Quotes-Off.gif" BorderWidth="0px" 
+                                                        BorderStyle="None" Visible="False" />
+                                                </td>
+                                                <td style="border-width: 0px; border-collapse:collapse; border-spacing: 0; padding: 0px; margin: 0px; width: 2px; height: 2px; background-color: transparent; font-family: Arial; font-size: 4px; vertical-align: bottom; text-align: right;">
+                                                    <asp:ImageButton ID="btnTOP_Planning" runat="server" 
+                                                        ImageUrl="~/App_Themes/TabButtons/Planning-Off.gif" BorderWidth="0px" 
+                                                        BorderStyle="None" />
+                                                </td>
+                                                                                
+                                                <td style="border-width: 0px; border-collapse:collapse; border-spacing: 0; padding: 0px; margin: 0px; width: 2px; height: 2px; background-color: transparent; font-family: Arial; font-size: 4px; vertical-align: bottom; text-align: right;" >
+                                                    <asp:ImageButton ID="btnTOP_Orders" runat="server" 
+                                                        ImageUrl="~/App_Themes/TabButtons/Sales-OFF.gif" BorderWidth="0px" 
+                                                        BorderStyle="None" />
+                                                </td>
+                                                <td style="border-width: 0px; border-collapse:collapse; border-spacing: 0; padding: 0px; margin: 0px; width: 2px; height: 2px; background-color: transparent; font-family: Arial; font-size: 4px; vertical-align: bottom; text-align: right;" >
+                                                    <asp:ImageButton ID="btnTOP_Details" runat="server" 
+                                                        ImageUrl="~/App_Themes/TabButtons/OrderDetails-Off.gif" BorderWidth="0px" 
+                                                        BorderStyle="None" />
+                                                </td>
+                                                <td style="border-width: 0px; border-collapse:collapse; border-spacing: 0; padding: 0px; margin: 0px; width: 2px; height: 2px; background-color: transparent; font-family: Arial; font-size: 4px; vertical-align: bottom; text-align: right;"  >
+                                                    <asp:ImageButton ID="btnTOP_Fulfill" runat="server" 
+                                                        ImageUrl="~/App_Themes/TabButtons/Fulfill-Off.gif" BorderWidth="0px" 
+                                                        BorderStyle="None" />
+                                                </td>
+                                                <td style="border-width: 0px; border-collapse:collapse; border-spacing: 0; padding: 0px; margin: 0px; width: 2px; height: 2px; background-color: transparent; font-family: Arial; font-size: 4px; vertical-align: bottom; text-align: right;">
+                                                    <asp:ImageButton ID="btnTOP_Deliveries" runat="server" 
+                                                        ImageUrl="~/App_Themes/TabButtons/Dispatches-OFF.gif" BorderWidth="0px" 
+                                                        BorderStyle="None" />
+                                                </td>
+                                                <td style="border-width: 0px; border-collapse:collapse; border-spacing: 0; padding: 0px; margin: 0px; width: 2px; height: 2px; background-color: transparent; font-family: Arial; font-size: 4px; vertical-align: bottom; text-align: right;" >
+                                                    <asp:ImageButton ID="btnTOP_Printouts" runat="server" 
+                                                        ImageUrl="~/App_Themes/TabButtons/Reports-Off.gif" BorderWidth="0px" 
+                                                        BorderStyle="None" />
+                                                </td>
+                                                <td style="border-width: 0px; border-collapse:collapse; border-spacing: 0; padding: 0px; margin: 0px; width: 2px; height: 2px; background-color: transparent; font-family: Arial; font-size: 4px; vertical-align: bottom; text-align: right;" >
+                                                    <asp:ImageButton ID="btnTOP_Contracts" runat="server" 
+                                                        ImageUrl="~/App_Themes/TabButtons/Contracts-OFF.gif" BorderWidth="0px" 
+                                                        BorderStyle="None" />
+                                                </td>
+                                                                             
+                                                <td style="border-width: 0px; border-collapse:collapse; border-spacing: 0; padding: 0px; margin: 0px; width: 2px; height: 2px; background-color: transparent; font-family: Arial; font-size: 4px; vertical-align: bottom; text-align: right;" >
+                                                    <asp:ImageButton ID="btnTOP_SYSADMIN" runat="server" 
+                                                        ImageUrl="~/App_Themes/TabButtons/More-Off.gif" BorderWidth="0px" 
+                                                        BorderStyle="None" />
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                        
+                                <tr style="border-collapse:collapse; border-spacing: 0; padding: 0px; margin: 0px; font-family: Arial; font-size: 4px; height: 11px;">
+                                    <td style="background-repeat: no-repeat; width: 100px; vertical-align: top; text-align: left; "> &nbsp;&nbsp;</td>
+                                    <td style="background-repeat: no-repeat; vertical-align: top; text-align: left; width: 400px; "> &nbsp;&nbsp; </td>
+                                    <td style="vertical-align: bottom; text-align: right; background-color: #FFFFFF; border-right: gray 1px solid; border-right-width: 1px;"> 
+                                        &nbsp;&nbsp;
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0px; margin: 0px;border-collapse:collapse; border-spacing: 0; width: 100%; background-color: transparent; height: 30px; vertical-align: bottom; text-align: right;">
+                            <table border="0" cellpadding="0" cellspacing="0" style=" padding: 0px; border-collapse:collapse; border-spacing: 0; width: 100%; margin-top:0px;  vertical-align: top;  text-align: right; border-top-width: 0px; border-right: gray 1px solid; border-right-width: 1px;  position: static;" id="MainTable">
+                                        
+
+                                        <tr style="font-size: 12pt; font-family: Times New Roman">
+                                            <td style="vertical-align: top;  text-align: left; width: 100%;">
+                                                <table border="0" cellpadding="0" cellspacing="0" style="width: 100%">
+                                                    <tr>
+                                                       
+
+                                                        <td style="width: 100%;  text-align: left; background-color: #FFFFFF; vertical-align: top;">
+                                    
+                                                                    <asp:contentplaceholder id="ProjectMAIN_content" runat="server">
+                                        
+                                                                    </asp:contentplaceholder>
+
+             
+                                                         </td>   
+                                                    </tr>
+                                                </table>
+                   
+                    
+                                            </td>
+                                        </tr>
+                                        <tr style="font-size: 12pt; font-family: Times New Roman">
+                                            <td style="padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px;
+                                                vertical-align: top; width: 100%; padding-top: 0px; position: static; text-align: left;">
+                                                &nbsp;</td>
+                                        </tr>
+                                        <tr style="font-size: 12pt; font-family: Times New Roman">
+                                            <td style="vertical-align: middle; position: static; text-align: center; height: 9px; background-color: #006600; ">
+                                                <div style="background-color: #016102; text-align: right">
+                                                    &nbsp;
+                                                &nbsp;</div>
+                                            </td>
+                                        </tr>
+                                        <tr style="font-size: 12pt; font-family: Times New Roman">
+                                            <td style="vertical-align: middle; width: 100%; position: static; height: 10px;
+                                                text-align: center">
+                                                <asp:ImageMap ID="ImageMap2" runat="server" ImageUrl="~/APP_THEMES/Footer/Footer-Verify.gif">
+                                                    <asp:RectangleHotSpot Bottom="41" Left="2" NavigateUrl="Http://www.VerifyTechnologies.com"
+                                                        Right="925" Target="_blank" Top="2" />
+                                                </asp:ImageMap></td>
+                                        </tr>
+                                    </table>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+
+               
+
+                <br />
+
+
+
+
+
+        <asp:Panel ID="pnlMsg" runat="server" BackColor="White" Width="750px" Style="display:none "
+            meta:resourcekey="pnlCommentResource1">
+            <div style="padding: 20px">
+                <center>
+                    <br />
+                    <asp:Label ID="lblMsgMandatory" runat="server" Font-Bold="True" 
+                        Font-Names="Arial" Font-Size="11pt"
+                        ForeColor="#996633" Text="Text goes here 2"></asp:Label>
+                    <br />
+                    <br />
+                    <br />
+                    <asp:ImageButton ID="cmdOKMissing" runat="server" ImageUrl="~/App_Themes/Buttons/Ok.gif"
+                        meta:resourceKey="cmdOKStatusResource1" />
+                    <br />
+                    <br />
+                </center>
+            </div>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="ModalPopupExtenderMsg" TargetControlID="pnlMsg" CancelControlID="cmdOkMissing"
+            BackgroundCssClass="modalBackground" DropShadow="True" OnCancelScript="HideModalPopupMsg()"
+            PopupControlID="pnlMsg" runat="server" DynamicServicePath="" Enabled="True" >
+        </cc1:ModalPopupExtender>
+       
+            
+            </form>
+        
+    
+    </center>
+   
+
+
+</body>
+
+</html>

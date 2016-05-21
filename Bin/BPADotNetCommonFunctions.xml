@@ -1,0 +1,1102 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+BPADotNetCommonFunctions
+</name>
+</assembly>
+<members>
+<member name="M:BPADotNetCommonFunctions.JobStepModuleFunctions.GetJobStepForms(System.Int32)">
+ <summary>
+ Get the forms associated with this job type. 
+ </summary>
+ <param name="intJobTypeId"></param>
+ <returns>DataTable where
+ Field0 - ItemId,
+ Field1 - Manual,
+ Field2 - Chapter,
+ Field3 - DocName,
+ Field4 - Version,
+ Field5 - ChildDocId
+ </returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.JobStepModuleFunctions.GetJobStepFormsMatrix2(System.Int32)">
+ <summary>
+ Get the forms associated with this job type. 
+ </summary>
+ <param name="intJobTypeId"></param>
+ <returns>DataTable where
+ Field0 - ItemId,
+ Field1 - Manual,
+ Field2 - Chapter,
+ Field3 - DocName,
+ Field4 - Version,
+ Field5 - ChildDocId
+ </returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.JobStepModuleFunctions.GetJobStepFormsMatrix1(System.Int32)">
+ <summary>
+ Get the forms associated with this job type. 
+ </summary>
+ <param name="intJobTypeId"></param>
+ <returns>DataTable where
+ Field0 - ItemId,
+ Field1 - Manual,
+ Field2 - Chapter,
+ Field3 - DocName,
+ Field4 - Version,
+ Field5 - ChildDocId
+ </returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.JobStepModuleFunctions.GetJobStepDocs(System.Int32)">
+ <summary>
+ Get the docs associated with this job type. 
+ </summary>
+ <param name="intJobTypeId"></param>
+ <returns>DataTable where
+ Field0 - ItemId,
+ Field1 - Manual,
+ Field2 - Chapter,
+ Field3 - DocName,
+ Field4 - Version,
+ Field5 - ChildDocId
+ </returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.JobStepModuleFunctions.GetJobStepDocsMatrix2(System.Int32)">
+ <summary>
+ Get the forms associated with this job type. 
+ </summary>
+ <param name="intJobTypeId"></param>
+ <returns>DataTable where
+ Field0 - ItemId,
+ Field1 - Manual,
+ Field2 - Chapter,
+ Field3 - DocName,
+ Field4 - Version,
+ Field5 - ChildDocId
+ </returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.JobStepModuleFunctions.GetJobStepDocsMatrix1(System.Int32)">
+ <summary>
+ Get the docs associated with this job type. 
+ </summary>
+ <param name="intJobTypeId"></param>
+ <returns>DataTable where
+ Field0 - ItemId,
+ Field1 - Manual,
+ Field2 - Chapter,
+ Field3 - DocName,
+ Field4 - Version,
+ Field5 - ChildDocId
+ </returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.PersonnelModuleFunctions.GetAllowedCategoriesForUser(System.String,System.String,System.Int32)">
+ <summary>
+ Reads the set of Ids of the allowed categories in the selected matrix for the selected user
+ </summary>
+ <param name="strConn"></param>
+ <param name="strMatrixType"></param>
+ <param name="intUserId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.PersonnelModuleFunctions.IsCategoryAccessRestrictedForThisUser(System.String,System.String,System.Int32)">
+ <summary>
+ Reads the AccessRestricted item from the ModuleAccess folder for the selected MatrixType from the users's personnel data
+ </summary>
+ <param name="strMatrixType"></param>
+ <param name="intUserId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.PersonnelModuleFunctions.GetUsersCommissionRates(System.String,System.Int32)">
+ <summary>
+ Get a dataTable of the given user's customer commission rates from the PersonnelCommission folder in the personnel matrix
+ </summary>
+ <param name="strConn"></param>
+ <param name="intUserId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.PersonnelModuleFunctions.WritePasswordHistoryItem(System.Int32,System.String,System.DateTime)">
+ <summary>
+ Write the password and the date it was used to the User's PasswordHistory
+ </summary>
+ <param name="intUserId"></param>
+ <param name="strPassword"></param>
+ <param name="dteDate"></param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.MaterialsModuleFunctions.GetSuitabilityStatusForProduct(System.String,System.Int32)">
+ <summary>
+ Retrieves the SuitabilityIssue item form the root folder for a product
+ </summary>
+ <param name="intProdMatrixId">The Id of the version of the product for which we want to retrieve the spec item</param>
+ <returns>String</returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.MaterialsModuleFunctions.GetUserFormsForProduct(System.String,System.Int32)">
+ <summary>
+ Get the set of user forms for this version of the product
+ </summary>
+ <param name="intProductVersionID"></param>
+ <returns>datatable</returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.MaterialsModuleFunctions.GetSpecItemForProduct(System.Int32,System.String)">
+ <summary>
+ Retrieves an item from the ProductSpecification folder for a product
+ </summary>
+ <param name="intProdMatrixId">The Id of the version of the product for which we want to retrieve the spec item</param>
+ <param name="strItemName">the name of the Spec item</param>
+ <returns>String</returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.MaterialsModuleFunctions.GetAllSpecItemsForProduct(System.Int32)">
+ <summary>
+ Retrieves all items from the ProductSpecification folder for a product
+ </summary>
+ <param name="intProdMatrixId">The Id of the version of the product for which we want to retrieve the spec item</param>
+ <returns>String</returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_ReportFunctions.AssetFunctions.GetAssetsToBeCalibratedInDateRange(System.String,System.DateTime,System.DateTime,System.String)">
+ <summary>
+ Returns a dataTable containing the 
+ </summary>
+ <param name="strConn"></param>
+ <param name="strStartDate"></param>
+ <param name="strEndDate"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_ReportFunctions.LacsureFunctions.GetFeedsDispensedForDateRange(System.String,System.String,System.String)">
+ <summary>
+ Load the Feeds records from the trc_Transactions table for the given date range
+ </summary>
+ <param name="strStartDate"></param>
+ <param name="strEndDate"></param>
+ <param name="strConn"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_ReportFunctions.LacsureFunctions.GetFeedAlertsForDateRange(System.String,System.String,System.String)">
+ <summary>
+ Load the Feed Alert records for this datRange from the HACCP matrix
+ </summary>
+ <param name="strStartDate"></param>
+ <param name="strEndDate"></param>
+ <param name="strConn"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_ReportFunctions.WorkflowFunctions.GetUserTasksAwatingCompletion(System.String,System.Int32,System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="strconn"></param>
+ <param name="intId"></param>
+ <param name="intPersonType">Optional: Sets whether to return User, Role or Department tasks</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.RoleFunctions.GetPrivilegesForRole(System.String,System.Int32)">
+ <summary>
+ Returns the Privileges grid for the role from either Matrix1 or Matrix2
+ </summary>
+ <param name="strConn"></param>
+ <param name="intRoleId">the master Id of the role</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.RoleFunctions.GetPrivilegesForRoleMatrix2(System.String,System.Int32)">
+ <summary>
+ Returns the Privileges grid for the role from the Matrix2 grid Data
+ </summary>
+ <param name="strConn"></param>
+ <param name="intRoleId">the master Id of the role</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.RoleFunctions.GetPrivilegesForRoleMatrix1(System.String,System.Int32)">
+ <summary>
+ Returns the Privileges grid for the role
+ </summary>
+ <param name="strConn"></param>
+ <param name="intRoleId">the master Id of the role</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_TrainingFunctions.TrainingManagementFunctions.AddCompetency(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.DateTime,System.DateTime,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="strDBConn">Connection string</param>
+ <param name="strModuleType">Type of item to which we are adding the competency - Role, User or Course</param>
+ <param name="strSelected">Name of competency to be added</param>
+ <param name="strSelectedId">Id of competency to be added</param>
+ <param name="strSelectedItemId">Id of item to which we are adding the competency</param>
+ <param name="strSelectedItemName">Name of item to which we are adding the competency</param>
+ <param name="strSelectedItemCategory">Category of item to which we are adding the competency</param>
+ <param name="strCompetencyType">Type of competenct - Training, Experience etc</param>
+ <param name="dteCompAchievedDate">Date competency was achieved</param>
+ <param name="dteAssessment">Date of Assessment</param>
+ <param name="strAwardedBy"></param>
+ <param name="strComment"></param>
+ <param name="strTrainer"></param>
+ <param name="strAssessor"></param>
+ <param name="strAddedVia">Where was the competency added</param>
+ <param name="strVersionMode">Use Current version or a version supplied in strVersion</param>
+ <param name="strVersion"></param>
+ <param name="strCurrentUserName"></param>
+ <param name="intCurrentUserId"></param>
+ <remarks></remarks>
+</member>
+<member name="P:BPADotNetCommonFunctions.VerifyIntellisense.Sales.SalesOrderDetails(System.Int32)">
+ <summary>
+ GETs or SETs a Sales Order (Items in a SalesOrder Structure) for the specfied Sales Order Number
+ </summary>
+ <param name="intOrderNum">Sales Order Number</param>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.MenuInstanceFunctions.GetMenuInstanceDateId(System.String,System.DateTime)">
+ <summary>
+ Returns the Id of the node in the MenuInstance matrix for the suplied date
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.MenuInstanceFunctions.GetMenuInstanceId(System.String,System.DateTime,System.String,System.String)">
+ <summary>
+ Get the id of the node in the ManuInstance matrix for the given data
+ </summary>
+ <param name="strConn"></param>
+ <param name="dteThis"></param>
+ <param name="strMenuType"></param>
+ <param name="strMenuReferenceName"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.MenuInstanceFunctions.SaveMenuInstanceDetails(System.String,System.DateTime,System.String,System.String,System.String,System.String,Infragistics.WebUI.UltraWebGrid.UltraWebGrid)">
+ <summary>
+ Save the selected menu details
+ </summary>
+ <param name="strConn"></param>
+ <param name="dteThis"></param>
+ <param name="strMenuType"></param>
+ <param name="strMenuReferenceName"></param>
+ <param name="strComment"></param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.MenuInstanceFunctions.DeleteMenu(System.String,System.DateTime,System.String,System.String)">
+ <summary>
+ Delete the selected menu details
+ </summary>
+ <param name="strConn"></param>
+ <param name="dteThis"></param>
+ <param name="strMenuType"></param>
+ <param name="strMenuReferenceName"></param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.NCICommonFunctions.GetContainmentItemsForNCI(System.Int32,System.String,System.String)">
+ <summary>
+ Gets a DataTable containing the rows of the Containment table
+ </summary>
+ <param name="intNCI"></param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns>Field0: ItemId, Field1: WorkOrder, Field2: Part, Field3: RawMaterial, Field4: Wip, Field5: Warehouse, Field6: Customer, Field7: Other, Field8: UAIQty, Field9: ReworkQty, Field10: RejectedQty, Field11: OnRS, Field12: CustomerNotification, Field13: Labelled, Field14: Hold</returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.NCICommonFunctions.GetContainmentActionsForNCI(System.Int32,System.String,System.String)">
+ <summary>
+ Gets a DataTable containing the rows of the Containment Action table
+ </summary>
+ <param name="intNCI"></param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns>Field0: ItemId, Field1: Summary, Field2: Originator, Field3: StartDate, Field4: Status, Field5: AssignedTo, Field6: CompletedBy, Field7: WorkflowID, Field8: CAPADescription, Field9: ApprovedBy, Field10: DateApproved, </returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.NCICommonFunctions.GetActionsForContainmentAction(System.Int32,System.String,System.String)">
+ <summary>
+ Returns the datatable corresponding to the grid of Actions related to a given ContainmentAction Id
+ </summary>
+ <param name="intCA_Id">The Id of the containment action</param>
+ <param name="strDBConn">Optional Database connection string</param>
+ <param name="strWindowsOrASP">Optional - are we calling from windows or ASP - defaults to ASP</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.NCICommonFunctions.GetApprovalItemsForContainmentAction(System.Int32,System.String,System.String)">
+ <summary>
+ Returns the datatable corresponding to the grid of Approval items related to a given ContainmentAction Id
+ </summary>
+ <param name="intCA_Id">The Id of the containment action</param>
+ <param name="strDBConn">Optional Database connection string</param>
+ <param name="strWindowsOrASP">Optional - are we calling from windows or ASP - defaults to ASP</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.NCICommonFunctions.GetCorrectiveActionsForNCI(System.Int32,System.String,System.String)">
+ <summary>
+ Gets a DataTable containing the rows of the Corrective Action table
+ </summary>
+ <param name="intNCI"></param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns>Field0: ItemId, Field1: Summary, Field2: Originator, Field3: StartDate, Field4: Status, Field5: AssignedTo, Field6: CompletedBy, Field7: WorkflowID, Field8: CAPADescription, Field9: ApprovedBy, Field10: DateApproved, </returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.NCICommonFunctions.GetPreventativeActionsForNCI(System.Int32,System.String,System.String)">
+ <summary>
+ Gets a DataTable containing the rows of the Preventative Action table
+ </summary>
+ <param name="intNCI"></param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns>Field0: ItemId, Field1: Summary, Field2: Originator, Field3: StartDate, Field4: Status, Field5: AssignedTo, Field6: CompletedBy, Field7: WorkflowID, Field8: CAPADescription, Field9: ApprovedBy, Field10: DateApproved, </returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.MatrixFunctions.GetCurrentItemId(System.String,System.String,System.Int32)">
+ <summary>
+ This function retrieves the Id of the Current version of an item
+ </summary>
+ <param name="strConn"></param>
+ <param name="strFormDataTable"></param>
+ <param name="intItemId"></param>
+ <returns>Integer - the id of the current item or 0 if there is no current item</returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.MatrixFunctions.GetDataItemsInCategories(System.String,System.String,System.String,System.String,System.String,System.String,System.String[])">
+ <summary>
+ This function returns a datatable of details for a specified category or for ALL categories
+ </summary>
+ <param name="strConn"></param>
+ <param name="strFormListTable"></param>
+ <param name="strFormDataTable"></param>
+ <param name="strRootNodeName"></param>
+ <param name="strCategoriesFolderName"></param>
+ <param name="strCategoryName"></param>
+ <param name="astrItemNames"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.CommonFunctions.ConfigureforPrinting(System.Object)">
+ <summary>
+ this Sub prepares a page for printing by hiding all buttons and making all multiline textboxes big enough to show the full text
+ </summary>
+ <param name="objForm">the container that holds all the controls we need to setup</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.CommonFunctions.GetVersionNumber">
+ <summary>
+ Function to return the version number of the project
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.CommonFunctions.ReadHelpFile(System.String)">
+ <summary>
+ function to read a set of Help points from a file and return them in a datatable
+ </summary>
+ <param name="strHelpfilePath"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.CommonFunctions.CalculateDateTimeOfNextEvent(System.String,System.DateTime,System.Int32,System.String)">
+ <summary>
+ Function to return the Date/time of the next event
+ </summary>
+ <param name="strMode">The time interval - Minutes, Hours, Days, Weeks or Months</param>
+ <param name="dteLastDateTime">The dateTime to start the calculation from</param>
+ <param name="intRecursEvery">the number of intervals to add</param>
+ <param name="strDaysToRun">When using Weeks or months the string sets the allowed days - must be comma delimited</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.CommonFunctions.GetConnString(System.String,System.String)">
+ <summary>
+ Get the Connection String to use
+ </summary>
+ <param name="strDBConn">Returns this value if it is suppplied</param>
+ <param name="strWindowsOrASP">If strDBConn = "" and if this value is 'Windows' it will read the ConnString from the app.config file otherwise it returns Session("_VT_DotNetConnString")</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.CommonFunctions.GetJobStepObject(System.Int32,System.String)">
+ <summary>
+ Finds the details of the support object configured for the JobStep and creates an instance of it
+ </summary>
+ <param name="intStepId"></param>
+ <returns>Object - can be cast by the calling program to the required type</returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.CommonFunctions.GetCurrentVersionIdOfItem(System.String,System.Int32,System.String,System.String,System.String)">
+ <summary>
+ Gets the Id of the current version of an item or 0 if there is no current version
+ </summary>
+ <param name="intItemId">The Item id</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_CommonFunctions.CommonFunctions.GetCurrentVersionNumberOfItem(System.String,System.Int32,System.String,System.String,System.String)">
+ <summary>
+ Returns the ItemVersion string for the current version of an item
+ if the Item is not CURRENT or if it is RETIRED the return value will be a null string
+ </summary>
+ <param name="strConnString"></param>
+ <param name="intItemId"></param>
+ <param name="strFormListTable"></param>
+ <param name="strFormDataTable"></param>
+ <param name="strPrimaryFormName"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_Forms.Forms.GetJobsForProductId(System.Int32,System.String)">
+ <summary>
+ GetJobsForProductId
+ </summary>
+ <param name="intProductSchemaId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.BuildGridDataTableFromArray(System.String[],System.String[],System.String,System.Int32)">
+ <summary>
+ Function to create a DataTable that corresponds to a DataScraped grid with a single row
+ </summary>
+ <param name="astrData"></param>
+ <param name="astrKeys"></param>
+ <param name="strGridName"></param>
+ <param name="intFormId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.BuildGridDataTableFromDataTable(System.Data.DataTable,System.String[],System.String,System.Int32)">
+ <summary>
+ Function to reformat a datatable as if it had come from a WebDataGrid
+ </summary>
+ <param name="dtInput"></param>
+ <param name="astrKeys"></param>
+ <param name="strGridName"></param>
+ <param name="intFormId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.CreateEmptyMatrix2GridDataTable">
+ <summary>
+ Returns an empty data table structure into which the data for a DataGrid can be loaded
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.BindDataToWDG(System.Data.DataTable,Infragistics.Web.UI.GridControls.WebDataGrid)">
+ <summary>
+ This sub dskjfjfdskj
+ </summary>
+ <param name="dtGridData">the data for the grid</param>
+ <param name="wdgThis">a reference to the grid</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.ScrapeFormData(System.Object,System.Int32,System.String,System.String,System.String,System.Int32)">
+ <summary>
+ Sub to iterate through a Controls collection and store the data to the Matrix
+ </summary>
+ <param name="objForm">a Reference to the element containing the controls </param>
+ <param name="intJobId">the MatrixId for the current form</param>
+ <param name="strFormName">the identifying name for the form</param>
+ <param name="strFormListTableName">The Matrix list table to use</param>
+ <param name="strFormDataTableName">The Matrix data table to use</param>
+ <remarks></remarks>
+ 
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.FindTypeOfInput(System.String,System.Int32,System.Int32)">
+ <summary>
+ Find which type applies to an <INPUT></INPUT> HTML section. Assumes there will be a "type=" section or else that it is a textbox
+ </summary>
+ <param name="strEditorText"></param>
+ <param name="intStartOfInput"></param>
+ <param name="intEndOfInput"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.FindEndOfSection(System.String,System.Int32)">
+ <summary>
+ Locate the index of the end of a HTML section. Assumes it will end with a space if it is not the last section in the <INPUT></INPUT> or will end with a ">" if it is the last section
+ </summary>
+ <param name="strText"></param>
+ <param name="intStart"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.RecoverFormData(System.Object,System.String,System.Int32,System.String,System.String,System.Boolean)">
+ <summary>
+ Sub to Load a form's data into session and then iterate through the form's controls and load the values
+ </summary>
+ <param name="objForm">a Reference to the element containing the controls</param>
+ <param name="strFormName">the identifying name for the form</param>
+ <param name="intJobId">the MatrixId for the current form</param>
+ <param name="strFormListTableName">The Matrix list table to use</param>
+ <param name="strFormDataTableName">The Matrix data table to use</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.MatchDataTableStructureToGrid(Infragistics.Web.UI.GridControls.WebDataGrid,System.Data.DataTable@,System.Boolean)">
+ <summary>
+ sub reads through the columns in wgdThis and sets the type of the corresponding column in dt to match the type of the grid column
+ </summary>
+ <param name="wdgThis"></param>
+ <param name="dt">ByRef - a dataTable whose column structure matches that of the grid</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.MatchDataTableStructureToGridGroupField(Infragistics.Web.UI.GridControls.GroupField,System.Data.DataTable@,System.Int32@,System.Boolean)">
+ <summary>
+ sub reads through the columns in a GroupField and sets the type of the corresponding column in dt to match the type of the grid column
+ </summary>
+ <param name="wdgThis"></param>
+ <param name="dt">ByRef - a dataTable whose column structure matches that of the grid</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.FillWDGFromMatrix2(Infragistics.Web.UI.GridControls.WebDataGrid,System.String,System.String,System.Int32,System.Boolean)">
+ <summary>
+ Retrieve a grid's data from the flat grid table and populate the grid
+ </summary>
+ <param name="uwgThis">Reference to the grid we want to load</param>
+ <param name="strFormListTable">The Matrix list table to use</param>
+ <param name="strFormDataTable">The Matrix data table to use</param>
+ <param name="strGridName">the Grid's Id string e.g. uwgHBagMCStartTestResults</param>
+ <param name="intFormId">the grid's Parent FolderId in the Matrix</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.SetGridRowCSSClass(Infragistics.Web.UI.GridControls.WebDataGrid,System.Data.DataTable)">
+ <summary>
+ Apply the CSS class stored in the RowColor field to rows of the grid
+ </summary>
+ <param name="wdgThis"></param>
+ <param name="dtGrid"></param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.RetrieveWDGDataFromMatrix2(Infragistics.Web.UI.GridControls.WebDataGrid,System.String,System.String,System.Int32)">
+ <summary>
+ Retrieve a grid's data from the flat grid table
+ </summary>
+ <param name="uwgThis">Reference to the grid we want to load</param>
+ <param name="strFormListTable">The Matrix list table to use</param>
+ <param name="strFormDataTable">The Matrix data table to use</param>
+ <param name="strGridName">the Grid's Id string e.g. uwgHBagMCStartTestResults</param>
+ <param name="intFormId">the grid's Parent FolderId in the Matrix</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.FillGridFromMatrix2(Infragistics.WebUI.UltraWebGrid.UltraWebGrid,System.String,System.String,System.Int32,System.Boolean)">
+ <summary>
+ Retrieve a grid's data from the flat grid table and populate the grid
+ </summary>
+ <param name="uwgThis">Reference to the grid we want to load</param>
+ <param name="strFormListTable">The Matrix list table to use</param>
+ <param name="strFormDataTable">The Matrix data table to use</param>
+ <param name="strGridName">the Grid's Id string e.g. uwgHBagMCStartTestResults</param>
+ <param name="intFormId">the grid's Parent FolderId in the Matrix</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.IsFormDataDirty(System.Object,System.String,System.Int32,System.String,System.String,System.Int32)">
+ <summary>
+ Function to compare the data currently on the form with the data loaded into Session when the form was Recovered from the matrix
+ </summary>
+ <param name="objForm">a Reference to the element containing the controls</param>
+ <param name="strFormName">the identifying name for the form</param>
+ <param name="intJobId">the MatrixId for the current form</param>
+ <param name="strFormListTableName">The Matrix list table to use</param>
+ <param name="strFormDataTableName">The Matrix data table to use</param>
+ <returns>False if the form has not changed, True if it has</returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.GrabGridData(Infragistics.WebUI.UltraWebGrid.UltraWebGrid)">
+ <summary>
+ Create a DataTable of the grid contents by visiting each cell
+ </summary>
+ <param name="uwgThis"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.SaveWDGGridData(Infragistics.Web.UI.GridControls.WebDataGrid,System.String,System.String,System.Int32,System.String,System.String)">
+ <summary>
+ Sub called to serialize an Infragistics WebdataGrid to Matrix1
+ </summary>
+ <param name="wdgThis">Refence to the grid to be saved</param>
+ <param name="strFormListTable">The Matrix list table to use</param>
+ <param name="strFormDataTable">The Matrix data table to use</param>
+ <param name="intJobId">FolderId to use in the Matrix</param>
+ <param name="strGridID">the Grid's Id string e.g. uwgHBagMCStartTestResults</param>
+ <param name="strParentId">an id string for storing the grids folder id e.g. ItemIdForGrid_uwgHBagMCStartTestResults</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.RefreshWDGAfterPostback(Infragistics.Web.UI.GridControls.WebDataGrid,System.Data.DataTable)">
+ <summary>
+ Function to refresh the WDG data and reapply the Tag which is used in the data-scraping of the grid
+ </summary>
+ <param name="wdgThis"></param>
+ <param name="dtData"></param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.SaveGridData(Infragistics.WebUI.UltraWebGrid.UltraWebGrid,System.String,System.String,System.Int32,System.String,System.String)">
+ <summary>
+ Sub called to serialize an Infragistics UltraWebGrid
+ </summary>
+ <param name="uwgThis">Refence to the grid to be saved</param>
+ <param name="strFormListTable">The Matrix list table to use</param>
+ <param name="strFormDataTable">The Matrix data table to use</param>
+ <param name="intJobId">FolderId to use in the Matrix</param>
+ <param name="strGridID">the Grid's Id string e.g. uwgHBagMCStartTestResults</param>
+ <param name="strParentId">an id string for storing the grids folder id e.g. ItemIdForGrid_uwgHBagMCStartTestResults</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.GetWDGGridData(Infragistics.Web.UI.GridControls.WebDataGrid,System.String,System.String,System.String,System.String,System.String)">
+ <summary>
+ Retrieve a WebDataGrid's data from the Matrix and populate the grid
+ </summary>
+ <param name="wdgThis">Reference to the grid we want to load</param>
+ <param name="strFormListTable">The Matrix list table to use</param>
+ <param name="strFormDataTable">The Matrix data table to use</param>
+ <param name="strGridId">the Grid's Id string e.g. uwgHBagMCStartTestResults</param>
+ <param name="strCriteriaName">a folder id string used when the grid was stored e.g. ItemIdForGrid_uwgHBagMCStartTestResults</param>
+ <param name="strCriteriaValue">Parent FolderId to use in the Matrix</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.RetrieveWDGGridData(Infragistics.Web.UI.GridControls.WebDataGrid,System.String,System.String,System.String,System.String,System.String)">
+ <summary>
+ Retrieve a WebDataGrid's data from the Matrix but DO NOT populate the grid
+ </summary>
+ <param name="wdgThis">Reference to the grid we want to load</param>
+ <param name="strFormListTable">The Matrix list table to use</param>
+ <param name="strFormDataTable">The Matrix data table to use</param>
+ <param name="strGridId">the Grid's Id string e.g. uwgHBagMCStartTestResults</param>
+ <param name="strCriteriaName">a folder id string used when the grid was stored e.g. ItemIdForGrid_uwgHBagMCStartTestResults</param>
+ <param name="strCriteriaValue">Parent FolderId to use in the Matrix</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.GetGridData(Infragistics.WebUI.UltraWebGrid.UltraWebGrid,System.String,System.String,System.String,System.String,System.String)">
+ <summary>
+ Retrieve a grid's data from the Matrix and populate the grid
+ </summary>
+ <param name="uwgThis">Reference to the grid we want to load</param>
+ <param name="strFormListTable">The Matrix list table to use</param>
+ <param name="strFormDataTable">The Matrix data table to use</param>
+ <param name="strGridId">the Grid's Id string e.g. uwgHBagMCStartTestResults</param>
+ <param name="strCriteriaName">a folder id string used when the grid was stored e.g. ItemIdForGrid_uwgHBagMCStartTestResults</param>
+ <param name="strCriteriaValue">Parent FolderId to use in the Matrix</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.AddRowToGrid(Infragistics.WebUI.UltraWebGrid.UltraWebGrid,Infragistics.WebUI.UltraWebGrid.UltraGridRow,System.Int32,System.Boolean)">
+ <summary>
+ Add a row to the WebGrid before or after the given index
+ blnBeforeAfter = True for inserting after the selected row
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.SaveMatrix2WDGData(Infragistics.Web.UI.GridControls.WebDataGrid,System.String,System.Int32,System.Int32,System.Boolean,System.Int32)">
+ <summary>
+ Save a grid into the GridData table for this matrix
+ </summary>
+ <param name="uwgThis"></param>
+ <param name="strFormListTable"></param>
+ <param name="intJobId"></param>
+ <param name="intFormId"></param>
+ <param name="blnCheckFormLock"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.SaveMatrix2GridData(Infragistics.WebUI.UltraWebGrid.UltraWebGrid,System.String,System.Int32,System.Int32,System.Boolean,System.Int32)">
+ <summary>
+ Save a grid into the GridData table for this matrix
+ </summary>
+ <param name="uwgThis"></param>
+ <param name="strFormListTable"></param>
+ <param name="intJobId"></param>
+ <param name="intFormId"></param>
+ <param name="blnCheckFormLock"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.IsFormCheckedOutByCurrentUser(System.String,System.Int32,System.Int32,System.String)">
+ <summary>
+ This function checks if the Current User has this Object checked out (i.e. the Object is editable for this user)
+ </summary>
+ <param name="strConn"></param>
+ <param name="intUserId"></param>
+ <param name="intIdToUse"></param>
+ <param name="strDataTableName"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.LoadColumnsForGroupField(Infragistics.Web.UI.GridControls.WebDataGrid,Infragistics.Web.UI.GridControls.GroupField,Infragistics.Web.UI.GridControls.GridRecord,System.Data.DataTable,System.String,System.Int32,System.Int32@,System.Double[]@,System.Data.DataRow@)">
+ <summary>
+  This sub compares the cells of the colGroup GroupField in the 'wdgThis' grid with the 'dtCompare' datatable and logs any changes to the Quality Log.
+  If a cell is part of a GroupField it calls a recursive sub to work through any child GroupFields
+ </summary>
+ <param name="wdgThis"></param>
+ <param name="colGroup"></param>
+ <param name="wdgRow"></param>
+ <param name="dtCompare"></param>
+ <param name="strFormName"></param>
+ <param name="intAuditLogKey"></param>
+ <param name="intColCnt"></param>
+ <param name="adblTotals"></param>
+ <param name="dr"></param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.LoadColumnsForRow(Infragistics.Web.UI.GridControls.WebDataGrid,Infragistics.Web.UI.GridControls.GridRecord,System.Data.DataTable,System.String,System.Int32,System.Int32@,System.Double[]@,System.Data.DataRow@)">
+ <summary>
+  This sub compares the cells of the wdgRow in the 'wdgThis' grid with the 'dtCompare' datatable and logs any changes to the Quality Log.
+  If the cell is part of a GroupField it calls a recursive sub to work through any child GroupFields
+ </summary>
+ <param name="wdgThis"></param>
+ <param name="wdgRow"></param>
+ <param name="dtCompare"></param>
+ <param name="strFormName"></param>
+ <param name="intAuditLogKey"></param>
+ <param name="intColCnt"></param>
+ <param name="adblTotals"></param>
+ <param name="dr"></param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.CopyAllMatrix2GridsToNewFolder(System.Int32,System.Int32,System.String)">
+ <summary>
+ Copies all the grids which are children of intSourceFolderId to intTargetId
+ </summary>
+ <param name="intSourceFolderId"></param>
+ <param name="intTargetFolderId"></param>
+ <param name="strFormListTable"></param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.SaveChangedWDGData(Infragistics.Web.UI.GridControls.WebDataGrid,System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String@)">
+ <summary>
+ 
+ </summary>
+ <param name="uwgThis">reference to the grid to be saved</param>
+ <param name="strFormListTableName">The Matrix list table to use</param>
+ <param name="strFormDataTableName">The Matrix data table to use</param>
+ <param name="strGridId">id of the grid e.g. uwgResults</param>
+ <param name="strCriteriaName">ItemIdFirGrid_ + strGridId</param>
+ <param name="strCriteriaValue">Id of grid's parent node</param>
+ <param name="intJobId">current jobid</param>
+ <param name="strFormName">form on which the grid exists</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_DataPreserve.DataPreserve.SaveChangedGridData(Infragistics.WebUI.UltraWebGrid.UltraWebGrid,System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String@)">
+ <summary>
+ 
+ </summary>
+ <param name="uwgThis">reference to the grid to be saved</param>
+ <param name="strFormListTableName">The Matrix list table to use</param>
+ <param name="strFormDataTableName">The Matrix data table to use</param>
+ <param name="strGridId">id of the grid e.g. uwgResults</param>
+ <param name="strCriteriaName">ItemIdFirGrid_ + strGridId</param>
+ <param name="strCriteriaValue">Id of grid's parent node</param>
+ <param name="intJobId">current jobid</param>
+ <param name="strFormName">form on which the grid exists</param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VT_eQOInterface.eQOInterface.SetCurrentWFO(System.Int32,System.Int32,System.String,System.String)">
+ <summary>
+ Sets the CurrentWFO in the BatchTable which sets which WFO to run next
+ </summary>
+ <param name="intJobId"></param>
+ <param name="intTarget">The UniqueReferenceNumber of the WFO to set</param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.UtilFunctions.Encrypt(System.String)">
+ <summary>
+ Encrypt a string
+ </summary>
+ <param name="clearText"></param>
+ <returns>The encrypted string</returns>
+ <remarks></remarks>
+ 
+</member>
+<member name="M:BPADotNetCommonFunctions.UtilFunctions.Decrypt(System.String)">
+ <summary>
+ Decrypt a string
+ </summary>
+ <param name="cipherText"></param>
+ <returns>the plain text of the encrypted string</returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.UtilFunctions.FormatSystemTimeAsHMS(System.Double)">
+ <summary>
+ Format a SystemTime value (number of seconds since midnight) in HH:MM:SS format
+ </summary>
+ <param name="Value"></param>
+ <returns>String in HH:MM:SS 24hour clock format</returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VTStoreVer2Functions.InsertVTStoreDataRecord(System.Int32,BPADotNetCommonFunctions.VTStoreVer2Functions.EMS_ALLOWED_DOC_TYPES,System.String,System.String,System.String[],System.String,System.String)">
+ <summary>
+ Inserts a record into the given table in the VTStore index database
+ </summary>
+ <param name="intFolderId"></param>
+ <param name="emsFileFormat"></param>
+ <param name="strFileName"></param>
+ <param name="strItemTitle"></param>
+ <param name="a_strIndices"></param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VTStoreVer2Functions.GetVTStoreFolderIDFromPath(System.String,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strFolderPath"></param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VTStoreVer2Functions.StoreFileToVTStore(System.String,System.String,System.String,System.String,System.String@,System.String[],BPADotNetCommonFunctions.VTStoreVer2Functions.EMS_ALLOWED_DOC_TYPES,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strDID"></param>
+ <param name="strParentFolder"></param>
+ <param name="strFileName"></param>
+ <param name="strFileTitle"></param>
+ <param name="strError"></param>
+ <param name="astrIndices"></param>
+ <param name="emsFileType"></param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.VTStoreVer2Functions.CreateVTStoreFolderFromPath(System.String,System.String,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strFolder"></param>
+ <param name="strNewPath"></param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.CalculateTaskDueDate(System.DateTime,System.Int32,Microsoft.VisualBasic.DateInterval)">
+ <summary>
+ Calculate the next Duedate for a Task
+ </summary>
+ <param name="dteCurrent">The base date to calculate from</param>
+ <param name="intIntervalValue"></param>
+ <param name="intIntervalType">Supports DateInterval constants - Hour, Day, Week or Month</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.DeleteDebugSteps(System.String,System.String)">
+ <summary>
+ Deletes all entries from the debug steps table
+ </summary>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.InsertDebugStep(System.String,System.String,System.String,System.String,System.String)">
+ <summary>
+ Adds an entry to the debug steps table
+ </summary>
+ <param name="strStepName"></param>
+ <param name="strStepStatus"></param>
+ <param name="strBranchTo"></param>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.GetBranchOnFailNum(System.Int32,System.String,System.String)">
+ <summary>
+ Returns the BranchOnFail value from the Sequence table for the given DataLink
+ </summary>
+ <param name="intTestDataLink"></param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.GetBranchOnPassNum(System.Int32,System.String,System.String)">
+ <summary>
+ Returns the BranchOnPass value from the Sequence table for the given DataLink
+ </summary>
+ <param name="intTestDataLink"></param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.GetTestObjectData(System.Int32,System.String,System.String)">
+ <summary>
+ Retrieves the Recordset containing the test data for a single sttep
+ </summary>
+ <param name="intDataLink"></param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.GetSerialId(System.Int32,System.String,System.String)">
+ <summary>
+ Get the Serial table Id for the given job
+ </summary>
+ <param name="intJobId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.GetControlForWFO(System.Int32,System.String,System.String)">
+ <summary>
+  Reference to the object associated with this WFO in the form OCXReference.ObjectReferenceName
+ </summary>
+ <param name="intDataLink">TestDataLink for the WFO</param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.GetNextWFOForJob(System.Int32,System.String,System.String)">
+ <summary>
+ Return the UniqueReferenceNumber of the Next WFO for the given job
+ </summary>
+ <param name="intJobID"></param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.GetSequenceDataForUniqueNumber(System.Int32,System.Int32,System.String,System.String)">
+ <summary>
+ Return the programSequence recordset for the supplied UniqueReferenceNumber
+ </summary>
+ <param name="intRefNum">TestSequenceNumber of the step we want</param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.GetSequenceDataForTestSeqNumber(System.Int32,System.Int32,System.String,System.String)">
+ <summary>
+ Return the programSequence recordset for the supplied TestSequenceNumber
+ </summary>
+ <param name="intSeqNum">TestSequenceNumber of the step we want</param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.GetSequenceDataForTestDataLink(System.Int32,System.String,System.String)">
+ <summary>
+ Return the programSequence recordset for the supplied TestDataLink
+ </summary>
+ <param name="intTestDataLink">DataLink of the step we want</param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.LogEndOfAutoTest(System.Int32,System.String,System.String,System.String)">
+ <summary>
+ Writes the End of AutoTest values to the Serial and Batch tables
+ </summary>
+ <param name="intSerialId"></param>
+ <param name="strTestStatus"></param>
+ <param name="strDBConn">Will be used if supplied, otherwise the session value or the app.config value will be used</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.GetFirstUniqueRefNum(System.Int32,System.String,System.String)">
+ <summary>
+ Retrieve the UniqueReferenceNumber of the first step in a test sequence
+ </summary>
+ <param name="intJobTypeId"></param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.DidTasksExpire(System.Int32,System.String,System.String)">
+ <summary>
+ True if any complete tasks for this job are marked as expired i.e Done = 0
+ </summary>
+ <param name="intJobId"></param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns>True if any complete tasks for this job are marked as expired i.e Done = 0</returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOCommonFunctions.GetSequenceDataForLastWFOStep(System.Int32,System.String,System.String)">
+ <summary>
+ Return the programSequence recordset for the last program step (highest TestSequenceNum)
+ </summary>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOSequencer.CheckProcesses(System.String,System.String)">
+ <summary>
+ Find any processes that are in the AwaitingServer state and advance then
+ </summary>
+ <param name="strDBConn"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOSequencer.ExecuteNextStep(System.Int32,System.Int32,System.Int32,System.String,System.String)">
+ <summary>
+ Get the data for the current step and pass it to the WFO
+ </summary>
+ <param name="intJobId">the job id</param>
+ <param name="intWFODataLink">the TestDataLink of the current step</param>
+ <param name="intUserID">id of current user</param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOSequencer.MoveToNextWFOInSequence(System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String)">
+ <summary>
+ Find the next WFO to run based on the current WFO status and set the value in the Batch table
+ </summary>
+ <param name="intCurrentWFODataLink">The TestDataLink of the Current WFO</param>
+ <param name="intJobID">The current JobId</param>
+ <param name="intPassFail">the pass/fail status of the current step</param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOSequencer.RunSequence(System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32,System.String,System.String)">
+ <summary>
+ Run the sequence until (1) a step result is INCOMPLETE, (2) the end is reached or (3) the number of debug steps is done
+ </summary>
+ <param name="intJobID">the JobID for the current job from the wfo_BatchTable</param>
+ <param name="intWFODataLink">the TestDataLink for the current WFO from the wfo_Sequence table</param>
+ <param name="intUserID">the ID of the current user</param>
+ <param name="blnDebugMode">True to turn on Debug Mode - False by default</param>
+ <param name="intNumStepsToRun">Used in Debug mode only to set how many steps to step through. Default is 0 which means to run until the step status is InComplete</param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:BPADotNetCommonFunctions.WFOSequencer.AdvanceSequence(System.Int32,System.Int32,System.Boolean,System.Int32,System.Int32,System.String,System.String)">
+ <summary>
+ Used to move on an existing sequence
+ </summary>
+ <param name="intJobID"></param>
+ <param name="intUserID"></param>
+ <param name="blnDebugMode">True to turn on Debug Mode - False by default</param>
+ <param name="intStartWFO">Used in Debug mode only to set the CurrentWFO value of the selected start point</param>
+ <param name="intNumStepsToRun">Used in Debug mode only to set how many steps to step through. Default is 0 which means to run until the step status is InComplete</param>
+ <param name="strDBConn"></param>
+ <param name="strWindowsOrASP"></param>
+ <remarks></remarks>
+</member>
+</members>
+</doc>

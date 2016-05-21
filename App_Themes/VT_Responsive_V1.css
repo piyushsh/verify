@@ -1,0 +1,298 @@
+﻿body {
+}
+
+.VT_ActionButton
+{
+	border: 1px solid #682225;
+	background-color: #FBF2ED;
+	font-family: Arial;
+	font-style: italic;
+	font-weight: bold;
+	color: #682225;
+	border-radius: 2px 2px 2px 2px;
+}
+.VT_ActionButton:hover
+{
+	height: 30px;
+	background-color: #ECE1A5;
+	z-index: 99;
+	border-radius: 2px 2px 2px 2px;
+}
+
+.VT_ActionButton_m
+{
+	border: 1px solid #682225;
+	background-color: #FBF2ED;
+	font-family: Arial;
+	font-style: italic;
+	font-weight: bold;
+	color: #682225;
+	border-radius: 2px 2px 2px 2px;
+}
+.VT_ActionButton_m:hover
+{
+	height: 30px;
+	background-color: #ECE1A5;
+	z-index: 99;
+	border-radius: 2px 2px 2px 2px;
+}
+
+.VT_FormMasterButton
+{
+	background-color: #D6EDCF;
+	font-family: Arial;
+	font-style: italic;
+	font-weight: bold;
+	color: #000000;
+	height: 30px;
+	width: 200px;
+}
+VT_FormMasterButton:hover
+{
+	height: 30px;
+	background-color: #ECE1A5;
+	z-index: 99;
+}
+
+.VT_FormMasterButton_Small
+{
+	background-color: #D6EDCF;
+	font-family: Arial;
+	font-style: italic;
+	font-weight: bold;
+	color: #000000;
+	}
+VT_FormMasterButton_Small:hover
+{
+	height: 30px;
+	background-color: #ECE1A5;
+	z-index: 99;
+}
+
+.VT_FormMasterButton_Micro
+{
+	background-color: #D6EDCF;
+	font-family: Arial;
+	font-style: italic;
+	font-weight: bold;
+	color: #000000;
+	}
+VT_FormMasterButton_Micro:hover
+{
+	height: 30px;
+	background-color: #ECE1A5;
+	z-index: 99;
+}
+
+.VT_FormMasterButton_ImageBackGroud
+{
+	background-color: #F5EBCF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: italic;
+	font-weight: bold;
+	color: #000000;
+	
+}
+
+.VT_FormMasterSlider_Label
+{
+	background-color: #D6EDCF;
+	font-family: Calibri;
+	font-style: italic;
+	font-weight: bold;
+	color: #000000;
+	font-size: 14pt;
+	width: 230px;
+}
+
+.VT_FormMasterButton_Big
+{
+	border: 1px solid #000000;
+	background-color: #D6EDCF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: italic;
+	font-weight: bold;
+	color: #000000;
+	height: 30px;
+	width: 170px;
+}
+
+
+
+.VT_SelectTab_Light
+{
+	background-color: #ffe582 !important;
+	font-family: Arial, Helvetica, 'sans-serif !important';
+	font-style: normal !important;
+	font-weight: bold !important;
+	color: #3C4B35 !important;
+	height: 45px !important;
+	font-size: 11pt !important;
+	white-space: normal !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+	padding-right: 10px !important;
+	padding-left: 10px !important;
+	outline-style:solid !important;
+	outline-color:#ffffff !important;
+	outline-width:2px !important;
+}
+
+.VT_UnSelectTab_Light
+{
+	
+	background-color: #F5EBCF !important;
+	font-family: Arial, Helvetica, sans-serif !important;
+	font-style: normal !important;
+	font-weight: bold !important;
+	color: #3C4B35 !important;
+	height: 45px !important;
+	font-size: 11pt !important;
+	white-space: normal !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+	padding-right: 10px !important;
+	padding-left: 10px !important;
+	outline-style:solid !important;
+	outline-color:#ffffff !important;
+	outline-width:2px !important;
+	
+}
+
+.VT_UnSelectTab_Light:Hover
+{
+	
+	background-color: #FFC882 !important;
+	font-family: Arial, Helvetica, sans-serif !important;
+	font-style: normal !important;
+	font-weight: bold !important;
+	color: #3C4B35 !important;
+	height: 45px !important;
+	font-size: 11pt !important;
+	white-space: normal !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+	padding-right: 10px !important;
+	padding-left: 10px !important;
+	outline-style:solid !important;
+	outline-color:#ffffff !important;
+	outline-width:2px !important;
+}
+
+.VT_MasterBackground
+{
+	border: 1px solid #000000;
+	
+}
+
+.VT_TabBackground_Light
+{
+	
+	background-color: #F5EBCF !important;
+}
+
+.VT_TabBackground_Light_m
+{
+	
+	background-color: #F5EBCF !important;
+}
+
+
+.VT_UnSelectTab_Light_m
+{
+	
+	background-color: #F5EBCF !important;
+	font-family: Arial, Helvetica, sans-serif !important;
+	font-style: normal !important;
+	font-weight: bold !important;
+	color: #3C4B35 !important;
+	font-size: 9pt !important;
+	white-space: normal !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+	padding-right: 5px !important;
+	padding-left: 5px !important;
+	outline-style:solid !important;
+	outline-color:#ffffff !important;
+	outline-width:2px !important;
+	height: 30px !important;
+}
+
+.VT_UnSelectTab_Light_m:Hover
+{
+	
+	background-color: #FFC882 !important;
+	font-family: Arial, Helvetica, sans-serif !important;
+	font-style: normal !important;
+	font-weight: bold !important;
+	color: #3C4B35 !important;
+	height: 30px !important;
+	font-size: 9pt !important;
+	white-space: normal !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+	padding-right: 5px !important;
+	padding-left: 5px !important;
+	outline-style:solid !important;
+	outline-color:#ffffff !important;
+	outline-width:2px !important;
+}
+
+.VT_Slider_BackGround_BasicGrey
+{
+	background-color: #F5EBCF !important;
+	font-family: Arial, Helvetica, 'sans-serif !important';
+	font-style: normal !important;
+	font-weight: bold !important;
+	color: #000000 !important;
+	font-size: 11pt !important;
+	white-space: normal !important;
+	text-align: left !important;
+	vertical-align: top !important;
+}
+
+.VT_BackGround_BasicBanner
+{
+	background-color: #4F503F !important;
+	font-family: Arial, Helvetica, 'sans-serif !important';
+	font-style: normal !important;
+	font-weight: bold !important;
+	color: #FFFFFF !important;
+	font-size: 11pt !important;
+	white-space: normal !important;
+	text-align: left !important;
+}
+
+.VT_BackGround_SearchBanner
+{
+	background-color: #F5EBCF !important;
+	font-family: Arial, Helvetica, 'sans-serif !important';
+	font-style: normal !important;
+	font-weight: bold !important;
+	color: #FFFFFF !important;
+	font-size: 10pt !important;
+	white-space: normal !important;
+	text-align: left !important;
+}
+
+.VT_BackGround_AdvancedSearch
+{
+	background-color: #F5EBCF !important;
+	font-family: Arial, Helvetica, 'sans-serif !important';
+	font-style: normal !important;
+	font-weight: bold !important;
+	color: #FFFFFF !important;
+	font-size: 10pt !important;
+	white-space: normal !important;
+	text-align: left !important;
+}
+
+.VT_PopupPanel
+{
+	position: inherit !important;
+	top: 50px !important;
+	left: 50px !important;
+}
+
+
+

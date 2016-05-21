@@ -1,0 +1,51 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+VT_Interfaces
+</name>
+</assembly>
+<members>
+<member name="M:VT_Interfaces.IJobStepFood.GetFinishWarnings(System.Int64,System.Int64,System.Int64,System.Double,System.Double)">
+ <summary>
+ "Used to check for limits etc that are required to be viewed beofre closing a step, these are warnings so do not stop a step finishing"
+ </summary>
+ <param name="lngJobId"></param>
+ <param name="lngJobStepProductId"></param>
+ <param name="lngJobStepTraceCodeID"></param>
+ <param name="dblInputLimitPercent"></param>
+ <param name="dblOutputLimitPercent"></param>
+ <returns>"datatable of messages, e.g. containing the following columns: Detail/Min/Max/Expected/Actual/Status"</returns>
+ <remarks></remarks>
+</member>
+<member name="M:VT_Interfaces.IJobStepFood.CheckIngredientIsVaild(System.Int64,System.Int64,System.String,System.Double,System.Double,System.Int64)">
+ <summary>
+ "Used to check an ingredient meets criteria"
+ </summary>
+ <param name="lngJobId"></param>
+ <param name="lngIngProductId"></param>
+ <param name="strIngTraceCode"></param>
+ <param name="dblIngQuantity"></param>
+ <param name="dblIngWeight"></param>
+ <param name="lngLocationID"></param>
+ <returns>"String which is a status or error message, should be set to OK if a criteria test is met"</returns>
+ <remarks></remarks>
+</member>
+<member name="T:VT_Interfaces.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:VT_Interfaces.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:VT_Interfaces.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+</members>
+</doc>

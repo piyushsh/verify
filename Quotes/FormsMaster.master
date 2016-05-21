@@ -1,0 +1,805 @@
+﻿<%@ Master Language="VB"  MasterPageFile= "~/TabPages/ProjectMain.master" CodeFile="FormsMaster.master.vb" Inherits="FormsMaster" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<%@ Register tagprefix="igtbl" namespace="Infragistics.WebUI.UltraWebGrid" Assembly="Infragistics2.WebUI.UltraWebGrid.v7.3, Version=7.3.20073.38, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" %>
+<%@ Register tagprefix="igtxt" namespace="Infragistics.WebUI.WebDataInput" Assembly="Infragistics2.WebUI.WebDataInput.v7.3, Version=7.3.20073.38, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ProjectMAIN_content" Runat="Server">
+
+     <asp:HiddenField ID="hdnWhoHasFocus" runat="server" />
+   
+    <script type="text/javascript">
+
+
+
+        function ShowPasswordModalPopup(whichButton) {
+            var hdn1 = document.getElementById('<%=hdnButtonClicked.ClientID%>');
+            hdn1.value = whichButton;
+            
+            var modal = $find("<%=ModalPopupExtenderPass.BehaviorID%>");
+            modal.show();
+            return false;
+        }
+
+        function HidePasswordModalPopup() {
+            var modal = $find("<%=ModalPopupExtenderPass.BehaviorID%>");
+            modal.hide();
+        }
+
+        function PasswordClickUpdate(sender, e) {
+            __doPostBack(sender, e);
+        }
+
+        function HideMsgPopup() {
+            var modal = $find("<%=ModalPopupExtenderMessage.BehaviorID%>");
+            modal.hide();
+        }
+
+        // Function to store the id of a grid in the WhoHasFocus variable so comments can be associated with it
+        function clickGrid(gridId, id, button) {
+            //        gridId 
+            //            String. The ID of the grid calling the function.
+
+            //        id 
+            //            String. The ID of the element the cursor was over when clicked.
+
+            //        button 
+            //            Number. The number that represents the pressed mouse button. 0 - left, 1 - middle, 2 - right.
+            document.getElementById('<%=hdnWhoHasFocus.ClientID%>').value = gridId;
+        }
+
+        function initPage() {
+            document.onkeyup = function(e) {
+                // the e syntax is for Firefox the other is for IE
+                var target = e ? e.target : window.event.srcElement;
+                // ignore controls on the master page
+                if ((target.name != 'undefined') && (target.name.indexOf('$') == -1))
+                    document.getElementById("<%=hdnWhoHasFocus.ClientID%>").value = target.name;
+            }
+            document.onclick = function(e) {
+                // the e syntax is for Firefox the other is for IE
+                var target = e ? e.target : window.event.srcElement;
+                // ignore controls on the master page
+                if ((target.id != null) && (target.id != 'undefined') && (target.id.indexOf('DetailsMaster_ContentPlaceHolder') != -1)) {
+                    document.getElementById("<%=hdnWhoHasFocus.ClientID%>").value = target.id;
+                }
+            }
+
+        }
+        /*
+        Function to load the comment panel
+        */
+
+        function LoadCommentPanel() {
+            var hdn1 = document.getElementById('<%=hdnWhoHasFocus.ClientID%>');
+            // Find which Control has the focus
+            if (hdn1.value == '') {
+                // No control currently has the focus
+                var lbl1 = document.getElementById("<%=lblAssociateComment.ClientID%>");
+                var ddl1 = document.getElementById("<%=ddlAssociateComment.ClientID%>");
+                lbl1.style.display = 'none';
+                ddl1.style.display = 'none';
+
+            }
+            else {
+                var lbl1 = document.getElementById("<%=lblAssociateComment.ClientID%>");
+                var ddl1 = document.getElementById("<%=ddlAssociateComment.ClientID%>");
+                lbl1.style.display = '';
+                ddl1.style.display = '';
+
+            }
+
+
+            var modal = $find("<%=ModalPopupExtender1.BehaviorID%>");
+            modal.show();
+            return false;
+
+        }
+
+
+        function NoComment() {
+
+            var hdn1 = document.getElementById('<%=hdnWhoHasFocus.ClientID%>');
+            if (hdn1.value == '') {
+                var hdn2 = document.getElementById("<%=hdnNoCommentSelected.ClientID%>");
+                alert(hdn2.value);
+                return false;
+            }
+
+        }
+
+
+        function HideModalPopup1() {
+            var modal = $find("<%=ModalPopupExtender1.BehaviorID%>");
+            modal.hide();
+        }
+
+
+
+        function HideModalPopup6() {
+            var modal = $find("<%=ModalPopupExtender6.BehaviorID%>");
+            modal.hide();
+        }
+
+        function HideModalPopup7() {
+            var modal = $find("<%=ModalPopupExtender7.BehaviorID%>");
+            modal.hide();
+        }
+
+        function AddMasterClickUpdate(sender, e) {
+            var txt1 = document.getElementById("<%=txtComment.ClientID%>");
+
+
+            if (txt1.value == "") {
+                var hdn2 = document.getElementById("<%=hdnNoCommentPrompt.ClientID%>");
+                alert(hdn2.value);
+                return false;
+            }
+            else
+                __doPostBack(sender, e);
+        }
+
+        function ClickUpdate(sender, e) {
+            __doPostBack(sender, e);
+        } 
+           
+
+
+            
+        </script>
+    
+    
+
+
+        <script>
+            if (!document.layers)
+                document.write('<div id="divStayTopLeft"  style="position:absolute">')
+        </script>
+
+    <layer id="divStayTopLeft">
+
+    <!--EDIT BELOW CODE TO YOUR OWN MENU-->
+    <table border="0" cellspacing="0" cellpadding="0" 
+            
+            style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; width: 200px;">
+     
+      <tr>
+        <td style="width: 200px; vertical-align: top; position: static; text-align: left; background-color: #e6e6cc;">
+          
+            <igtbl:UltraWebGrid ID="uwgOptions" runat="server" Style="left: 0px;
+                    top: 0px; height: 300px;" Width="200px" 
+                meta:resourcekey="uwgOptionsResource1" Height="300px"><Bands>
+                        <igtbl:UltraGridBand>
+                            <AddNewRow View="NotSet" Visible="NotSet">
+                            </AddNewRow>
+                            <Columns>
+                                <igtbl:UltraGridColumn HeaderText="Sections:" Key="Option" Width="200px" >
+                                    <HeaderStyle Font-Bold="True" Font-Size="11pt" ForeColor="White" HorizontalAlign="Center">
+                                        <Padding Bottom="2px" Top="2px" />
+                                    </HeaderStyle>
+                                    <Header Caption="Sections:">
+                                    </Header>
+                                </igtbl:UltraGridColumn>
+                                <igtbl:UltraGridColumn Hidden="True" Key="OptionPage">
+                                    <Header>
+                                        <RowLayoutColumnInfo OriginX="1" />
+                                    </Header>
+                                    <Footer>
+                                        <RowLayoutColumnInfo OriginX="1" />
+                                    </Footer>
+                                </igtbl:UltraGridColumn>
+                            </Columns>
+                        </igtbl:UltraGridBand>
+    </Bands>
+
+							    <DisplayLayout ColWidthDefault="" AutoGenerateColumns="False" AllowSortingDefault="OnClient" RowHeightDefault="20px"
+								    Version="4.00" SelectTypeRowDefault="Single" HeaderClickActionDefault="SortSingle" BorderCollapseDefault="Separate"
+								    AllowColSizingDefault="Free" Name="ctl00xuwgOptions" CellClickActionDefault="RowSelect" RowSelectorsDefault="No">
+								    <HeaderStyleDefault BorderStyle="Solid" ForeColor="White" BackColor="#B38700" HorizontalAlign="Center">
+									    <BorderDetails ColorTop="White" WidthLeft="1px" WidthTop="1px" ColorLeft="White"></BorderDetails>
+                                        <Padding Bottom="3px" Top="3px" />
+								    </HeaderStyleDefault>
+								    <FrameStyle Width="200px" BorderWidth="1px" Font-Size="9pt" Font-Names="Arial" BorderStyle="Solid"
+									    Height="300px" BackColor="#E6E6CC" BorderColor="#E0E0E0"></FrameStyle>
+								    <FooterStyleDefault BorderWidth="1px" BorderStyle="Solid" BackColor="LightGray">
+									    <BorderDetails ColorTop="White" WidthLeft="1px" WidthTop="1px" ColorLeft="White"></BorderDetails>
+								    </FooterStyleDefault>
+								    <EditCellStyleDefault BorderWidth="0px" BorderStyle="None"></EditCellStyleDefault>
+								    <SelectedRowStyleDefault ForeColor="Black" BackColor="#FFFFD0" Font-Names="Arial" Font-Size="9pt"></SelectedRowStyleDefault>
+								    <RowStyleDefault BorderWidth="1px" BorderColor="White" BorderStyle="Solid" BackColor="#F3F3CC" Font-Names="Arial" Font-Size="9pt" ForeColor="Black" Wrap="True" Cursor="Hand">
+									    <BorderDetails WidthLeft="0px" WidthTop="0px"></BorderDetails>
+                                        <Padding Bottom="3px" Left="6px" Right="2px" Top="3px" />
+								    </RowStyleDefault>
+                                    <ActivationObject BorderColor="" BorderWidth="">
+                                    </ActivationObject>
+                                    <RowAlternateStyleDefault BackColor="#EBEBC4" BorderColor="White" Font-Names="Arial"
+                                        Font-Size="9pt" Wrap="True" Cursor="Hand">
+                                    </RowAlternateStyleDefault>
+                                    <GroupByBox Hidden="True">
+                                    </GroupByBox>
+							    </DisplayLayout>
+
+    </igtbl:UltraWebGrid>
+
+        <br />
+
+            <asp:Panel ID="pnlSaveBack" runat="server" 
+                BorderStyle="Ridge" Width="192px">
+                                <asp:ImageButton ID="btnSaveDetails" runat="server" AlternateText="Save" 
+                                    ImageUrl="~/App_Themes/Billing/Buttons/Save-Button-small.gif" 
+                                    meta:resourcekey="btnSaveDetailsTopResource1" />
+                               
+                                <asp:ImageButton ID="btnBack" runat="server" 
+                                    ImageUrl="~/App_Themes/Billing/Buttons/Back-Button-Panel-small.gif" 
+                                    meta:resourcekey="btnBackResource1" />
+                               
+                                <asp:ImageButton ID="btnAudit" runat="server" 
+                                    ImageUrl="~/App_Themes/Billing/Buttons/Audit-Log-Button-small.gif" 
+                                    Enabled="False" Visible="False" />
+                               
+                                <asp:ImageButton ID="btnAttachments" runat="server" alternatetext="Attachments" 
+                                    ImageUrl="~/App_Themes/Billing/Buttons/Attachments-button-small.gif"
+                                    meta:resourcekey="btnAttachmentsResource1" />
+                            </asp:Panel>
+            <asp:Panel ID="pnlStatusControl" runat="server" 
+    BorderStyle="Ridge" Width="192px">
+                <asp:ImageButton ID="btnSubmit" runat="server" 
+                    ImageUrl="~/App_Themes/Billing/Buttons/Submit-Button-Small.gif" />
+                   <asp:ImageButton ID="btnSignOff" runat="server" 
+                    ImageUrl="~/App_Themes/Billing/Buttons/Sign-off-small.gif" />
+                    <asp:ImageButton ID="btnApprove" runat="server" 
+                    ImageUrl="~/App_Themes/Billing/Buttons/Approve-button-small.jpg" 
+                    AlternateText="Check Out" />
+                
+                <asp:ImageButton ID="btnReject" runat="server" 
+                    
+                    ImageUrl="~/App_Themes/Billing/Buttons/Reject-button-small.jpg" 
+                    Height="28px" />
+
+                       <asp:ImageButton ID="btnClose" runat="server" 
+                    
+                    ImageUrl="~/App_Themes/Billing/Buttons/Close-button-small.jpg" />
+
+                
+                <asp:ImageButton ID="btnSendForProdApproval" runat="server" 
+                    
+                    ImageUrl="~/App_Themes/Billing/Buttons/SendforClassification-button-medium.jpg" />
+
+                
+                <asp:ImageButton ID="btnSendToCustomer" runat="server" 
+                    AlternateText="Send To Customer" 
+                    
+                    ImageUrl="~/App_Themes/Billing/Buttons/MarkSentToCustomer-button-medium.jpg" />
+                <asp:ImageButton ID="btnConvert" runat="server" 
+                    
+                    ImageUrl="~/App_Themes/Billing/Buttons/ConvertToSalesOrder-button-medium.jpg" />
+
+                
+            </asp:Panel>
+            <asp:Panel ID="pnlComments" runat="server" BorderStyle="Ridge" Width="192px">
+                <asp:Image ID="imgComments" runat="server" 
+                    ImageUrl="~/App_Themes/Billing/Buttons/Comments-Header.gif" />
+              
+                &nbsp;<asp:ImageButton ID="btnCommentVIEW" runat="server" 
+                    ImageUrl="~/App_Themes/Billing/Buttons/Comments-View-button.gif" 
+                    ToolTip="View Comments Page" />
+                <asp:ImageButton ID="btnCommentAdd" runat="server" 
+                    ImageUrl="~/App_Themes/Billing/Buttons/Comments-Add-Button.gif" 
+                    ToolTip="Add a Comment to Field" />
+                <asp:ImageButton ID="btnCommentPrevious" runat="server" 
+                    ImageUrl="~/App_Themes/Billing/Buttons/Comments-Previous-button.gif" 
+                    ToolTip="Go to Previous Comment" />
+               <asp:ImageButton ID="btnCommentNEXT" runat="server" 
+                    ImageUrl="~/App_Themes/Billing/Buttons/Comments-Next-button.gif" 
+                    ToolTip="Go to Next Comment" />
+                <asp:ImageButton ID="btnCommentClear" runat="server" 
+                    ImageUrl="~/App_Themes/Billing/Buttons/Comment-Clear-button.gif" 
+                    ToolTip="Clear on select Field" />
+            </asp:Panel>
+            
+            <asp:ImageButton ID="btnCommentsPage" style="display: none" AlternateText ="View Comments Page"  runat="server"></asp:ImageButton>  
+            
+            <asp:HiddenField ID="hdnFloatingX" runat="server" />
+
+          </td>
+      </tr>
+    </table>
+    <!--END OF EDIT-->
+
+    </layer>
+
+
+    <script type="text/javascript">
+
+
+        //Floating Panel
+        //Enter "frombottom" or "fromtop"
+        var verticalpos = "fromtop"
+        var horizontalpos = "fromleft"
+
+        if (!document.layers)
+            document.write('</div>')
+
+        /*
+        The available constants are:
+
+    window.innerHeight/Width 
+        Provided by most browsers, but importantly, not Internet Explorer. 
+        document.body.clientHeight/Width 
+        Provided by many browsers, including Internet Explorer. 
+        document.documentElement.�clientHeight/Width 
+        Provided by most DOM browsers, including Internet Explorer
+        */
+
+        function getScrollYPosn() {
+            // pageYOffset is for Netscape
+            // document.body.scrollTop is for DOM compliant
+            // document.documentElement.scrollTop is for IE6 standards compliant mode
+            var h = window.pageYOffset ||
+               document.body.scrollTop ||
+               document.documentElement.scrollTop;
+
+            return h ? h : 0;
+        }
+
+        function getScrollXPosn() {
+            // pageXOffset is for Netscape
+            // document.body.scrollLeft is for DOM compliant
+            // document.documentElement.scrollLeft is for IE6 standards compliant mode
+            if (false) {
+                alert('BodyWidth' + document.body.clientWidth);
+                alert('documentElementBodyWidth' + document.documentElement.clientWidth);
+                alert('ScreenWidth' + screen.width);
+            }
+
+            //var h = window.pageXOffset ||
+            //        document.body.offsetLeft  + document.body.clientLeft ||
+            //        document.documentElement.offsetLeft + document.documentElement.clientLeft;
+
+            var h = (document.documentElement.clientWidth - 990) / 2;
+            if (h < 0) {
+                h = 0
+            }
+
+            return h ? h : 0;
+        }
+
+        function getWindowHeight() {
+            // innerHeight is for Netscape
+            // document.body.clientHeight is for IE 4 compatible
+            // document.documentElement.clientHeight is for IE 6+ in 'standards compliant mode'
+            var h = window.innerHeight ||
+               document.body.clientHeight ||
+               document.documentElement.clientHeight;
+
+            return h ? h : 0;
+        }
+
+        function getWindowWidth() {
+            // innerWidth is for Netscape
+            // document.body.clientWidth is for IE 4 compatible
+            // document.documentElement.clientWidth is for IE 6+ in 'standards compliant mode'
+            var h = window.innerWidth ||
+               document.body.clientWidth ||
+               document.documentElement.clientWidth;
+
+            return h ? h : 0;
+        }
+
+
+        function JSFX_FloatTopDiv() {
+            var hdnX = document.getElementById("<%=hdnFloatingX.ClientID%>");
+            var startX = parseInt(hdnX.value);
+
+            //	var startX = -15;
+            startY = 160;
+            var ns = (navigator.appName.indexOf("Netscape") != -1);
+            var d = document;
+            function ml(id) {
+                var el = d.getElementById ? d.getElementById(id) : d.all ? d.all[id] : d.layers[id];
+                if (d.layers)
+                    el.style = el;
+                el.sP = function(x, y) { this.style.left = x; this.style.top = y; };
+                el.x = startX;
+                if (verticalpos == "fromtop")
+                    el.y = startY;
+                else {
+                    el.y = getScrollYPosn() + getWindowHeight();
+                    el.y -= startY;
+                }
+                return el;
+            }
+
+            window.stayTopLeft = function() {
+                if (verticalpos == "fromtop") {
+                    var pY = getScrollYPosn();
+                    ftlObj.y += (pY + startY - ftlObj.y) / 8;
+                }
+                else {
+                    pY = getScrollYPosn() + (getWindowHeight() / 3.2);
+                    ftlObj.y += (pY - startY - ftlObj.y) / 8;
+                }
+
+                if (horizontalpos == "fromleft") {
+                    var pX = getScrollXPosn();
+                    ftlObj.x = pX + startX;
+                }
+                else {
+                    pX = getScrollXPosn() + (getWindowWidth() / 3.2);
+                    ftlObj.x += (pX - startXY - ftlObj.x) / 8;
+                }
+
+                ftlObj.sP(ftlObj.x, ftlObj.y);
+
+
+                setTimeout("stayTopLeft()", 20);
+            }
+            ftlObj = ml("divStayTopLeft");
+            stayTopLeft();
+        }
+        JSFX_FloatTopDiv();
+    </script> 
+    
+    <table border="0" cellpadding="0" cellspacing="0" style="width: 900px">
+        <tr>
+             
+            <td style="vertical-align: top; width: 900px; position: static; text-align: left">
+                
+                
+                <table align="left" cellpadding="0" cellspacing="0" 
+                    style="width: 900px; float: left; height: 31px;">
+                    <tr>
+                        <td style="width: 100px">
+                           <asp:Image ID="imgLockGraphic" runat="server" 
+                                ImageUrl="~/App_Themes/Billing/Buttons/Form-Data-Edit-Locked.gif" />
+                        </td>
+                        <td style="width: 550px">
+                
+                            <asp:Label ID="lblAlert" runat="server" 
+                            Font-Names="Arial" Font-Size="9pt" ForeColor="Red"></asp:Label>
+                
+                        </td>
+                        <td style="width: 250px">
+                            
+                            
+    &nbsp;<asp:ImageButton ID="btnBack1" runat="server" 
+                                ImageUrl="~/App_Themes/Billing/Buttons/Back-Button-Black.gif" />
+&nbsp;<asp:UpdatePanel ID="UpdatePanel1" 
+                                runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="lblStatusDisplay" 
+                                runat="server" Font-Names="Arial" Font-Size="10pt" 
+                                Font-Bold="True" ForeColor="#B38700">New </asp:Label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                            
+                            
+                        </td>
+                    </tr>
+                </table>
+                
+                             <table border="0" cellpadding="0" cellspacing="0" style="width: 900px">
+                                 </table>
+                
+            </td>
+            <td>
+                &nbsp;</td>
+        </tr>
+        <tr>
+                
+            <td style="width: 342px; position: static; vertical-align: top; text-align: left; height: 396px;">
+                <table border="0" cellpadding="0" cellspacing="0" style="width: 910px">
+                    <tr>
+                        <td style="width: 210px; vertical-align: top; position: static; text-align: left; background-color: #e6e6cc;">
+                        
+                                
+                                
+                                
+          
+                                
+                            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                        <td style="width: 700px; vertical-align: top; position: static; text-align: left; border-left-color: lightgrey; border-left-style: ridge;">
+                            
+                            
+                            <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
+                                <tr>
+                                    <td align="left" 
+                                        style="width: 700px; height: 25px; background-color: black; vertical-align: middle; position: static; text-align: left;" 
+                                        valign="top">
+                                        &nbsp; &nbsp;
+                                        <asp:Label ID="lblDetailsItemName" runat="server" Font-Bold="True" 
+                                            Font-Italic="True" Font-Names="Arial"
+                                            Font-Size="12pt" ForeColor="White" Text="Label:" Width="600px" 
+                                            meta:resourcekey="lblDetailsItemNameResource1"></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <td align="left" style="width: 700px" valign="top">
+                         
+                                    
+                                <asp:updatepanel id="UpdatePanelFormsMaster" runat="server" UpdateMode="Conditional">
+                                <ContentTemplate>
+                                    
+                                    <asp:contentplaceholder id="DetailsMaster_ContentPlaceHolder" runat="server" >
+                                     
+                                     
+                                    
+                                    
+                                    </asp:contentplaceholder>
+                                    
+                                    <br />
+                                    <table align="left" cellpadding="0" cellspacing="0" 
+                                        style="width: 680px; float: left">
+                                        <tr>
+                                            <td style="width: 300px">
+                                                &nbsp;</td>
+                                            <td style="vertical-align: top; text-align: right">
+                                                <asp:ImageButton ID="btnPreviousSection" runat="server" 
+                                                    ImageUrl="~/App_Themes/Billing/Buttons/Previous-Section.gif" />
+                                            </td>
+                                            <td style="vertical-align: top; text-align: right">
+                                                <asp:ImageButton ID="btnNextSection" runat="server" 
+                                                    ImageUrl="~/App_Themes/Billing/Buttons/Next-Section.gif" />
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                     
+                                </ContentTemplate>
+                                </asp:updatepanel>
+                                    
+                                    
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                
+                </td>
+        </tr>
+    </table>
+    
+    
+        <asp:Panel ID="pnlComment" runat="server" BackColor="White" Width="750px" 
+                meta:resourcekey="pnlCommentResource1" style="display: none">
+            <div style="padding: 20">
+            <center>
+                <br />
+                <table style="width: 100%">
+                    <tr>
+                        <td>
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="vertical-align: top; text-align: center; background-color: #3366FF;" 
+                                        colspan="2">
+                                        <asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Names="Arial" 
+                                            Font-Size="11pt" ForeColor="White" Text="Adding a Comment"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 479px; vertical-align: top; text-align: right;">
+                                        &nbsp; &nbsp;</td>
+                                    <td style="vertical-align: top; text-align: left">
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 479px; vertical-align: top; text-align: right;">
+                                        <asp:Label ID="lblAssociateComment" runat="server" Font-Names="Arial" 
+                                            Font-Size="10pt" 
+                                            Text="Is this Comment to be associated with the currently selected field ?"></asp:Label>
+                                    </td>
+                                    <td style=" vertical-align: top; text-align: left">
+                                        
+                                        <asp:DropDownList ID="ddlAssociateComment" runat="server" Height="20px" 
+                                            Width="75px">
+                                            <asp:ListItem Value="0">Yes</asp:ListItem>
+                                            <asp:ListItem Value="1">No</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 479px; vertical-align: top; text-align: right;">
+                                        <asp:Label ID="lblCommentTarget" runat="server" Font-Names="Arial" 
+                                            Font-Size="10pt" Text="Who is the Target for this Comment ?"></asp:Label>
+                                    </td>
+                                    <td style=" vertical-align: top; text-align: left">
+                                        &nbsp;<asp:DropDownList ID="ddlCommentTarget" runat="server" Height="20px" 
+                                            Width="165px">
+                                            <asp:ListItem></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                &nbsp;
+                <br />
+            <table style="width: 100%">
+                <tr>
+                    <td style="text-align: right; width: 224px;">
+                        <asp:Label ID="lblComment" runat="server" Font-Bold="True" Font-Names="Arial" 
+                            Font-Size="11pt" meta:resourcekey="lblCommentResource1" 
+                            Text="Enter your comment here:"></asp:Label>
+                    </td>
+                    <td style="text-align: left; vertical-align: top;">
+                        <asp:TextBox ID="txtComment" runat="server" Font-Names="Arial" Font-Size="9pt" 
+                            Height="50px" meta:resourcekey="txtCommentResource1" TextMode="MultiLine" 
+                            Width="470px"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 224px">
+                        <asp:ImageButton ID="cmdCancel" runat="server" 
+                            ImageUrl="~/App_Themes/Buttons/Cancel.gif" 
+                            meta:resourcekey="cmdCancelResource1" />
+                    </td>
+                    <td>
+                        <asp:ImageButton ID="cmdOk" runat="server" 
+                            ImageUrl="~/App_Themes/Buttons/Ok.gif" 
+                            meta:resourcekey="cmdOkResource1" />
+                    </td>
+                </tr>
+            </table>
+            <br />
+            
+            </center>
+            </div>
+           
+        </asp:Panel>        
+        <cc1:ModalPopupExtender ID="ModalPopupExtender1"  
+            TargetControlID="pnlComment" CancelControlID="cmdCancel"
+         BackgroundCssClass="modalBackground" DropShadow ="true" OnCancelScript="HideModalPopup1()" 
+            PopupControlID="pnlComment" runat="server" DynamicServicePath=""  
+            Enabled="True">
+        </cc1:ModalPopupExtender>
+        
+        
+        
+        <asp:Panel ID="pnlMessage" runat="server" BackColor="White" Width="750px" style="display:none"
+                meta:resourcekey="pnlCommentResource1"  >
+            <div style="padding: 20">
+            <center>
+                <br />
+                <br />
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
+                        <asp:Label ID="lblMessage" runat="server" Font-Bold="True" Font-Names="Arial" 
+                            Font-Size="11pt" ForeColor="#996633" Text=""></asp:Label>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+                <br />
+                <br />
+                <asp:ImageButton ID="cmdOKMissing" runat="server" 
+                    ImageUrl="~/App_Themes/Buttons/Ok.gif" 
+                    meta:resourceKey="cmdOKStatusResource1" />
+                <br />
+                <br />
+            
+            </center>
+            </div>
+           
+        </asp:Panel>        
+        <cc1:ModalPopupExtender ID="ModalPopupExtender6"  
+            TargetControlID="pnlMessage" CancelControlID="cmdOkMissing"
+         BackgroundCssClass="modalBackground" DropShadow ="True" OnCancelScript="HideModalPopup6()" 
+            PopupControlID="pnlMessage" runat="server" DynamicServicePath=""  
+            Enabled="True" DynamicServiceMethod="" >
+        </cc1:ModalPopupExtender>
+     
+         <asp:Panel ID="pnlFormIsDirty" runat="server" BackColor="White" Width="750px" style="display:"
+                meta:resourcekey="pnlCommentResource1" >
+            <div style="padding: 20">
+            <center>
+                <br />
+                <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Names="Arial" 
+                    Font-Size="11pt" ForeColor="#996633" 
+                    Text="Do you want to save the changes you made to this form?!"></asp:Label>
+            <br />
+            
+                <br />
+                <br />
+                <asp:ImageButton ID="cmdOKSaveChanges" runat="server" 
+                    ImageUrl="~/App_Themes/Billing/Buttons/Yes.jpg" 
+                    meta:resourceKey="cmdOKSaveResource1" AlternateText="Yes" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:ImageButton 
+                    ID="cmdNoSaveChanges" runat="server" 
+                    AlternateText="No" ImageUrl="~/App_Themes/Billing/Buttons/No.jpg" 
+                    meta:resourceKey="cmdOKSaveResource1" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:ImageButton ID="cmdCancelSaveChanges" runat="server" 
+                    ImageUrl="~/App_Themes/Billing/Buttons/Cancel.gif" 
+                    meta:resourceKey="cmdCancelSaveResource1" />
+                <br />
+                <br />
+            
+            </center>
+            </div>
+           
+        </asp:Panel>        
+        <cc1:ModalPopupExtender ID="ModalPopupExtender7"  
+            TargetControlID="pnlFormIsDirty" CancelControlID="cmdCancelSaveChanges"
+         BackgroundCssClass="modalBackground" DropShadow =True OnCancelScript="HideModalPopup7()" 
+            PopupControlID="pnlFormIsDirty" runat="server" DynamicServicePath=""  
+            Enabled="True">
+        </cc1:ModalPopupExtender>
+
+        
+     
+        <br />
+
+        
+    <asp:Panel style="DISPLAY: none" ID="pnlPass" runat="server" Height="168px" Width="500px" BackColor="White" BorderStyle="Solid" BorderWidth="1px" >
+        <br />
+        <div style="margin:15px">
+        <span style="font-family: Arial"><strong>You must enter your Password to proceed.<br />
+            <br />
+        </strong></span>
+        
+        <table style="width: 464px">
+            <tr>
+                <td style="width: 100px; height: 21px">
+                    <strong><span style="font-family: Arial">Password:</span></strong></td>
+                <td style="width: 100px; height: 21px">
+                    <asp:TextBox ID="txtPassword" runat="server" Width="208px" TextMode="Password"></asp:TextBox></td>
+            </tr>
+        </table>
+        </div> 
+        <br />
+        <strong><span style="font-family: Arial"></span></strong>
+        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp;
+        <asp:ImageButton ID="cmdCancelPass" runat="server" ImageUrl="~/App_Themes/Billing/Buttons/Cancel.gif" />
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp;
+        <asp:ImageButton ID="cmdOKPass" runat="server" ImageUrl="~/App_Themes/Billing/Buttons/ok.gif" /><br />
+    </asp:Panel>
+    
+    <cc1:ModalPopupExtender ID="ModalPopupExtenderPass" runat="server" BackgroundCssClass="modalBackground"
+        CancelControlID="cmdCancelPass" DropShadow="true" OnCancelScript="HidePasswordModalPopup()"
+        PopupControlID="pnlPass" TargetControlID="pnlPass" >
+    </cc1:ModalPopupExtender>
+        
+           <asp:Panel ID="PanelMsg" runat="server" backcolor="White" borderstyle="Solid" 
+                    borderwidth="1px" Height="196px" width="900px">
+                     <br />
+                    <br />
+                    <center>
+                        <strong><span style="FONT-FAMILY: Arial">&nbsp; </span></strong><strong>
+                        <span style="FONT-FAMILY: Arial"></span></strong>
+                    </center>
+                    <center>
+                        <span style="FONT-FAMILY: Arial">
+                        <asp:Label ID="lblMsg" runat="server" Font-Bold="True" Font-Names="Arial"></asp:Label>
+                        </span>&nbsp;<br />
+                        <br />
+                    </center>
+                    <center>
+                        <br />
+                        <asp:ImageButton ID="cmdCloseMessage" runat="server" 
+                            ImageUrl="~/App_Themes/Billing/Buttons/ok.gif" />
+                      
+                    </center>
+                    <center>
+                    </center>
+                    
+                </asp:Panel>
+                <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtenderMessage" runat="server" 
+                    BackgroundCssClass="modalBackground" CancelControlID="cmdCloseMessage" 
+                    DropShadow="True" oncancelscript="HideMsgPopup()" PopupControlID="PanelMsg" 
+                    TargetControlID="PanelMsg">
+                </ajaxToolkit:ModalPopupExtender>
+
+
+        <asp:HiddenField ID="hdnCommentPrompt" runat="server" />
+        <asp:HiddenField ID="hdnNoCommentPrompt" runat="server" />
+        <asp:HiddenField ID="hdnNoCommentSelected" runat="server" />
+        <asp:HiddenField ID="hdnClearACommentPrompt" runat="server" />
+        <asp:HiddenField ID="hdnClearAllCommentsPrompt" runat="server" />
+
+        <asp:HiddenField ID="hdnCurrentStatus" runat="server" />
+        <asp:HiddenField ID="hdnNoCourseSelected" runat="server" />
+        <asp:HiddenField ID="hdnButtonClicked" runat="server" />
+    
+  
+                        </asp:Content>

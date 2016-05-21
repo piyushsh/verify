@@ -1,0 +1,1017 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+VTDBFunctions
+</name>
+</assembly>
+<members>
+<member name="M:VTDBFunctions.VTDBFunctions.AuditFunctions.GetAuditTypes">
+ <summary>
+ Load the NCI ActionType options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.AuditFunctions.GetAuditAppliestoOptions(System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="intTypeId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.AuditFunctions.GetBlockOfAuditTableInfo(System.String,System.Data.DataTable@,System.String,System.String)">
+ <summary>
+ This function will return all the items in the wfo.AuditTable that are passed in by the 'dt' table as the column defined by the 'strKeyField. 
+ </summary>
+ <param name="strConn"></param>
+ <param name="dt"></param>
+ <param name="strKeyField"></param>
+ <param name="strWhereClause"></param>
+ <returns>The DataTable that is passed in (NOTE: by REFERENCE) with the Audit Table Columns Added to it</returns>
+ <remarks>This function is efficient for retrieving larger blocks of data</remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NICUPatientsFunctions.AddPatientToHandheldTable(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.String)">
+ <summary>
+ Add a new Patient record to tcd_tblNICUPatients
+ </summary>
+ <param name="strPatientMRN"></param>
+ <param name="strMotherMRN"></param>
+ <param name="strSurname"></param>
+ <param name="strPatientForename"></param>
+ <param name="strDoB"></param>
+ <param name="strToB"></param>
+ <param name="strGender"></param>
+ <param name="strStatus"></param>
+ <param name="blnMultipleBirth"></param>
+ <param name="intNumInBirth"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NICUPatientsFunctions.UpdatePatientInHandheldTable(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.String)">
+ <summary>
+ Update Patient Record in Handheld table
+ </summary>
+ <param name="strPatientMRN"></param>
+ <param name="strMotherMRN"></param>
+ <param name="strSurname"></param>
+ <param name="strPatientForename"></param>
+ <param name="strDoB"></param>
+ <param name="strToB"></param>
+ <param name="strGender"></param>
+ <param name="strStatus"></param>
+ <param name="blnMultipleBirth"></param>
+ <param name="intNumInBirth"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NICUPatientsFunctions.DeletePatientFromHandheldTable(System.String)">
+ <summary>
+ Delete Patient from Handheld table
+ </summary>
+ <param name="strPatientMRN"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.BundFunctions.GetEWCCodesAllowedInBund(System.Int32)">
+ <summary>
+ Retrieve a DataSet with 3 tables containing the EWCCAtegories, Groupcodes and Codes allowed in the selected Bund
+ </summary>
+ <param name="intBundMatrixId"></param>
+ <returns>A dataset with three tables "Categories", "Groups" and "Codes". The Field0 item contains the name of the relevant item in each table</returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.BundFunctions.GetEWCCodesAllowedInBundMatrix1(System.Int32)">
+ <summary>
+ Retrieve a DataSet from Matrix1 with 3 tables containing the EWCCAtegories, Groupcodes and Codes allowed in the selected Bund
+ </summary>
+ <param name="intBundMatrixId"></param>
+ <returns>A dataset with three tables "Categories", "Groups" and "Codes". The Field0 item contains the name of the relevant item in each table</returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.BundFunctions.GetEWCCodesAllowedInBundMatrix2(System.Int32)">
+ <summary>
+ Retrieve a DataSet from Matrix2 with 3 tables containing the EWCCAtegories, Groupcodes and Codes allowed in the selected Bund
+ </summary>
+ <param name="intBundMatrixId"></param>
+ <returns>A dataset with three tables "Categories", "Groups" and "Codes". The Field0 item contains the name of the relevant item in each table</returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.DocumentFunctions.GetBaseDocumentTemplateName">
+ <summary>
+ Read the filename of the Base template from the documents config
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.DocumentFunctions.GetFormForChildDoc(System.Int32)">
+ <summary>
+ 	use doc_resGetFormForChildDoc - Select * from doc_Forms where ChildId = @FormId - to get the form details
+ </summary>
+ <param name="intCurrentDocId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.TraceFunctions.GetLastAddedLocation">
+ <summary>
+ Get the Id of the LastAdded Location
+ </summary>
+ <returns>-2 if an error occurs, -1 if there are no Locations in the table, otherwise the Id of the most recently added location</returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.CustomerFunctions.GetLocalAuthorityValues">
+ <summary>
+ Load the LocalAuthority options from the Customer Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.TraceDataFunctions.UpDateTraceDataProductLines(System.Int32,System.String)">
+ <summary>
+ Copies the prd ProductLine into the tcd table
+ </summary>
+ <param name="lngProductLineID"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.TraceDataFunctions.GetTotalInStockForTraceCode(System.Int64,System.Double,System.Int64,System.Int32)">
+ <summary>
+ This function returns the total qty in stores for a given trace code in all locations. 
+ </summary>
+ <param name="lngTraceCodeId"></param>
+ <param name="dblInStock"></param>
+ <param name="lngLocationID"></param>
+ <param name="intUnitOfSale"></param>
+ <returns></returns>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.TraceDataFunctions.UpdateTraceCodeNumDestroyed(System.Int64,System.Double)">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetBOMSet(System.Int32)">
+ <summary>
+ Get the chosen BOM set
+ </summary>
+ <param name="intBOMSetId"></param>
+ <returns>a dataset containing the chosen BOM where
+  Field0 contains the PartNumber
+  Field1 contains the Part Name
+  Field2 contains the Qty
+  Field3 contains the UoM
+  Field4 contains the Scrap %
+  Field5 contains the ToBePrinted 
+  Field6 contains the Notes
+  Field7 contains the LinkToCoC
+ </returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetAllDimensionsForProduct(System.String,System.Int32)">
+ <summary>
+ Retrieve all the items from the Dimensions grid for the given Product ID
+ </summary>
+ <param name="strConnString"></param>
+ <param name="intProdId"></param>
+ <returns>A DataTable containf the data from that  Dimensions grid. </returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetDimensionForProduct(System.String,System.Int32,System.String,System.String@,System.String@,System.String@,System.String@)">
+ <summary>
+ Retrieve a named Specification from the Dimensions grid for the given Product ID
+ </summary>
+ <param name="strConnString"></param>
+ <param name="intProdId"></param>
+ <param name="strDimension"></param>
+ <param name="strSpec"></param>
+ <param name="strMin"></param>
+ <param name="strMax"></param>
+ <param name="strReference"></param>
+ <returns>A DataTable containing the data from that row in the Dimensions grid. Also returns the Spec value, Min, Max and Reference as optional ByRef params</returns>
+ <remarks></remarks>
+ 
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.UpdateSpecialItemsRecord(System.String[],System.String[],System.String)">
+ <summary>
+ Update a record in the prd_CustomerSpecialItems table for the given Product, CustomerId and PriceList.
+ </summary>
+ <param name="astrNames">Array of Field names. The first items must be ProductId,CustomerId,PriceListId</param>
+ <param name="astrValues">Array of Field values. The first items must be the values for ProductId,CustomerId,PriceListId</param>
+ <remarks>The array sizes must match. Only String fields can be handled in ths sub. If writing a Customer special price the PriceListId must be 0, if writing a PriceList item the CustomerId must be 0</remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.InsertSpecialItemsRecord(System.String[],System.String[],System.String)">
+ <summary>
+ Insert a record in the prd_CustomerSpecialItems table.
+ </summary>
+ <param name="astrNames">Array of Field names. The first items must be ProductId, CustomerId and PriceListId</param>
+ <param name="astrValues">Array of Field values. The first items must be the values for ProductId, CustomerId and PriceListId</param>
+ <remarks>The array sizes must match. Only String fields can be handled in this sub</remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetProductSpecialCategories">
+ <summary>
+ Load the Product SpecialCategories options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetCustomerSpecialItems(System.Int32,System.Int32,System.String)">
+ <summary>
+ Get the Special Items data for a Product or Customer or both
+ </summary>
+ <param name="intProductId"></param>
+ <param name="intCustId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetPriceBreakDataForProductCustomerAndQty(System.Int32,System.Int32,System.Double,System.String)">
+ <summary>
+ Returns a dataTable containing the row from the SpecialItems table that matches the given items. If the Qty is less than the minimum qty the SpecialPrice in the returned row will be -100
+ </summary>
+ <param name="intProductId"></param>
+ <param name="intCustId"></param>
+ <param name="dblQty"></param>
+ <param name="strDBConn"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetProductForCommodityCode(System.String,System.String)">
+ <summary>
+ Return the Product table record for the given commodityCode
+ </summary>
+ <param name="strCode"></param>
+ <returns>a datatable</returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetAQLs(System.String,System.Int32)">
+ <summary>
+ Get records from the pdn_AQLs table. If intAQLId is supplied it will return that record. Otherwise it will return all records.
+ </summary>
+ <param name="strConnectionString"></param>
+ <param name="intAQLId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetProductFeatureCategories(System.String,System.Int32)">
+ <summary>
+ Get records from the pdn_ProductFeatures table. If intFeatureId is supplied it will return that record. Otherwise it will return all records.
+ </summary>
+ <param name="strConnectionString"></param>
+ <param name="intFeatureId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetProductFeaturesInCategory(System.String,System.Int64)">
+ <summary>
+ Get the Product Features from the selected category
+ </summary>
+ <param name="strConnectionString"></param>
+ <param name="lngCatId"></param>
+ <returns>DataTable</returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetProductFeatureFromCategory(System.String,System.Int64,System.String)">
+ <summary>
+ Get a Product Feature from the selected category
+ </summary>
+ <param name="strConnectionString"></param>
+ <param name="lngCatId"></param>
+ <returns>DataTable</returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetProductDocumentsFromMatrix(System.Int32,System.String)">
+ <summary>
+ Retrieves data from the Product Documents folder in the matrix and fromats it to match the output from the GetProductDocuments function
+ </summary>
+ <param name="intProductSchemaId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetProductDocumentsFromMatrix2(System.Int32,System.String)">
+ <summary>
+ Retrieves data from the Product Documents folder in the matrix and fromats it to match the output from the GetProductDocuments function
+ </summary>
+ <param name="intProductSchemaId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetProductDocumentsFromMatrix1(System.Int32,System.String)">
+ <summary>
+ Retrieves data from the Product Documents folder in the matrix and fromats it to match the output from the GetProductDocuments function
+ </summary>
+ <param name="intProductSchemaId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetProductFormsFromMatrix(System.Int32,System.String)">
+ <summary>
+ Retrieves data from the Product Documents folder in the matrix and fromats it to match the output from the GetProductDocuments function
+ </summary>
+ <param name="intProductSchemaId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetProductFormsFromMatrix2(System.Int32,System.String)">
+ <summary>
+ Retrieves data from the Product Documents folder in the matrix and fromats it to match the output from the GetProductDocuments function
+ </summary>
+ <param name="intProductSchemaId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.ProductsFunctions.GetProductFormsFromMatrix1(System.Int32,System.String)">
+ <summary>
+ Retrieves data from the Product Documents folder in the matrix and fromats it to match the output from the GetProductDocuments function
+ </summary>
+ <param name="intProductSchemaId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.POPsFunctions.GetDefaultTaxCodes">
+ <summary>
+ Load the default VAT Rates options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks>TaxCodes must be added to the Setup\VAT Rates node in the Config matrix. The DataItemName is irrelevant but the DataItemValue of each must be in the form T3  :  20%. Note the 2 spaces between 3 and :</remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.DBFunctions.GetVersionNumber">
+ <summary>
+ Function to return the version number of the project
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.DBFunctions.ExecuteSQLReturnDT(System.String,System.String)">
+ <summary>
+ Change all the FormId entries on a GridData dataTable to a new value
+ </summary>
+ <param name="dtGridData"></param>
+ <param name="intNewFormId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.DBFunctions.BulkCopyDataTableToDB(System.String,System.Data.DataTable,System.String)">
+ <summary>
+ Uses SqlBulkCopy to write a datatable to the given table
+ </summary>
+ <param name="strConnString"></param>
+ <param name="dt"></param>
+ <param name="strTableName"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.DBFunctions.CompareTwoDataTables(System.Data.DataTable,System.Data.DataTable)">
+ <summary>
+ Compares two dataTables
+ </summary>
+ <param name="dt1"></param>
+ <param name="dt2"></param>
+ <returns>True if the tables are equal or false if there are differences</returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.DBFunctions.SaveRecordToCustDBInAccess(System.String,System.String,System.String,System.String,System.String,System.String,System.Single,System.Int32,System.String,System.Boolean,System.Boolean,System.String)">
+ <summary>
+ Save a Customer record to the Access database
+ </summary>
+ <param name="strConnString"></param>
+ <param name="strCustomerName"></param>
+ <param name="strCustomerRefNum"></param>
+ <param name="strContactName"></param>
+ <param name="strPhone"></param>
+ <param name="strFax"></param>
+ <param name="strAddress"></param>
+ <param name="sngDiscount"></param>
+ <param name="intCustStatus"></param>
+ <param name="strDelAddress"></param>
+ <param name="blnIsVatExempt"></param>
+ <param name="blnIsOnHold"></param>
+ <param name="strPaymentTerms"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.ClearGridDataTableForFormId(System.String,System.String,System.Int32,System.String)">
+ <summary>
+ Delete all data from a matrix datatable (GridData or FormData) for a given FormId
+ </summary>
+ <param name="strConnString"></param>
+ <param name="strTableName"></param>
+ <param name="intGridId"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.GetBlockOfChildFormDataItems(System.String,System.String,System.String[],System.Data.DataTable@,System.String)">
+ <summary>
+ This function receives a set of FormIds in the KeyField column of a DataTable.
+ For each Item in the ItemNames array a column is added to the dataTable and they are filled with the relevant values from the Forms whose Ids are in the FormId column
+ </summary>
+ <param name="strConn"></param>
+ <param name="strFormName"></param>
+ <param name="strMatrixType"></param>
+ <param name="astrItemNames"></param>
+ <param name="dt"></param>
+ <param name="strKeyField"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.FindMatrix2GridColumnForKey(System.String,System.Int32,System.String,System.String,System.String)">
+ <summary>
+ Find the column in a Matrix2 grid whose key matches the given value
+ </summary>
+ <param name="strConnString"></param>
+ <param name="intFormId"></param> 
+ <param name="strTableName"></param>
+ <param name="strKey"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.GetBlockOfFormDataItems(System.String,System.String,System.String,System.String[],System.Data.DataTable@,System.String)">
+ <summary>
+ This function receives a set of FormIds in the KeyField column of a DataTable.
+ For each Item in the ItemNames array a column is added to the dataTable and they are filled with the relevent values from the Forms called strFormName which are chidren of the FormIds
+ </summary>
+ <param name="strConn"></param>
+ <param name="strFormName"></param>
+ <param name="strMatrixType"></param>
+ <param name="astrItemNames"></param>
+ <param name="dt"></param>
+ <param name="strKeyField"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.GetMatrixCategoryIDs(System.String,System.String)">
+ <summary>
+ This function will return at datatable of ID for all CATEGORIES in a specified Matrix (FormDataTable)
+ </summary>
+ <param name="strConn"></param>
+ <param name="strMatrixType"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.GetMatrixVersionIDsForCategories(System.String,System.String,System.Data.DataTable@,System.String)">
+ <summary>
+ This function will return at datatable of the VersionIDs of all the Versions for all ITEMS in specified CATEGORIES in a specified Matrix (FormDataTable)
+ </summary>
+ <param name="strConn"></param>
+ <param name="strMatrixType"></param>
+ <param name="dtCategories"></param>
+ <param name="strKeyField"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.GetMatrixNamedChildIDs(System.String,System.String,System.Data.DataTable@,System.String,System.String)">
+ <summary>
+ This function receives a DataTable where the KeyField column contains MatrixIds and it returns (ByRef) the DataTable with a column of the Ids of the named ChildFolders appended.
+ </summary>
+ <param name="strConn"></param>
+ <param name="strMatrixType"></param>
+ <param name="dtItemIds"></param>
+ <param name="strKeyField"></param>
+ <param name="strChildFolderName"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.GetMatrixUnNamedChildIDs(System.String,System.String,System.Data.DataTable,System.String)">
+ <summary>
+ This function receives a DataTable where the KeyField column contains MatrixIds and it returns a DataTable with details of the Ids of all the ChildFolders it finds there.
+ </summary>
+ <param name="strConn"></param>
+ <param name="strMatrixType"></param>
+ <param name="dtItemIds"></param>
+ <param name="strKeyField"></param>
+ <param name="strChildFolderName"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.GetMatrixPrimaryFormIDsForCategories(System.String,System.String,System.Data.DataTable@,System.String)">
+ <summary>
+ This function will return at datatable of the IDs of the PrimaryForms for all ITEMS in specified CATEGORIES in a specified Matrix (FormDataTable)
+ </summary>
+ <param name="strConn"></param>
+ <param name="strMatrixType"></param>
+ <param name="dtCategories"></param>
+ <param name="strKeyField"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.GetAppropriateMatrixItemIDsForItems(System.String,System.String,System.Data.DataTable@,System.String,System.String@)">
+ <summary>
+ If VersionControl is being used for the selected Matrix this function will return a DataTable of the VersionIds of each version of each item in the selected categories. If VersionControl is not being used the function will return a DataTable of the ItemIds of each version of each item in the selected categories
+ </summary>
+ <param name="strConn">connection string to the current database</param>
+ <param name="strMatrixType">a VTDBFunctions.VTMatrixFunctions definition for the Matrix Type e.g. VTDBFunctions.VTMatrixFunctions.Assets</param>
+ <param name="dtItems">a DataTable where the Ids of the required items are loaded in the column whose name is in strKeyField</param>
+ <param name="strKeyField">the name of the column where the ItemIds are to be found</param>
+ <param name="strAreWeDoingVersionControl">Returns YES if VersionControl is being used for the selected Matrix and NO if it is not being used</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.GetAppropriateMatrixItemIDsForCategories(System.String,System.String,System.Data.DataTable@,System.String,System.String@)">
+ <summary>
+ If VersionControl is being used for the selected Matrix this function will return a DataTable containing the VersionId of EACH version of each item in the selected categories.
+ If VersionControl is not being used the function will return a DataTable containing the ItemId of each item in the selected categories
+ </summary>
+ <param name="strConn">connection string to the current database</param>
+ <param name="strMatrixType">a VTDBFunctions.VTMatrixFunctions definition for the Matrix Type e.g. VTDBFunctions.VTMatrixFunctions.Assets</param>
+ <param name="dtCategories">a DataTable where the Ids of the required categories are loaded in the column whose name is in strKeyField</param>
+ <param name="strKeyField">the name of the column where the CategoryIds are to be found</param>
+ <param name="strAreWeDoingVersionControl">Returns YES if VersionControl is being used for the selected Matrix and NO if it is not being used</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.GetMatrixItemIDsForCategories(System.String,System.String,System.Data.DataTable@,System.String)">
+ <summary>
+ This function will return a datatable of the Item IDs for all ITEMS in specified CATEGORIES in a specified Matrix 
+ </summary>
+ <param name="strConn"></param>
+ <param name="strMatrixType"></param>
+ <param name="dtCategories"></param>
+ <param name="strKeyField"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.GetAllMatrix2GridDataForFormId(System.String,System.Int32,System.String,System.String)">
+ <summary>
+ Get the data from ALL grids on a form
+ </summary>
+ <param name="strConnString"></param>
+ <param name="intFormId"></param>
+ <param name="strTableName"></param>
+ <param name="strType"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.GetVTMatrixFormDataAll(System.String,System.String,System.Int32)">
+ <summary>
+ Gets all the data in the FormData table for the given Id
+ </summary>
+ <param name="strConnString"></param>
+ <param name="strTableName"></param>
+ <param name="intFormId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.FindDataItemAcrossAllCategories(System.String,System.String,System.String,System.String)">
+ <summary>
+ Search for a data item by Name across all categories in the Matrix
+ </summary>
+ <param name="strConnString"></param>
+ <param name="strName"></param>
+ <param name="strTableName"></param>
+ <returns>The root Item Id of the first item where the data is found</returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.FindItemAcrossAllCategories(System.String,System.String,System.String)">
+ <summary>
+ Search for an item by Name across all categories in the Matrix
+ </summary>
+ <param name="strConnString"></param>
+ <param name="strName"></param>
+ <param name="strTableName"></param>
+ <returns>A datatable with the List Table entries for each matching item</returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.GetVTMatrixFormDataHorizontal(System.String,System.String,System.Int32,System.Boolean)">
+ <summary>
+ Gets all the data from the FormData table for the given Id - except the internal _VM_ items. Data is returned in a single row with the DataItemNames as the ColumnNames
+ </summary>
+ <param name="strConnString"></param>
+ <param name="strTableName"></param>
+ <param name="intFormId"></param>
+ <param name="blnIncludeControlItems">Set to False to exclude control items from the returned data</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.GetVTMatrixFormData(System.String,System.String,System.Int32)">
+ <summary>
+ Gets all the data from the FormData table for the given Id - except the internal _VM_ items
+ </summary>
+ <param name="strConnString"></param>
+ <param name="strTableName">The FormData table</param>
+ <param name="intFormId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.DeleteFolderTree(System.String,System.Int32,System.String,System.String)">
+ <summary>
+ Reecursive function that deletes a folder and all its children
+ </summary>
+ <param name="intFolderId"></param>
+ <param name="strFormList"></param>
+ <param name="strFormData"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.VTMatrixFunctions.CopyAndPasteThisFolder(System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.String,System.String,System.Boolean,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strConn"></param>
+ <param name="strSourceFormListTable"></param>
+ <param name="strSourceFormDataTable"></param>
+ <param name="strDestinationFormListTable"></param>
+ <param name="strDestinationFormDataTable"></param>
+ <param name="intParentOfNewNodeId"></param>
+ <param name="intParentOfExistingNodeId"></param>
+ <param name="intFolderToCopyId"></param>
+ <param name="strNewNodeName"></param>
+ <param name="strNodeNameToCopy"></param>
+ <param name="blnDoingApprovalDetails">Set this to True when we are copying items to the Document History</param>
+ <param name="strDestConn">Optional connection string for destination db. If not provided the strConn is used</param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.WorkflowFunctions.GetProgramGroups(System.String)">
+ <summary>
+ Returns a DataTable containing the Group Details table from the Groups Database
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.WorkflowFunctions.GetProgramsInGroup(System.Int32,System.String)">
+ <summary>
+ Return a DataTable containing the details of the Test Programs matching the given GroupId
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.Production.UpdateJobSpecifics(System.Int64,System.Double,System.String,System.String)">
+ <summary>
+ Inserts QtyToBeProduced, OrderNum, ProductionLine into job_Specifics
+ </summary>
+ <param name="lngJobId"></param>
+ <param name="dblQtyToBeProduced"></param>
+ <param name="strOrderNum"></param>
+ <param name="strProductionLine"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.Production.SaveBatchFinished(System.Int64,System.Int64,System.Double,System.Int32)">
+ <summary>
+ Updates Weight, Quantity and LocationId in job_Specifics
+ </summary>
+ <param name="lngJobId"></param>
+ <param name="lngQty"></param>
+ <param name="dblWeight"></param>
+ <param name="intLocation"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.Production.UpdateBatchCustomerId(System.Int64,System.Int32)">
+ <summary>
+ Updates the [CustomerID] in wfo_BatchTable
+ </summary>
+ <param name="lngJobId"></param>
+ <param name="intCustId"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.Production.GetJobProductDocs(System.Int32)">
+ <summary>
+ Read the set of docs assigned to this job
+ </summary>
+ <param name="intJobId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.Production.UsingOldJobFormStructure(System.Int32)">
+ <summary>
+ in the old system the docs were stored in the job_ProductDocs table using the child jobid as key. we look there first and if there are docs there we use the old mechanism
+ </summary>
+ <param name="intJobid"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.Production.GetDocumentsForJob(System.Int32)">
+ <summary>
+ Get the documents for this job - this function works for the new matrix-based structure only
+ </summary>
+ <param name="intJobMatrixId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NelipakFunctions.InsertJobSpecificsForNelipak(System.String,System.Int32,System.Double,System.String,System.String,System.DateTime,System.String,System.String)">
+ <summary>
+ Inserts QtyToBeProduced, CustPartNum, MachineNum, DateOfDelivery, CycleSpeed, OrderNumber into job_Specifics
+ </summary>
+ <param name="strConnString"></param>
+ <param name="intBatchId"></param>
+ <param name="QtyToBeProduced"></param>
+ <param name="strCustPartNum"></param>
+ <param name="strMachineNum"></param>
+ <param name="dteDateOfDelivery"></param>
+ <param name="strCycleSpeed"></param>
+ <param name="strCustPO"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NelipakFunctions.UpdateJobSpecificsForNelipak(System.String,System.Int32,System.Double,System.String,System.String,System.DateTime,System.String,System.String)">
+ <summary>
+ Updates QtyToBeProduced, CustPartNum, MachineNum, DateOfDelivery, CycleSpeed, OrderNumber in job_Specifics
+ </summary>
+ <param name="strConnString"></param>
+ <param name="intBatchId"></param>
+ <param name="QtyToBeProduced"></param>
+ <param name="strCustPartNum"></param>
+ <param name="strMachineNum"></param>
+ <param name="dteDateOfDelivery"></param>
+ <param name="strCycleSpeed"></param>
+ <param name="strCustPO"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NelipakFunctions.UpdateJobSpecificsQtyToMake(System.String,System.Int32,System.Double)">
+ <summary>
+ Updates the QtyToMake in job_Specifics
+ </summary>
+ <param name="strConnString"></param>
+ <param name="intBatchId"></param>
+ <param name="intBox"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NelipakFunctions.UpdateJobSpecificsCustPONum(System.String,System.Int32,System.String)">
+ <summary>
+ Updates the OrderNumber in job_Specifics
+ </summary>
+ <param name="strConnString"></param>
+ <param name="intBatchId"></param>
+ <param name="intBox"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.JobStepFunctions.GetJobStepFormsFromMatrix(System.Int32)">
+ <summary>
+ Retrieves data from the Product Documents folder in the matrix and fromats it to match the output from the GetJobStepDocuments function
+ </summary>
+ <param name="intJobStepId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.JobStepFunctions.GetJobStepFormsFromMatrix2(System.Int32)">
+ <summary>
+ Retrieves data from the JobStep forms folder in the matrix and formats it to match the output from the GetJobStepDocuments function
+ </summary>
+ <param name="intJobStepId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.JobStepFunctions.GetJobStepFormsFromMatrix1(System.Int32)">
+ <summary>
+ Retrieves data from the JobStep Documents folder in the matrix and formats it to match the output from the GetJobStepDocuments function
+ </summary>
+ <param name="intJobStepId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.JobStepFunctions.GetJobStepDocumentsFromMatrix(System.Int32)">
+ <summary>
+ Retrieves data from the Product Documents folder in the matrix and fromats it to match the output from the GetJobStepDocuments function
+ </summary>
+ <param name="intJobStepId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.JobStepFunctions.GetJobStepDocumentsFromMatrix2(System.Int32)">
+ <summary>
+ Retrieves data from the JobStep Documents folder in the matrix and formats it to match the output from the GetJobStepDocuments function
+ </summary>
+ <param name="intJobStepId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.JobStepFunctions.GetJobStepDocumentsFromMatrix1(System.Int32)">
+ <summary>
+ Retrieves data from the JobStep Documents folder in the matrix and formats it to match the output from the GetJobStepDocuments function
+ </summary>
+ <param name="intJobStepId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCIsByWhoRaised(System.String)">
+ <summary>
+ Get the set of NCIs raised for the given WhoRaised string
+ </summary>
+ <param name="strWhoRaised"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCIsByProduct(System.String)">
+ <summary>
+ Get the set of NCIs raised for the given product string
+ </summary>
+ <param name="strProduct"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNotifications(System.Int32)">
+ <summary>
+ Get the set of Notifications for this Source Type
+ </summary>
+ <param name="intSourceTypeId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCIWhatRelatedType(System.Int32)">
+ <summary>
+ Get the set of 'What does it Relate to' types corresponding to the given Type Id
+ </summary>
+ <param name="intWhoRaisedTypeId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCIWhoRaisedTypes">
+ <summary>
+ Load the NCI WhoRaisedTypes options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCIUnitTypes">
+ <summary>
+ Load the NCI UnitTypes options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCIMaterialTypes">
+ <summary>
+ Load the NCI MaterialTypes options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCIActionTypes">
+ <summary>
+ Load the NCI ActionType options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCIClassifications">
+ <summary>
+ Load the NCI Classifications options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCICostClassifications">
+ <summary>
+ Load the NCI Cost options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCIDefectTypes">
+ <summary>
+ Load the NCI Cost options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCIProcessTypes">
+ <summary>
+ Load the NCI Process options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCIProcessSubTypes(System.Int32)">
+ <summary>
+ Load the NCI SubType options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCIDefectCategories">
+ <summary>
+ Load the NCI DefectType options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCIDefectsInCategory(System.Int32)">
+ <summary>
+ Load the NCI Defects from the Config matrix for the given type
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.NCIFunctions.GetNCIsByParentAuditId(System.Int32)">
+ <summary>
+ Get the set of NCIs raised for the given ParentAuditId 
+ </summary>
+ <param name="ParentAuditId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.PricingFunctions.DeletePriceList(System.Int32)">
+ <summary>
+ Delete a Price List and all the Special items associated with it
+ </summary>
+ <param name="intPriceListId"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.SupplierFunctions.SaveSupplierRecord(System.String,System.String,System.Int32,System.Int32,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strSupplierName">kjfkdhf</param>
+ <param name="strSupplierReference"></param>
+ <param name="intSupplierID"></param>
+ <param name="intSupplierMatrixID"></param>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.SupplierFunctions.SaveNewSupplier(System.String,System.Int64,System.Int64,System.String,System.Int32,System.String)">
+ <summary>
+ Creates a Supplier reference and inserts the supplier into the schema sup_Suppliers and sup_SupplierDetails tables
+ </summary>
+ <param name="SupplierName"></param>
+ <param name="SupplierCategoryID"></param>
+ <param name="intSupplierID"></param>
+ <param name="strSupplierReference"></param>
+ <param name="intSuppMatrixId">If a non-zero MatrixId is provided it will be writeen to the sup_Suppliers table</param>
+ <returns>The schemaId of the supplier</returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.SupplierFunctions.InsertNewSupplier(System.String,System.Int32,System.Int64,System.String,System.String)">
+ <summary>
+ Inserts a new supplier into the schema table
+ </summary>
+ <param name="strSupName"></param>
+ <param name="intSupCatID"></param>
+ <param name="intSupplierID"></param>
+ <param name="strSupRef"></param>
+ <returns>The schema Id of the new supplier</returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.WasteFunctions.GetPackagingGroups(System.String)">
+ <summary>
+ Load the Packaging Group options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.WasteFunctions.GetWasteSites">
+ <summary>
+ Load the Waste Site Details options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.WasteFunctions.GetWasteAreasForSite(System.Int32)">
+ <summary>
+ Load the Waste Site Areas options for the given SiteId from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.WasteFunctions.GetWasteSourcesForArea(System.Int32)">
+ <summary>
+ Load the Waste Site Areas options for the given SiteId from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.WasteFunctions.GetDetailsForHazardClass(System.String)">
+ <summary>
+ Get a DataTable with single row where the DataItemName is the given Hazard class
+ </summary>
+ <param name="strAPPText"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.WasteFunctions.GetHazards">
+ <summary>
+ Load the Hazard options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.WasteFunctions.GetDetailsForHandlingType(System.String)">
+ <summary>
+ Get a DataTable with single row where the DataItemName is the given Handling type
+ </summary>
+ <param name="strType"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.WasteFunctions.GetHandlingTypes">
+ <summary>
+ Load the Handling options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.WasteFunctions.GetDetailsForAPP(System.String)">
+ <summary>
+ Get a DataTable with single row where the DataItemName is the given APP
+ </summary>
+ <param name="strAPPText"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.WasteFunctions.GetAPPDetails">
+ <summary>
+ Load the APP Details options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.WasteFunctions.GetDetailsForHIN(System.String)">
+ <summary>
+ Get a DataTable with single row where the DataItemName is the given HIN
+ </summary>
+ <param name="strHINText"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:VTDBFunctions.VTDBFunctions.WasteFunctions.GetHINDetails">
+ <summary>
+ Load the HIN Details options from the Config matrix
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+</members>
+</doc>

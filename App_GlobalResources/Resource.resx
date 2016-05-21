@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="QuoteItem_New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="QuoteItem_Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="CustomerLabel" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="PurchaseCreditNote" xml:space="preserve">
+    <value>Credit Notes (In)</value>
+  </data>
+  <data name="PurchaseInvoice" xml:space="preserve">
+    <value>Invoices (In)</value>
+  </data>
+  <data name="PurchasePO" xml:space="preserve">
+    <value>Purchase Orders (Out)</value>
+  </data>
+  <data name="PurchasePOD" xml:space="preserve">
+    <value>POD (In)</value>
+  </data>
+  <data name="QuoteItem_Closed" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="Quote_Converted" xml:space="preserve">
+    <value>Closed - Converted to Sales Order</value>
+  </data>
+  <data name="Quote_New" xml:space="preserve">
+    <value>Open - New</value>
+  </data>
+  <data name="Quote_NotSent" xml:space="preserve">
+    <value>Closed - Not Sent</value>
+  </data>
+  <data name="Quote_POReceived" xml:space="preserve">
+    <value>Open - PO Received</value>
+  </data>
+  <data name="Quote_ProdApproved" xml:space="preserve">
+    <value>Open - Ready To Submit</value>
+  </data>
+  <data name="Quote_ReadytoSend" xml:space="preserve">
+    <value>Open - Ready to Send</value>
+  </data>
+  <data name="Quote_Sent" xml:space="preserve">
+    <value>Open - Sent to Customer</value>
+  </data>
+  <data name="Quote_Submitted" xml:space="preserve">
+    <value>Open - Submitted for Signoff</value>
+  </data>
+  <data name="Quote_SubmittedForProd" xml:space="preserve">
+    <value>Open - Submitted For Product Approval</value>
+  </data>
+  <data name="Quote_Unsuccesful" xml:space="preserve">
+    <value>Closed - Quote Unsuccessful</value>
+  </data>
+  <data name="SalesCreditNote" xml:space="preserve">
+    <value>Credit Notes (Out)</value>
+  </data>
+  <data name="SalesInvoice" xml:space="preserve">
+    <value>Invoices (Out)</value>
+  </data>
+  <data name="SalesPO" xml:space="preserve">
+    <value>Purchase Orders (In)</value>
+  </data>
+  <data name="SalesPOD" xml:space="preserve">
+    <value>POD (Out)</value>
+  </data>
+  <data name="SupplierLabel" xml:space="preserve">
+    <value>Suppliers</value>
+  </data>
+  <data name="Quote_Closed" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="Quote_Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Invalid Password</value>
+  </data>
+  <data name="NoRequestedDeliveryDate" xml:space="preserve">
+    <value>You must enter a Requested Delivery Date.</value>
+  </data>
+  <data name="NoCustomerSelectedForQuote" xml:space="preserve">
+    <value>You must select a Customer for the Quote.</value>
+  </data>
+  <data name="OrderItem_ClosedComplete" xml:space="preserve">
+    <value>Closed - Complete</value>
+  </data>
+  <data name="OrderItem_ClosedPartShipped" xml:space="preserve">
+    <value>Closed - Part Shipped</value>
+  </data>
+  <data name="OrderItem_New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="OrderItem_Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="OrderItem_OpenPartShipped" xml:space="preserve">
+    <value>Open - Part Shipped</value>
+  </data>
+  <data name="Order_Closed" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="Order_ClosedComplete" xml:space="preserve">
+    <value>Closed - Complete</value>
+  </data>
+  <data name="Order_ClosedPartShipped" xml:space="preserve">
+    <value>Closed - Part Shipped</value>
+  </data>
+  <data name="Order_New" xml:space="preserve">
+    <value>Open - New</value>
+  </data>
+  <data name="Order_Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="Order_OpenPartShipped" xml:space="preserve">
+    <value>Open - Part Shipped</value>
+  </data>
+  <data name="Order_PreIssued" xml:space="preserve">
+    <value>Open - Pre Issued</value>
+  </data>
+  <data name="NoCustomerSelectedForOrder" xml:space="preserve">
+    <value>You must select a Customer for the Order.</value>
+  </data>
+  <data name="Docket_AwaitingCommitment" xml:space="preserve">
+    <value>Awaiting Commitment</value>
+  </data>
+  <data name="Docket_New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="Docket_Resent" xml:space="preserve">
+    <value>Resent</value>
+  </data>
+  <data name="Docket_ServiceItem_AwaitingCommnt" xml:space="preserve">
+    <value>Awaiting Commitment</value>
+  </data>
+  <data name="Docket_ServiceItem_Commited" xml:space="preserve">
+    <value>Commited</value>
+  </data>
+  <data name="Docket_ServiceItem_New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="Docket_Commited" xml:space="preserve">
+    <value>Commited</value>
+  </data>
+  <data name="Order_AwaitingIssue" xml:space="preserve">
+    <value>Open - Awaiting Issue</value>
+  </data>
+  <data name="Order_AwaitingPlanning" xml:space="preserve">
+    <value>Open - Awaiting Planning</value>
+  </data>
+  <data name="Order_OnHold" xml:space="preserve">
+    <value>Open - On Hold</value>
+  </data>
+  <data name="Order_SendAcknowledge" xml:space="preserve">
+    <value>Open - SendAcknowledge</value>
+  </data>
+  <data name="NoCustomerOrderDate" xml:space="preserve">
+    <value>You must enter a Customer Order Date.</value>
+  </data>
+  <data name="RequestedDateLessThanOrderDate" xml:space="preserve">
+    <value>The requested date must be equal to or greater than the order date</value>
+  </data>
+  <data name="NoCustomerContactInMFGPro" xml:space="preserve">
+    <value>No Customer Contact On file.</value>
+  </data>
+  <data name="Order_OnHold_System" xml:space="preserve">
+    <value>Open - On Hold [System]</value>
+  </data>
+  <data name="Order_OnHold_Manual" xml:space="preserve">
+    <value>Open - On Hold [Manual]</value>
+  </data>
+  <data name="Everybody" xml:space="preserve">
+    <value>Everybody</value>
+  </data>
+  <data name="ItemLockedByAnotherUser" xml:space="preserve">
+    <value>You cannot Edit this {0} because it has been CheckedOut by another user. CheckOut Details:[{1}]</value>
+  </data>
+  <data name="NoCommentForControl" xml:space="preserve">
+    <value>There is no comment associated with the selected control.</value>
+  </data>
+  <data name="NoCommentSelected" xml:space="preserve">
+    <value>You must select a comment.</value>
+  </data>
+  <data name="NoCommentSupplied" xml:space="preserve">
+    <value>You must enter a comment.</value>
+  </data>
+  <data name="NoPageForComment" xml:space="preserve">
+    <value>There is no form field associated with this Thread</value>
+  </data>
+  <data name="NoThreadSelected" xml:space="preserve">
+    <value>You must select a thread!</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="CommentsUnread" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>CommentsUnread.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Forgot your Password?</value>
+  </data>
+  <data name="ForgotPasswordInstruction" xml:space="preserve">
+    <value>We'll send you it to you. Please confirm your User ID, click the button, and then check your mailbox.</value>
+  </data>
+  <data name="LinkHasExpired" xml:space="preserve">
+    <value>The Link used to launch the Portal has expired.</value>
+  </data>
+  <data name="NoEMailAddress" xml:space="preserve">
+    <value>Sorry {0}, there is no eMail address in your account. You will need to contact IT support to reset your Password</value>
+  </data>
+  <data name="NoPassword" xml:space="preserve">
+    <value>You must enter your Password in both boxes</value>
+  </data>
+  <data name="PasswordCannotReuse" xml:space="preserve">
+    <value>Passwords cannot be reused</value>
+  </data>
+  <data name="PasswordExpiredInstruction" xml:space="preserve">
+    <value>Enter a new password and click the button.</value>
+  </data>
+  <data name="PasswordExpired_Request" xml:space="preserve">
+    <value>Your Password for this Portal has expired because you requested a password change</value>
+  </data>
+  <data name="PasswordExpired_Time" xml:space="preserve">
+    <value>Your Password for this Portal has expired because it is more than {0} days since it was last changed.</value>
+  </data>
+  <data name="PasswordMailError" xml:space="preserve">
+    <value>There was an error while sending the Password. Error details: [{0}]</value>
+  </data>
+  <data name="PasswordMailLine1" xml:space="preserve">
+    <value>Hello {0}</value>
+  </data>
+  <data name="PasswordMailLine2" xml:space="preserve">
+    <value>You have received this mail because you requested your Password for the {0} using the {1} database. </value>
+  </data>
+  <data name="PasswordMailLine3" xml:space="preserve">
+    <value>Follow this link to create a new password.</value>
+  </data>
+  <data name="PasswordMailLine4" xml:space="preserve">
+    <value>This link will expire in 1 hour and can not be used after this time.</value>
+  </data>
+  <data name="PasswordMailSent" xml:space="preserve">
+    <value>A link which will allow you to reset your password has been sent by eMail to your address</value>
+  </data>
+  <data name="PasswordMailSubject" xml:space="preserve">
+    <value>Verify Technologies {0} Password Retrieval</value>
+  </data>
+  <data name="PasswordMustMatch" xml:space="preserve">
+    <value>You must enter the same Password in both boxes.</value>
+  </data>
+  <data name="PasswordNotStrong" xml:space="preserve">
+    <value>The supplied password does not meet the requirements</value>
+  </data>
+  <data name="PasswordRenewedOk" xml:space="preserve">
+    <value>Your Password has been reset. Click Ok to continue and then click the Back button to return to the Login page.</value>
+  </data>
+  <data name="PasswordUsedBefore" xml:space="preserve">
+    <value>That Password has been used previously and the system has been configured not to allow Passwords to be repeated.</value>
+  </data>
+  <data name="UnknownUsername" xml:space="preserve">
+    <value>Unknown Username..</value>
+  </data>
+  <data name="AlreadyRunning" xml:space="preserve">
+    <value>There is already an open tab running the EBR system. You cannot open a second version of the EBR system in the same browser session.</value>
+  </data>
+</root>

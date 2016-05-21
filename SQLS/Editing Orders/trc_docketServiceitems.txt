@@ -1,0 +1,275 @@
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[trc_DocketServiceItems]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[trc_DocketServiceItems]
+GO
+
+CREATE TABLE [dbo].[trc_DocketServiceItems] (
+	[OrderServiceItemId] [int] IDENTITY (1, 1) NOT NULL ,
+	[SalesOrderId] [int] NULL ,
+	[DocketNum] [nvarchar] (50) COLLATE Latin1_General_CI_AS NULL ,
+	[ProductId] [int] NULL ,
+	[ProductName] [nvarchar] (200) COLLATE Latin1_General_CI_AS NULL ,
+	[Quantity] [float] NULL ,
+	[Weight] [float] NULL ,
+	[Comment] [nvarchar] (2000) COLLATE Latin1_General_CI_AS NULL ,
+	[UnitPrice] [float] NULL ,
+	[VATRate] [float] NULL ,
+	[VAT] [float] NULL ,
+	[TotalPrice] [float] NULL ,
+	[Status] [nvarchar] (50) COLLATE Latin1_General_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[trc_delDocketServiceItem]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[trc_delDocketServiceItem]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[trc_insNewDocketServiceItem]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[trc_insNewDocketServiceItem]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[trc_resGetLastAddedDocketServiceItem]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[trc_resGetLastAddedDocketServiceItem]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[trc_resDocketServiceItemsForDocketOrderId]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[trc_resDocketServiceItemsForDocketOrderId]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[trc_resDocketServiceItemsForItemId]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[trc_resDocketServiceItemsForItemId]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[trc_updDocketServiceItem]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[trc_updDocketServiceItem]
+GO
+
+
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+CREATE PROCEDURE trc_delDocketServiceItem @OrderServiceItemId   int
+AS
+
+delete from trc_DocketServiceItems where OrderServiceItemId = @OrderServiceItemId
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE trc_insNewDocketServiceItem	@SalesOrderId  int,
+						@DocketNum nvarchar (50),
+						@ProductId int,	
+						@ProductName nvarchar (200),
+						@Quantity float,	
+						@Weight float,	
+						@Comment nvarchar (2000),
+						@UnitPrice float,	
+						@VATRate float,
+						@VAT	float,	
+						@TotalPrice float	
+				
+AS
+insert into trc_DocketServiceItems
+(
+	SalesOrderId,
+	DocketNum,
+	ProductId,	
+	ProductName,
+	Quantity,	
+	Weight,	
+	Comment,
+	UnitPrice,	
+	VATRate,
+	VAT,	
+	TotalPrice,	
+	Status
+)
+values
+(
+	@SalesOrderId,
+	@DocketNum,
+	@ProductId,	
+	@ProductName,
+	@Quantity,	
+	@Weight,	
+	@Comment,
+	@UnitPrice,	
+	@VATRate,
+	@VAT,	
+	@TotalPrice,	
+	'New' 
+)
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE [dbo].[trc_resGetLastAddedDocketServiceItem]
+AS
+
+select max (OrderServiceItemId) from trc_DocketServiceItems
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE trc_resDocketServiceItemsForDocketOrderId	@SalesOrderId  int,
+								@DocketNum  nvarchar (50)
+AS
+
+select * From trc_DocketServiceItems where SalesOrderId = @SalesOrderId AND DocketNum = @DOcketNum
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE trc_resDocketServiceItemsForItemId		@OrderServiceItemId   int
+AS
+
+select * From trc_DocketServiceItems where OrderServiceItemId  = @OrderServiceItemId 
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+
+CREATE PROCEDURE trc_updDocketServiceItem		@OrderServiceItemId int,
+						@ProductId int,	
+						@ProductName nvarchar (200),
+						@Quantity float,	
+						@Weight float,	
+						@Comment nvarchar (2000),
+						@UnitPrice float,	
+						@VAT	float,	
+						@TotalPrice float
+												
+AS
+
+BEGIN UPDATE [trc_DocketServiceItems]
+SET
+	ProductId=@ProductId,	
+	ProductName = @ProductName,
+	Quantity = @Quantity,
+	Weight = @Weight,
+	Comment= @Comment,		
+	UnitPrice = @UnitPrice,	
+	VAT = @VAT,
+	TotalPrice = @TotalPrice		
+WHERE OrderServiceItemId = @OrderServiceItemId
+END
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[trc_updDocketServiceItemStatusForID]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[trc_updDocketServiceItemStatusForID]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[trc_updDocketServiceStatusForDocketNumOrderId]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[trc_updDocketServiceStatusForDocketNumOrderId]
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+
+
+CREATE PROCEDURE trc_updDocketServiceItemStatusForID		@OrderServiceItemId int,
+						@Status nvarchar (50)
+												
+AS
+
+BEGIN UPDATE [trc_DocketServiceItems]
+SET
+	Status=@Status		
+WHERE OrderServiceItemId = @OrderServiceItemId
+END
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+
+CREATE PROCEDURE trc_updDocketServiceStatusForDocketNumOrderId		@SalesOrderId  int,
+						@DocketNum nvarchar (50),
+						@Status nvarchar (50)
+												
+AS
+
+BEGIN UPDATE [trc_DocketServiceItems]
+SET
+	Status=@Status		
+WHERE  SalesOrderId = @SalesOrderId AND DocketNum = @DOcketNum
+
+END
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+
+
+

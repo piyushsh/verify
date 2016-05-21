@@ -1,0 +1,239 @@
+﻿body 
+{
+		
+}
+.VerifyGrid_Report_HeaderGreen
+{
+	font-family: Arial !important !important;
+	font-size: 11pt !important;
+	font-weight: bold !important;
+	color: #000000 !important;
+	background-color: #99D980 !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+}
+
+.VerifyGrid_Report_HeaderGreen_10pt
+{
+	font-family: Arial !important !important;
+	font-size: 10pt !important;
+	font-weight: bold !important;
+	color: #000000 !important;
+	background-color: #99D980 !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+}
+
+.VerifyGrid_Report_HeaderGold
+{
+	font-family: Arial !important;
+	font-size: 11pt !important;
+	font-weight: bold !important;
+	color: #000000 !important;
+	background-color: #E3CF70 !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+}
+
+
+.VerifyGrid_Report_HeaderGold_10pt
+{
+	font-family: Arial !important;
+	font-size: 10pt !important;
+	font-weight: bold !important;
+	color: #000000 !important;
+	background-color: #E3CF70 !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+}
+
+
+.VerifyGrid_Report_HeaderGrey
+{
+	font-family: Arial !important;
+	font-size: 11pt !important;
+	font-weight: bold !important;
+	color: #000000 !important;
+	background-color: #808080 !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+}
+
+.VerifyGrid_Report_HeaderBeige
+{
+	font-family: Arial !important;
+	font-size: 11pt !important;
+	font-weight: bold !important;
+	color: #FFFFFF !important;
+	background-color: #99D980 !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+}
+
+.VerifyGrid_Report_HeaderGreenSmall
+{
+	font-family: Arial !important;
+	font-size: 9pt !important;
+	font-weight: bold !important;
+	color: #FFFFFF !important;
+	background-color: #4F503F !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+}
+
+.VerifyGrid_Report_HeaderFormMaster
+{
+	font-family: 'Calibri !important';
+	font-size: 16pt !important;
+	font-weight: normal !important;
+	color: #000000 !important;
+	background-color: #99D980 !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+}
+
+.igg_CssClass th
+{
+	font-family: Arial !important;
+	font-size: 9pt !important;
+	color: #FFFFFF !important;
+	background-color: #CC9900 !important;
+	vertical-align: top !important;
+	text-align: left !important;
+}
+
+
+tbody.VerifyGrid_Report_Row > tr > td
+{
+	margin: 0px !important;
+	padding: 0px 1px 0px 1px !important;
+	border: 1px solid #C0C0C0 !important;
+	font-family: 'Arial !important';
+	font-size: 9pt !important;
+	color: #000000 !important;
+	background-color: #CAE3B7 !important;
+}	
+
+tbody > tr.VerifyGrid_Report_AlternateRow > td
+{
+	margin: 0px !important;
+	padding: 0px 1px 0px 1px !important;
+	border-width: 1px !important;
+	border-color: #C0C0C0 !important;
+	border-style: none solid none solid !important;
+	font-family: 'Arial !important';
+	font-size: 9pt !important;
+	color: #000000 !important;
+	background-color: #D6EDCF !important;
+}
+
+tbody.VerifyGrid_Report_RowSmall > tr > td
+{
+	margin: 0px !important;
+	padding: 0px 1px 0px 1px !important;
+	border: 1px solid #C0C0C0 !important;
+	font-family: Arial !important;
+	font-size: 8pt !important;
+	color: #000000 !important;
+	background-color: #F3F3CC !important;
+}	
+
+tbody > tr.VerifyGrid_Report_AlternateRowSmall > td
+{
+	margin: 0px !important;
+	padding: 0px 1px 0px 1px !important;
+	border-width: 1px !important;
+	border-color: #C0C0C0 !important;
+	border-style: none solid none solid !important;
+	font-family: Arial !important;
+	font-size: 8pt !important;
+	color: #000000 !important;
+	background-color: #D6EDCF !important;
+}
+
+
+tbody > tr.SelectedRow > td
+{
+	border-style: solid none solid none !important;
+	border-width: 1px !important;
+	border-color: #FF0000 !important;
+	font-family: Arial !important;
+	font-size: 9pt !important;
+	color: #000000 !important;
+	background-color: #FFCC66 !important;
+}
+
+VerifyGrid_Report_Footer
+{
+	font-family: Arial !important;
+	font-size: 10pt !important;
+	color: #FFFFFF !important;
+	background-color: #CE9B00 !important;
+	border: 1px solid #C0C0C0 !important;
+	padding-right: 2px !important;
+	padding-left: 2px !important;
+	font-weight: bold !important;
+}
+
+.igg_SummaryRow th
+{
+	font-family: Arial !important;
+	font-size: 9pt !important;
+	color: #FFFFFF !important;
+	background-color: #999999 !important;
+	border: 1px solid #C0C0C0 !important;
+	padding-right: 2px !important;
+	padding-left: 2px !important;
+}
+
+.igg_SummaryRowSmall th
+{
+	font-family: Arial !important;
+	font-size: 8pt !important;
+	color: #FFFFFF !important;
+	background-color: #999999 !important;
+	border: 1px solid #C0C0C0 !important;
+	padding-right: 2px !important;
+	padding-left: 2px !important;
+}
+
+tbody > tr > td.RedText
+{
+	color: #CC3300 !important;
+}
+
+tbody > tr > td.GreenText
+{
+	color: #008000 !important;
+}
+
+tbody > tr > td.RAlign
+{
+	text-align: right !important;
+}
+
+tbody > tr > td.LAlign
+{
+	text-align: left !important;
+}
+
+tbody > tr > td.Center
+{
+	text-align: center !important;
+}
+
+.Filter_LAlign
+{
+	 float:left !important;
+	 background-color:Transparent !important;
+	 border-style:solid !important;
+	 border-width:0px !important;
+	 height: 18px !important;
+
+}
+
+.modalBackground
+{
+	background-color: #CACACA !important;
+	
+}
