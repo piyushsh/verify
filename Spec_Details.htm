@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+</head>
+<body>
+    <span style="font-family: Arial"><strong>VT Matrix Structure<br />
+    </strong></span><span style="font-size: 10pt; font-family: Arial">&nbsp; &nbsp; &nbsp;
+        &nbsp;<br />
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        <table style="width: 918px" id="TABLE1">
+            <tr>
+                <td style="width: 68px; font-weight: bold;">
+                    Cash Management Portal (Root)</td>
+                <td style="width: 80px; font-weight: bold;">
+                    <strong>Level1</strong></td>
+                <td style="width: 80px; font-weight: bold;">
+                    Level 2</td>
+                <td style="width: 80px; font-weight: bold;">
+                    Level 3</td>
+                <td style="width: 80px; font-weight: bold;">
+                    Level 4</td>
+                <td style="width: 80px; font-weight: bold;">
+                    Level 5</td>
+            </tr>
+            <tr>
+                <td style="width: 68px">
+                </td>
+                <td style="width: 30px">
+                    SALES</td>
+                <td style="width: 80px">
+                </td>
+                <td style="width: 80px">
+                </td>
+                <td style="width: 80px">
+                </td>
+                <td style="width: 140px">
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 68px; height: 18px;">
+                </td>
+                <td style="width: 30px; height: 18px;">
+                </td>
+                <td style="width: 80px; height: 18px;">
+                    Customer A</td>
+                <td style="width: 80px; height: 18px;">
+                </td>
+                <td style="width: 80px; height: 18px;">
+                </td>
+                <td style="width: 140px; height: 18px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 68px; height: 17px;">
+                </td>
+                <td style="width: 30px; height: 17px;">
+                </td>
+                <td style="width: 80px; height: 17px;">
+                </td>
+                <td style="width: 80px; height: 17px;">
+                    YEAR 2006</td>
+                <td style="width: 80px; height: 17px;">
+                </td>
+                <td style="width: 140px; height: 17px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 68px;">
+                </td>
+                <td style="width: 30px;">
+                </td>
+                <td style="width: 80px;">
+                </td>
+                <td style="width: 80px;">
+                </td>
+                <td style="width: 80px;">
+                    Month (JAN)</td>
+                <td style="width: 140px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 68px">
+                </td>
+                <td style="width: 30px">
+                </td>
+                <td style="width: 80px">
+                </td>
+                <td style="width: 80px">
+                </td>
+                <td style="width: 80px">
+                </td>
+                <td style="width: 140px">
+                    FORMS (Documents)</td>
+            </tr>
+            <tr>
+                <td style="width: 68px">
+                </td>
+                <td style="width: 30px">
+                </td>
+                <td style="width: 80px">
+                </td>
+                <td style="width: 80px">
+                </td>
+                <td style="width: 80px">
+                </td>
+                <td style="width: 140px">
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 68px">
+                </td>
+                <td style="width: 30px">
+                    PURCHASES<br />
+                    (Similar Structure)</td>
+                <td style="width: 80px">
+                    Supplier A</td>
+                <td style="width: 80px">
+                </td>
+                <td style="width: 80px">
+                </td>
+                <td style="width: 140px">
+                </td>
+            </tr>
+        </table>
+        <br />
+        At Level 5 <strong>Form instances</strong> are stored for each document <strong>TYPE</strong>
+        of INVOICE, CREDIT NOTE, PROOF of DELIVERY and PURCHASE ORDER<br />
+        <br />
+        <span style="font-size: 11pt"><strong><span style="font-size: 12pt">For SALES</span><br />
+        </strong><span style="font-size: 10pt">A Purchase (Sales) Order received from the customer
+            should start the process, however this is not always the case.<br />
+            All subsequent "child" documents (Invoices, POD's, Credit Notes) should reference
+            this Purchase Order. This referencing is via a FIELD on the child document.<br />
+            (i.e. all of these forms have a CUSTOMER PURCHASE ORDER field on them &nbsp; <em>note:
+                this field may be blank).<br />
+                <br />
+            </em>Credit Notes and POD's could be considered children of a specific Invoice.
+            This referencing is via a FIELD on the child document.<br />
+            (i.e. all of these forms have an OUR INVOICE NUMBER field on them &nbsp; <em>note: this
+                field may be blank).<br />
+                <br />
+            </em>BPA.net form instances (and document images, if scanned) as stored under the
+            level 4 (month) node by DATE OF ISSUE (a field on the Form).<br />
+            This applies to ALL form/document TYPES.<br />
+            <br />
+            <strong><span style="font-size: 12pt">For PURCHASES</span><br />
+            </strong>Same issues as for sales (documents go in the opposite direction).<br />
+            <br />
+            <strong><span style="font-size: 12pt">Retrieving &amp; Viewing a DOCUMENT SET</span><br />
+            </strong>One of the key benefits of the portal is that it allows all related Document
+            TYPES to be associated together AUTOMATICALLY.<br />
+            The user can select any document from the grid (on GRID1.aspx) and select the DOC
+            SET button to view the set of all related Documents.<br />
+            The set of documents is therefore presented in 4 grids on the DOCSET.aspx page (1
+            grid for each document TYPE).<br />
+            <br />
+            <span style="font-size: 11pt; font-family: Times New Roman">..... <span style="color: #660000">
+                Grid_Fill Pseudo Code<br />
+            </span>
+                &nbsp; if the TAB selected is SALES<br />
+                &nbsp; &nbsp;&nbsp; Set the headings on the grids to CUSTOMER<br />
+                &nbsp; &nbsp;&nbsp; Set the VT-MATRIX search root node at CUSTOMERS<br />
+                &nbsp; else<br />
+                &nbsp; &nbsp;&nbsp; Set the headings on the grids to SUPPLIER<br />
+                &nbsp; &nbsp;&nbsp; Set the VT-MATRIX search root node at SUPPLIER<br />
+                &nbsp; end if<br />
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if the Document type "selected" is PURCHASE ORDER<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .... WHERE_CLAUSE = THIS_PO<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .... <span style="color: #000099">
+                    Fill the Purchase Order grid with PO Records using WHERE_CLAUSE<br />
+                </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .... <span style="color: #000099">
+                    Fill the Invoice Grid with ALL invoices using WHERE_CLAUSE<br />
+                </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .....WHERE_CLAUSE
+                = WHERE_CLAUSE + (<strong>OR </strong>INVOICE_NUM1 .... <strong>OR</strong> INVOICE_NUMx)<br />
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000099">
+                    .... Fill the CREDIT NOTE Grid with ALL Credit Notes using WHERE_CLAUSE<br />
+                </span><span style="color: #000099">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; .... Fill the POD Grid with ALL Proof of Deliveries using WHERE_CLAUSE</span><br />
+                <br />
+                &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end if<br />
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if the Document type "selected" is INVOICE<br />
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .... Find a P.O. that is
+                Referenced by this INVOICE<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; IF P.O.
+                found then<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; .... WHERE_CLAUSE = THIS_PO<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp;&nbsp; .... <span style="color: #000099">Fill the Purchase Order grid with PO
+                    Records using WHERE_CLAUSE<br />
+                </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                ELSE<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp;&nbsp; ... P.O. Grid is empty<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; .... WHERE_CLAUSE = THIS_INVOICE<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; END
+                IF<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .... <span style="color: #000099">
+                    Fill the Invoice Grid with ALL invoices using WHERE_CLAUSE<br />
+                </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .....WHERE_CLAUSE
+                = WHERE_CLAUSE + (<strong>OR </strong>INVOICE_NUM1 .... <strong>OR</strong> INVOICE_NUMx)<br />
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000099">
+                    .... Fill the CREDIT NOTE Grid with ALL Credit Notes using WHERE_CLAUSE<br />
+                </span><span style="color: #000099">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; .... Fill the POD Grid with ALL Proof of Deliveries using WHERE_CLAUSE</span><br />
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end if<br />
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;if the Document type "selected" is CREDIT-NOTE<br />
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .... Find and P.O. that
+                is Referenced by this CREDIT-NOTE<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .... Find and INVOICE that
+                is referenced by this CREDIT-NOTE<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; IF P.O.
+                found then<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; .... WHERE_CLAUSE = THIS_PO<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp;&nbsp; .... <span style="color: #000099">Fill the Purchase Order grid with PO
+                    Records using WHERE_CLAUSE<br />
+                </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                ELSE<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp;&nbsp; ... P.O. Grid is empty<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp;.... WHERE_CLAUSE = THIS_INVOICE (if INVOICE found)<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; END
+                IF<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .... <span style="color: #000099">
+                    Fill the Invoice Grid with ALL invoices using WHERE_CLAUSE (if NOT Blank)<br />
+                </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .....WHERE_CLAUSE
+                = WHERE_CLAUSE + (<strong>OR </strong>INVOICE_NUM1 .... <strong>OR</strong> INVOICE_NUMx)<br />
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000099">
+                    .... Fill the CREDIT NOTE Grid with ALL Credit Notes using WHERE_CLAUSE<br />
+                </span><span style="color: #000099">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; .... Fill the POD Grid with ALL Proof of Deliveries using WHERE_CLAUSE</span><br />
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end if<br />
+                <br />
+                ************** End of DOC SET Pseudo code&nbsp; ***********************<br />
+                &nbsp;<br />
+            </span>
+            <br />
+            <span style="font-size: 12pt"><strong>Status and Synchronise control<br />
+            </strong><span style="font-size: 10pt">"Documents" can be input directly into the system
+                from within the portal (using Forms Supplied). The system must be configured with
+                this privledge.<br />
+                If document are put in this way then the data must be Synchronised to the Accounts
+                package.<br />
+                <br />
+                Documents may be "Published" to the Cash Portal from the VT-Scan program. Both Images
+                and Form data is published to the system.<br />
+                If documents are entered this way then the data must also be synchronised to the
+                Accounts package.<br />
+                <br />
+                Documents may be entered onto the Customers accounts system and Synchronised from
+                there to the Cash Portal.<br />
+                <br />
+                Documents (Forms) may be edited on the cash portal (if system is configured to allow
+                this).<br />
+                If the document is edited then the data must be re-synchronised with the accounts
+                package.<br />
+                <br />
+                THEREFORE there are PAYMENT status associated with forms and SYNCHRONISE status
+                associated with forms.<br />
+                <br />
+                PAYMENT STATUS (ideally these status could be defined by the customer)<br />
+            </span><span style="color: #000099; font-family: Times New Roman"><span style="font-size: 10pt">
+                CURRENT<br />
+                OVERDUE<br />
+                PAID<br />
+                PART-PAID<br />
+                DISPUTED<br />
+                <br />
+            </span><span style="font-size: 10pt"><span style="font-family: Arial"><span style="color: #000000">
+                SYNCHRONISE STATUS</span><br />
+            </span>WAITING SYNC.<br />
+                UPLOAD TO ACCOUNTS<br />
+                DOWNLOADED FROM ACCOUNTS<br />
+                <br />
+            </span><span style="color: #000000; font-family: Arial"><span style="font-size: 10pt">
+                There is also a document TYPE and SOURCE.
+                <br />
+                SOURCE will indicate where the document originated.<br />
+                TYPE will indicate what TYPE the document is (e.g. a Scanned image, Web form)<br />
+                <br />
+            </span><strong><span style="font-size: 10pt">Synchronising will be via a web SERVICE
+                function call.<br />
+            </span></strong></span></span><span style="font-size: 10pt">The service will read and
+                write records (for each portal) to a local transaction log database.</span><br />
+                <br />
+                <br />
+                <strong>
+                System Adminstration facilities<br />
+                </strong><span style="font-size: 10pt">The system adminstrator can do the following
+                (to a specific customer portal)<br />
+            </span></span>
+        </span>
+        </span>
+    </span>
+    <ol>
+        <li>Add a New Customer as a user to the system </li>
+        <li>Assign and manage Customer Passwords and Viewing Privledge</li>
+        <li>Define document STATUS Types</li>
+        <li>Set some workflow parameters (e.g. Frequency of reminder emails, etc.)</li>
+        <li>Add New Employees As users to the system</li>
+        <li>Assign and Manage Employee Passwords and Viewing Privilege </li>
+        <li>Control Synchronisation issues (with accounts package etc.)</li>
+        <li>Log a Support Request to Verify Technologies</li>
+        <li>Review system status and audit logs</li>
+        <li>Archive Older records</li>
+        <li>Maintain SUPPLIER, CUSTOMER and EMPLOYEE database (modules)</li>
+        <li>Review reports and system statistics</li>
+    </ol>
+    <p>
+        &nbsp;</p>
+    <p>
+        <strong><span style="font-size: 11pt; font-family: Arial">Document Details Layout</span></strong></p>
+    <p>
+        <strong><span style="font-family: Arial"><span style="font-size: 10pt">&lt; sales Invoice&gt;</span></span></strong></p>
+    <p>
+        <span style="font-family: Arial"><span style="font-size: 10pt">Document Type: <strong>
+            Sales Invoice</strong> &nbsp; &nbsp; <strong>Number: </strong>2345 &nbsp; <strong>Status:&nbsp;
+            </strong></span></span>
+    </p>
+    <p>
+        <span style="font-family: Arial"></span><span style="font-size: 10pt"></span><strong>
+            Date Issued:</strong> 20 Nov 2007 &nbsp; &nbsp;&nbsp; <strong>Amount Due:</strong>
+            &nbsp; €1,200.50 &nbsp; &nbsp; &nbsp; (Amount Received: &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; Date Received &nbsp; Reference Num &nbsp; &nbsp;Payment Type &nbsp; Comment)
+            <strong>&lt;- Payment History</strong></p>
+    <span style="font-family: Arial"><span style="font-size: 10pt"><p>
+        <strong>Customer Ref:</strong> C103 &nbsp; <strong>Name:</strong>&nbsp; Trans Systems
+        Ltd. &nbsp;&nbsp; <strong>Address:</strong>&nbsp; Unit 2D,</p>
+        <p>
+            Associated P.O. &nbsp; 8989 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Annacotty Business
+            Park,</p>
+        <p>
+            Assoicated Credit Note: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Annacotty,</p>
+        <p>
+            <strong>... &lt;&nbsp; Invoice Details Grid&nbsp; &gt; .....</strong></p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <strong>WORKFLOW Issues</strong></p>
+        <p>
+            Process Staging BEFORE entry to Accounts</p>
+        <p>
+            Process Staging BEFORE payment</p>
+        <p>
+            &nbsp;</p>
+    <p style="font-family: Arial; font-size: 12px; font-weight: bolder">
+            Products - DataSet (Matrix)</p>
+    <p>
+            <img alt="" src="Images/ProductsDataTable.jpg" /></p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+    </span></span><span style="font-family: Arial"><span style="font-size: 10pt">
+        <p>
+            &nbsp;</p>
+    </span></span><span style="font-family: Arial"><span style="font-size: 10pt">
+        <p>
+            &nbsp;</p>
+    <p>
+        &nbsp;</p>
+    </span></span>
+    <span style="font-size: 10pt;"><span style="font-size: 11pt"><span><span><span>
+        </span>
+            <br />
+        </span>
+            <br />
+    </span>
+        <br />
+    </span></span>
+    <br />
+    <br />
+
+</body>
+</html>

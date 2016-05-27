@@ -1,0 +1,37 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SteripackMFGProInterface
+</name>
+</assembly>
+<members>
+<member name="M:SteripackMFGProInterface.MFGProFunctions.BuildCustomersDataStructure">
+	<summary>
+ This function builds a Customers datatable with columns that are compatible with the requirements of the CRM program
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:SteripackMFGProInterface.MFGProFunctions.BuildCustomerContactsDataStructure">
+	<summary>
+ This function builds a Customer Contacts datatable with columns that are compatible with the requirements of the CRM program
+ 
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:SteripackMFGProInterface.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:SteripackMFGProInterface.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:SteripackMFGProInterface.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

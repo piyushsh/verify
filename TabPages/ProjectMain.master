@@ -1,0 +1,509 @@
+<%@ Master Language="VB" CodeFile="ProjectMain.master.vb" Inherits="ProjectMain" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+    <script type="text/javascript" src="<%= Session("_VT_JQueryFileLocation")%>Scripts/jquery-1.10.1.min.js"></script>
+
+  &nbsp;
+<script type="text/javascript">
+    setInterval("settime()", 60000);
+
+    function settime() 
+    {
+        //var dateTime = new Date();
+
+      //set the time
+        PageMethods.GetVerifyNow(GetVerifyNowSuccess, GetVerifyNowFailed);
+
+       <%-- var hour = dateTime.getHours();
+        var minute = dateTime.getMinutes();
+        var second = dateTime.getSeconds();
+
+      if (minute < 10)
+        minute = "0" + minute;
+
+      if (second < 10)
+        second = "0" + second;
+
+      var time = "" + hour + ":" + minute + ":" + second;
+
+      document.getElementById("<%=clock.ClientID%>").value = time;--%>
+    }
+  </script>
+
+<script type="text/javascript">
+
+    var VTEvent_isPostBack = false;
+
+    $(document).ready(function () {
+
+        window.onbeforeunload = HandleBeforeUnloadEvent;
+        function HandleBeforeUnloadEvent() {
+            Yvalue = event.clientY;
+            Xvalue = event.clientX;
+
+            if (VTEvent_isPostBack == true) {
+                return;
+            }
+
+            // if the page is unloading and the Y coordinate of the mouse click is < -10 then we are clicking the X button so do a shutdown
+            if (window.event) {
+                if (Yvalue < -10) {
+                    //alert('Shutting down');
+                    var hdn1 = document.getElementById("<%=hdnProjectMainCurrentFormInstanceId.ClientID%>");
+                    var OrderId = hdn1.value;
+                    var hdn2 = document.getElementById("<%=hdnDID.ClientID%>");
+                    var DID = hdn2.value;
+                    ClearLockedFormIdInsessionStorage();
+                    CloseCurrentWindow(OrderId, DID);
+                    }
+
+                }
+
+            }
+
+
+    });
+
+    function ClearLockedFormIdInsessionStorage() {
+            if (supports_local_storage()) {
+                // localStorage/sessionStorage is supported on this browser so we can use it
+                //
+                // This function checks to see if the VersionManager has put anything in sessionStorage to indicate that an item had been locked for editting
+                // If it finds something it clears the lock by using a PageMethod to write to the database and also clears the item in sessionStorage
+                var CallingPortal = '<%= Session("_VT_ThisPortalName").ToString()%>'
+                // remove any spaces from the CallingPortal name
+                var LockedItemName = CallingPortal.replace(/ /g, '') + '_LockedItemId';
+                var CurrentLockedItem = sessionStorage.getItem(LockedItemName);
+
+                // the locked formId (if it exists) is in the form Table:Id
+                if ((CurrentLockedItem != null) && (CurrentLockedItem != '')) {
+                    //parse out the table and Id
+                    var res = CurrentLockedItem.split(':');
+                    var FormDataTable = res[0];
+                    var ItemId = res[1];
+
+                    // clear the item in the sessionStorage
+                    sessionStorage.setItem(LockedItemName, '');
+                    // 
+                    PageMethods.WriteToMatrix(FormDataTable, ItemId, 'FormEditLock', '', WriteToMatrixSuccess, WriteToMatrixFailed);
+                }
+            }
+        }
+
+
+    // there were no errors found in the PageMethod call so process the result here
+    function WriteToMatrixSuccess(result, sender) {
+    }
+
+    // alert message on some failure
+    function WriteToMatrixFailed(result, destCtrl) {
+        alert("Error in WriteToMatrix: " + res.get_message());
+    }
+
+
+
+
+
+
+
+    </script><script type="text/javascript">
+
+        function HideModalPopupMsg() {
+            var modal = $find("<%=ModalPopupExtenderMsg.BehaviorID%>");
+            modal.hide();
+        }
+
+            
+            var nIdleTime = new Number(0);
+            var nTimeout = new Number(0);  //The timeout value in minutes
+            var docTitleKeep = document.title;
+
+            $(document).ready(function () {
+                       
+                var nInitialTimeout = '<%= Session("_VT_SessionTimeoutValue").ToString()%>'
+                nTimeout = nInitialTimeout;  //The timeout value in minutes
+                //nTimeout *= 60000;  //milliseconds
+                timerIncrement();
+                //Increment the idle time counter every minute.
+                var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+
+                //Zero the idle timer on mouse click or keypress.
+                $(this).click(function (e) {
+                    nIdleTime = 0;
+                    timerIncrement();
+                });
+                $(this).keypress(function (e) {
+                    nIdleTime = 0;
+                    timerIncrement();
+                });
+            });
+
+            function timerIncrement() {
+                // if the TimeoutRunnibg flag is set increment the timer
+                var nTimeoutRunning = '<%= Session("_VT_TimeoutRunning").ToString()%>'
+                if (nTimeoutRunning == "YES") {
+                    var nCountDownValue = new Number(nTimeout - nIdleTime);
+                    //var nCountDownMinutes = Math.ceil(nCountDownValue / 60);
+                    //window.status = "Timeout = " + nCountDownValue;
+                    window.status = 'The current session will timeout in ' + nCountDownValue.toString();
+
+                    //set the time
+                    //PageMethods.GetVerifyNow(GetVerifyNowSuccess, GetVerifyNowFailed);
+
+                    if (nCountDownValue > 1)
+                        window.status += ' minutes.'
+                    else
+                        window.status += ' minute.'
+                    //document.title = docTitleKeep + "  (" + nCountDownMinutes + ")"
+
+                    if (nIdleTime >= nTimeout) { // nTimeout is the timeout limit value
+                        alertSessionTimeout();
+                    }
+                    nIdleTime = nIdleTime + 1;
+                }
+
+
+            }
+
+                 function GetVerifyNowSuccess(result, sender) {
+          
+              var dateTime = result;
+      
+
+        var hour = dateTime.getHours();
+        var minute = dateTime.getMinutes();
+        var second = dateTime.getSeconds();
+
+      if (minute < 10)
+        minute = "0" + minute;
+
+      if (hour < 10)
+          hour = "0" + hour;
+
+      var time =  hour + ":" + minute;
+      
+      var lblclock = document.getElementById("<%=clock.ClientID%>");
+     lblclock.value = time;
+     lblclock.innerHTML = time;
+     return true;
+
+
+
+      //var strTimeZone = document.getElementById("<%=hdnTimeZone.ClientID%>").value;
+
+
+                   //  window.status = window.status + '.  The current time in '  + strTimeZone + ' is:  ' + time;
+
+                 }
+
+               
+                 function GetVerifyNowFailed(result, destCtrl) {
+                     
+                 }
+
+            function alertSessionTimeout() {
+                //alert("Your session has timed out !");
+
+                ////Clear up the session and Close the browser
+                //window.parent.close();
+
+                //show message box
+                alert("Your browser Session has timed out.\n\rThis is because your system has been idle for longer than the system time-out period.\n\rThis is a basic security feature of this Online system.\n\rYou must login again to continue the process.\n\r\n\rThis window will now close.");
+                CloseCurrentWindow();
+
+
+            }
+            function CloseCurrentWindow(OrderId, DID) {
+                window.opener = top;
+                var windowtoOpen = '<%=Page.ResolveClientUrl("~/TabPages/Shutdown.aspx")%>'
+                window.open(windowtoOpen + '?OrderIdToClear=' + OrderId.toString() + '&DID=' + DID, '_parent', '');
+                //window.close();
+            }
+
+
+        </script><html xmlns="http://www.w3.org/1999/xhtml" ><head runat="server"><title>Sales & Dispatches Portal - Powered by Verify Technologies</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <link href="../jg_styles.css" rel="stylesheet" type="text/css" />
+    <link href="../App_Themes/Verify_Infragistics_Responsive_Ver2.css" rel="stylesheet" type="text/css" />
+    <link href="../App_Themes/VT_Responsive_V1.css" rel="stylesheet" type="text/css" />
+
+
+    
+
+    </head>
+<body style="margin:0px" onbeforeunload="ShowSpinner();">
+
+<script language="javascript" type="text/javascript" src="../BusyBox.js"></script>
+
+    
+    
+
+      <form id="form1" runat="server" >
+
+            <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" AsyncPostBackTimeout="360000">
+                <Scripts>
+                    <asp:ScriptReference Path="../Scripts/CommonScripts.js" />
+                     <asp:ScriptReference Path="../Scripts/Spin.js" />
+                    <asp:ScriptReference Path="../Scripts/VT_Infragistics.js" />
+                </Scripts>
+            </asp:ScriptManager>
+           
+
+             <asp:HiddenField ID="hdnProjectMainCurrentFormInstanceId" runat="server" />
+             <asp:HiddenField ID="hdnDID" runat="server" />
+ <asp:HiddenField ID="hdnTimeZone" runat="server" />
+
+                 <div id="SheaBusyBox" style="border: 1px solid #808080;  visibility:hidden ;background-color: #336600; position: fixed; top: 50%; left: 50%; display: inline-block; font-family: Arial, Helvetica, sans-serif; font-size: 12pt; font-weight: bold; color: #C0C0C0;">
+                   Please wait !
+               </div>
+
+               <iframe id="BusyBox1" name="BusyBox1" frameborder="0" scrolling="no" ondrop="return false;">
+                </iframe>
+            
+
+            <script language="javascript" type="text/javascript">
+
+                imagePath = "/" + '<%= PortalRootNode %>' + "/images/gears_ani_";
+                var busyBox = new BusyBox("BusyBox1", "busyBox", 4, imagePath, ".gif", 125, 147, 207);
+            </script>
+
+
+                
+  <div runat="server"  id="MasterPage_DIV" class="VT_MasterBackground">
+    
+        
+        <table id="MasterPage_MasterTable" style="text-align: left; vertical-align: top; width: 100%;">
+            <tr style="vertical-align: top; text-align: left">
+                <td id="TopButtonSection">
+
+
+                    <table  id="MasterPage_TopButtons_Table" style="vertical-align: top; text-align: left; font-family: Arial; font-size: 10px; ">
+                        <tr>
+                            <td style="vertical-align: top; text-align: left">
+                                
+                                <asp:ImageButton ID="btnAnchorPoint" runat="server" ImageUrl="~/App_Themes/TabButtons/AnchorButton_Light.gif" />
+                                
+                            </td>
+                            
+                            
+                           <td style="vertical-align: top; text-align: left">
+                               
+                                <asp:Button ID="btnTOP_Quotes" runat="server"  Text="Quotes" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />     
+                                                                                         
+                            </td>
+                            <td style="vertical-align: top; text-align: left">
+
+                                <asp:Button ID="btnTOP_Planning" runat="server" Text="Planning" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
+
+                            </td>
+ 
+                            <td style="vertical-align: top; text-align: left">
+
+                                <asp:Button ID="btnTOP_Orders" runat="server" Text="SalesOrders" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
+
+                            </td>
+ 
+                            <td style="vertical-align: top; text-align: left">
+
+                                <asp:Button ID="btnTOP_Details" runat="server" Text="Details" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
+
+                            </td>
+ 
+                            <td style="vertical-align: top; text-align: left">
+
+                               <asp:Button ID="btnTOP_Fulfill" runat="server" Text="Fulfillment" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
+
+                            </td>
+ 
+                            <td style="vertical-align: top; text-align: left">
+
+                                <asp:Button ID="btnTOP_Deliveries" runat="server" Text="Dispatches" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
+
+                            </td>
+  
+                            
+                            <td style="vertical-align: top; text-align: left">
+
+                                <asp:Button ID="btnTOP_Printouts" runat="server" Text="Reports" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
+
+                            </td>
+                            <td style="vertical-align: top; text-align: left">
+
+                                <asp:Button ID="btnTOP_SliceAndDice" runat="server" Text="SliceAndDice" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
+
+                            </td>
+
+                            <td style="vertical-align: top; text-align: left">
+
+                                <asp:Button ID="btnTOP_Contracts" runat="server" Text="Contracts" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
+
+                            </td>
+ 
+                            <td style="vertical-align: top; text-align: left">
+
+                                <asp:Button ID="btnTOP_SYSADMIN" runat="server" Text="More..." CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
+
+                            </td>
+ 
+
+                            <td style="vertical-align: top; text-align: left; width: 100%;" class="VT_TabBackground_Light" >
+                                &nbsp;
+
+                            </td>
+
+                            <td style="vertical-align: top; text-align: left">
+                                
+                                <asp:Image ID="imgBannerLogo" runat="server" ImageUrl="~/App_Themes/TabButtons/VerifyLogo_Responsive.jpg" />
+                                
+                            </td>
+                            <td style="vertical-align: top; text-align: left; ">
+                                
+                                &nbsp;&nbsp;
+
+                            </td>
+                            <td style="vertical-align: middle; text-align: left; width: 200px;">
+                                
+                                <asp:Label ID="lblNameOfPortal" runat="server" Text="Sales Management Portal" Font-Bold="True" Font-Italic="True" Font-Names="Calibri" Font-Size="14pt" Width="200px"></asp:Label>
+                                                                
+                            </td>
+
+                        </tr>
+                    </table>
+
+
+                </td>
+            </tr>
+            <tr>
+                <td id="TopBannerSection" style="display: inline-block; float: right; vertical-align: top; text-align: right;">
+                    
+                    <table cellpadding="0" cellspacing="0" >
+                        <tr>
+                            <td style="vertical-align: bottom; text-align: right">&nbsp;
+                                    <asp:Label ID="Label2" runat="server" Font-Names="Arial" Font-Size="10pt">Time zone:  </asp:Label>
+                                <asp:Label ID="lblTimezone" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="10pt"></asp:Label>
+&nbsp;&nbsp;
+                                
+  <asp:Label id="clock" runat ="server" Font-Bold="True" Font-Names="Arial" Font-Size="10pt" />&nbsp;&nbsp;
+                                    <asp:Label ID="lblBannerWelcome" runat="server" Font-Names="Arial" Font-Size="10pt" ForeColor="Black" Text="Welcome:"></asp:Label>&nbsp;
+                                    <asp:Label ID="lblUserName" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="10pt" ForeColor="Black" Text="Name Here" Width="157px"> </asp:Label>&nbsp; &nbsp;
+                                    <asp:Label ID="lblBannerToday" runat="server" Font-Names="Arial" Font-Size="10pt" ForeColor="Black" Text="Today: " BorderStyle="None"></asp:Label>&nbsp;&nbsp;
+                                    <asp:Label ID="lblTodayDate" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="10pt" ForeColor="Black" Text="Date Here" Width="75px"></asp:Label>&nbsp; &nbsp;
+                                    <asp:Label ID="lblVer" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="8pt" ForeColor="Black" Text="Ver Here" Width="56px"></asp:Label> &nbsp; &nbsp;&nbsp; &nbsp;
+                                    <asp:Label ID="lblDataBaseName" runat="server" ForeColor="Black" Text="Label" Font-Size="8pt" Font-Names="Arial"></asp:Label>&nbsp; &nbsp;&nbsp; &nbsp;
+                                    <asp:Button ID="btnLogout" runat="server" CssClass="VT_ActionButton" Text="Log Out" />
+
+                                      
+                            </td>
+                            <td style="vertical-align: bottom; text-align: right; width: 10px;">&nbsp;&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                                &nbsp;</td>
+
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+
+
+                </td>
+            </tr>
+            <tr>
+                <td id="MasterPage_ContentSection">
+                    
+                     <asp:contentplaceholder id="ProjectMAIN_content" runat="server">
+                                        
+                     
+                     </asp:contentplaceholder>
+
+
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family: Arial; font-size: 10px">
+                    
+                   &nbsp; &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td id="MasterPage_FooterSection" style="vertical-align: middle; text-align: center; background-image: url('/Verify_QualityPortal/App_Themes/Footer/Footer_Background_bar_2.jpg'); background-repeat: repeat-x;">
+                    
+                                   
+
+
+                    &nbsp; &nbsp;</td>
+            </tr>
+            <tr>
+                <td id="Td1" style="vertical-align: middle; text-align: center; ">
+                    
+                                   
+
+
+                    &nbsp; &nbsp;</td>
+            </tr>
+            <tr>
+                <td id="Td2" style="vertical-align: middle; text-align: center; background-image: url('../App_Themes/Footer/Footer_Background_bar_2.jpg'); background-repeat: repeat-x;">
+                    
+                                   
+
+
+                    <asp:ImageMap ID="immPageFooter" runat="server" ImageUrl="~/App_Themes/Footer/PoweredByVerify_withBars.jpg">
+                        <asp:RectangleHotSpot Bottom="84" Left="2" NavigateUrl="Http://www.VerifyTechnologies.com"
+                                Right="245" Target="_blank" Top="2" />
+                    </asp:ImageMap>
+                    
+                                   
+
+
+                </td>
+            </tr>
+        </table>
+
+
+             
+
+     </div>                
+
+               
+
+               
+
+
+
+
+
+        <asp:Panel ID="pnlMsg" runat="server" BackColor="White" Width="750px" Style="display:none "
+            meta:resourcekey="pnlCommentResource1">
+            <div style="padding: 20px">
+                <center>
+                    <br />
+                    <asp:Label ID="lblMsgMandatory" runat="server" Font-Bold="True" 
+                        Font-Names="Arial" Font-Size="11pt"
+                        ForeColor="#996633" Text="Text goes here 1"></asp:Label>
+                    <br />
+                    <br />
+                    <br />
+                    <asp:ImageButton ID="cmdOKMissing" runat="server" ImageUrl="~/App_Themes/Buttons/Ok.gif"
+                        meta:resourceKey="cmdOKStatusResource1" />
+                    <br />
+                    <br />
+                </center>
+            </div>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="ModalPopupExtenderMsg" TargetControlID="pnlMsg" CancelControlID="cmdOkMissing"
+            BackgroundCssClass="modalBackground" DropShadow="True" OnCancelScript="HideModalPopupMsg()"
+            PopupControlID="pnlMsg" runat="server" DynamicServicePath="" Enabled="True" >
+        </cc1:ModalPopupExtender>
+       
+            
+     </form>
+      
+
+
+</body>
+
+</html>

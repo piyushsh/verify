@@ -1,0 +1,122 @@
+﻿<%@ Master Language="VB" CodeFile="mMasterPage.master.vb" Inherits="Mobile_mMasterPage" %>
+<meta name="viewport" content="width=device-width">
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Verify Sales and dispatches mobile</title>
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+         <link href="../jg_styles.css" rel="stylesheet" type="text/css" />
+    <link href="../App_Themes/Verify_Infragistics_Responsive_Ver2.css" rel="stylesheet" type="text/css" />
+    <link href="../App_Themes/VT_Responsive_V1.css" rel="stylesheet" type="text/css" />
+
+    </head>
+<body>
+    <form id="form1" runat="server">
+                    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" AsyncPostBackTimeout="360000">
+                <Scripts>
+                    <asp:ScriptReference Path="../Scripts/CommonScripts.js" />
+                     <asp:ScriptReference Path="../Scripts/Spin.js" />
+                    <asp:ScriptReference Path="../Scripts/VT_Infragistics.js" />
+                </Scripts>
+            </asp:ScriptManager>
+         <script type="text/javascript">
+
+             function HideModalPopupMsg() {
+                 var modal = $find("<%=ModalPopupExtenderMsg.BehaviorID%>");
+            modal.hide();
+        }
+             </script>
+
+    <div>
+       
+               <table  id="MasterPage_TopButtons_Table" style="vertical-align: top; text-align: left; font-family: Arial; font-size: 10px; ">
+                        <tr>
+                            <td style="vertical-align: top; text-align: left">
+                                
+                                <asp:ImageButton ID="btnAnchorPoint" runat="server" ImageUrl="~/App_Themes/TabButtons/AnchorButton_Light_m.gif" />
+                                
+                            </td>
+                            
+                            
+                           <td style="vertical-align: top; text-align: left">
+                               
+                                <asp:Button ID="btnTOP_Orders" runat="server"  Text="Orders" CssClass="VT_UnSelectTab_Light_m" BorderStyle="None" />     
+                                                                                         
+                            </td>
+                            <td style="vertical-align: top; text-align: left">
+
+                                <asp:Button ID="btnTOP_More" runat="server" Text="More" CssClass="VT_UnSelectTab_Light_m" BorderStyle="None" />
+
+                            </td>
+ 
+                          
+ 
+                          
+
+                            <td style="vertical-align: top; text-align: left; width: 100%;" class="VT_TabBackground_Light_m" >
+                                &nbsp;
+
+                            </td>
+
+                            <td style="vertical-align: top; text-align: left">
+                                
+                                <asp:Image ID="imgBannerLogo" runat="server" ImageUrl="~/App_Themes/TabButtons/VerifyLogo_Responsive_m.jpg" />
+                                
+                            </td>
+                            <td style="vertical-align: top; text-align: left; ">
+                                
+                                &nbsp;&nbsp;
+
+                            </td>
+                            <td style="vertical-align: middle; text-align: left; width: 200px;">
+                                
+                                <asp:Label ID="lblNameOfPortal" runat="server" Text="Sales Portal" Font-Bold="True" Font-Italic="True" Font-Names="Calibri" Font-Size="10pt" Width="200px"></asp:Label>
+                                                                
+                            </td>
+
+                        </tr>
+                    </table>
+            <table>
+                <tr>
+                           <td >
+                                <asp:Button ID="btnLogout" runat="server" CssClass="VT_ActionButton" Text="Log Out" Font-Size="9pt" Height="18px" Width="65px" />
+                                 </td><td>
+                                    <asp:Label ID="lblUserName" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="9pt" ForeColor="Black" Text="Name Here" ></asp:Label>&nbsp; 
+                                   </td>
+                          
+                </tr>
+            </table>
+         <asp:ContentPlaceHolder id="mProjectMAIN_content" runat="server">
+        </asp:ContentPlaceHolder>
+
+    </div>
+
+         <asp:Panel ID="pnlMsg" runat="server" BackColor="White" Width="750px" Style="display:none "
+            meta:resourcekey="pnlCommentResource1">
+            <div style="padding: 20px" >
+               
+                    <br />
+                    <asp:Label ID="lblMsgMandatory" runat="server" Font-Bold="True" 
+                        Font-Names="Arial" Font-Size="11pt"
+                        ForeColor="#996633" Text="Text goes here 1"></asp:Label>
+                    <br />
+                    <br />
+                    <br />
+                    <asp:ImageButton ID="cmdOKMissing" runat="server" ImageUrl="~/App_Themes/Buttons/Ok.gif"
+                        meta:resourceKey="cmdOKStatusResource1" />
+                    <br />
+                    <br />
+               
+            </div>
+        </asp:Panel>
+        <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtenderMsg" TargetControlID="pnlMsg" CancelControlID="cmdOkMissing"
+            BackgroundCssClass="modalBackground" DropShadow="True" OnCancelScript="HideModalPopupMsg()"
+            PopupControlID="pnlMsg" runat="server" Enabled="True" >
+        </ajaxToolkit:ModalPopupExtender>
+    </form>
+</body>
+</html>

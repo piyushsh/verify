@@ -1,0 +1,45 @@
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[quo_QuoteItems]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[quo_QuoteItems]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[quo_Quotes]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[quo_Quotes]
+GO
+
+CREATE TABLE [dbo].[quo_QuoteItems] (
+	[QuoteItemId] [int] IDENTITY (1, 1) NOT NULL ,
+	[QuoteId] [int] NULL ,
+	[ProductId] [int] NULL ,
+	[Quantity] [float] NULL ,
+	[Weight] [float] NULL ,
+	[Comment] [nvarchar] (2000) COLLATE Latin1_General_CI_AS NULL ,
+	[UnitPrice] [float] NULL ,
+	[VAT] [float] NULL ,
+	[TotalPrice] [float] NULL ,
+	[Status] [char] (50) COLLATE Latin1_General_CI_AS NULL ,
+	[ChargedByType] [nvarchar] (20) COLLATE Latin1_General_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[quo_Quotes] (
+	[QuoteId] [int] IDENTITY (1, 1) NOT NULL ,
+	[QuoteNum] [int] NULL ,
+	[CustomerId] [int] NULL ,
+	[CustomerContactId] [int] NULL ,
+	[DeliveryCustomerId] [int] NULL ,
+	[RequestedDeliveryDate] [datetime] NULL ,
+	[PersonLoggingQuote] [int] NULL ,
+	[Comment] [nvarchar] (500) COLLATE Latin1_General_CI_AS NULL ,
+	[DateCreated] [datetime] NULL ,
+	[CustomerPO] [nvarchar] (50) COLLATE Latin1_General_CI_AS NULL ,
+	[PersonLoggingName] [nvarchar] (50) COLLATE Latin1_General_CI_AS NULL ,
+	[Status] [nvarchar] (50) COLLATE Latin1_General_CI_AS NULL ,
+	[TotalValue] [float] NULL ,
+	[TimeCreated] [nvarchar] (50) COLLATE Latin1_General_CI_AS NULL ,
+	[DateCompleted] [datetime] NULL ,
+	[SalesaOrderNum] [int] NULL ,
+	[WorkflowId] [int] NULL ,
+	[Route] [nvarchar] (50) COLLATE Latin1_General_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
