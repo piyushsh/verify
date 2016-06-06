@@ -24,6 +24,7 @@
     
     <!-- New CSS Files -->
     <link rel="stylesheet" href="../App_Themes/resp/main.css"/>
+    <link rel="stylesheet" href="../App_Themes/resp/common.css"/>
 
     <style type="text/css">
         .VerifyGrid_Report_Frame {
@@ -93,7 +94,7 @@
         <!-- Header & Navigation -->
     
     <header>
-            <div class="navbar navbar-fixed-top">
+            <div class="navbar navbar-default">
                     <div class="container">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -146,198 +147,110 @@
                     </div>
                 </div>
 </header>
+        
+
+<div class="container">
+    <div class="row page-info">
+        <div class="col-md-5 text-left">
+            <asp:Label ID="Label1" runat="server" CssClass="page-title" Text="Dispatches"></asp:Label>        
+        </div>
+        <div class="col-md-6 user_info_container">
+            <div class="user-info">
+                <span>Welcome : <strong>John Gleeson</strong></span>
+                <span>Tue. 09/04/2016</span>
+                <span><strong>14.35</strong> (GMT +1)</span>
+            </div>
+        </div>
+        <div class="col-md-1 logout">
+            <a href="#"><span class="glyphicon glyphicon-arrow-right"></span> Logout</a>
+        </div>
+    </div>
     
-    <%--<table id="MasterPage_MasterTable" style="text-align: left; vertical-align: top; width: 100%;">
-            <tr style="vertical-align: top; text-align: left">
-                <td id="TopButtonSection">
-
-
-                    <table  id="MasterPage_TopButtons_Table" style="vertical-align: top; text-align: left; font-family: Arial; font-size: 10px; ">
-                        <tr>
-                            <td style="vertical-align: top; text-align: left">
-                                
-                                <asp:ImageButton ID="btnAnchorPoint" runat="server" ImageUrl="~/App_Themes/TabButtons/AnchorButton_Light.gif" />
-                                
-                            </td>
-                            
-                            
-                           <td style="vertical-align: top; text-align: left">
-                               
-                                <asp:Button ID="btnTOP_Quotes" runat="server"  Text="Quotes" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />     
-                                                                                         
-                            </td>
-                            <td style="vertical-align: top; text-align: left">
-
-                                <asp:Button ID="btnTOP_Planning" runat="server" Text="Planning" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
-
-                            </td>
- 
-                            <td style="vertical-align: top; text-align: left">
-
-                                <asp:Button ID="btnTOP_Orders" runat="server" Text="SalesOrders" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
-
-                            </td>
- 
-                            <td style="vertical-align: top; text-align: left">
-
-                                <asp:Button ID="btnTOP_Details" runat="server" Text="Details" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
-
-                            </td>
- 
-                            <td style="vertical-align: top; text-align: left">
-
-                               <asp:Button ID="btnTOP_Fulfill" runat="server" Text="Fulfillment" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
-
-                            </td>
- 
-                            <td style="vertical-align: top; text-align: left">
-
-                                <asp:Button ID="btnTOP_Deliveries" runat="server" Text="Dispatches" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
-
-                            </td>
-  
-                            
-                            <td style="vertical-align: top; text-align: left">
-
-                                <asp:Button ID="btnTOP_Printouts" runat="server" Text="Reports" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
-
-                            </td>
-                            <td style="vertical-align: top; text-align: left">
-
-                                <asp:Button ID="btnTOP_SliceAndDice" runat="server" Text="SliceAndDice" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
-
-                            </td>
-
-                            <td style="vertical-align: top; text-align: left">
-
-                                <asp:Button ID="btnTOP_Contracts" runat="server" Text="Contracts" CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
-
-                            </td>
- 
-                            <td style="vertical-align: top; text-align: left">
-
-                                <asp:Button ID="btnTOP_SYSADMIN" runat="server" Text="More..." CssClass="VT_UnSelectTab_Light" BorderStyle="None" />
-
-                            </td>
- 
-
-                            <td style="vertical-align: top; text-align: left; width: 100%;" class="VT_TabBackground_Light" >
-                                &nbsp;
-
-                            </td>
-
-                            <td style="vertical-align: top; text-align: left">
-                                
-                                <asp:Image ID="imgBannerLogo" runat="server" ImageUrl="~/App_Themes/TabButtons/VerifyLogo_Responsive.jpg" />
-                                
-                            </td>
-                            <td style="vertical-align: top; text-align: left; ">
-                                
-                                &nbsp;&nbsp;
-
-                            </td>
-                            <td style="vertical-align: middle; text-align: left; width: 200px;">
-                                
-                                <asp:Label ID="lblNameOfPortal" runat="server" Text="Sales Management Portal" Font-Bold="True" Font-Italic="True" Font-Names="Calibri" Font-Size="14pt" Width="200px"></asp:Label>
-                                                                
-                            </td>
-
-                        </tr>
-                    </table>
-
-
-                </td>
-            </tr>
-            <tr>
-                <td id="TopBannerSection" style="display: inline-block; float: right; vertical-align: top; text-align: right;">
+    <!-- Search Section -->
+    <div class="search_section">
+        <div class="row">
+            <div class="col-md-3 view_type_container">
+                <asp:Label ID="Label21" runat="server" CssClass="label-brown" Text="Select View Type"></asp:Label>
+                
+                <asp:DropDownList ID="ddlView" runat="server" AutoPostBack="True">
+                    <asp:ListItem Value="1">Show all order ITEMs awaiting Dispatch</asp:ListItem>
+                    <asp:ListItem Value="2">Show sales Orders awaiting Dispatch</asp:ListItem>
+                    <asp:ListItem Value="3">Show dispatch dockets between selected dates</asp:ListItem>
+                    <asp:ListItem Value="4">Show &#39;part shipped&#39; sales orders currently in the system</asp:ListItem>
+                </asp:DropDownList>
+                
+            </div>
+            <div class="col-md-6 filters_container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <asp:Label ID="Label2" runat="server" CssClass="label-brown" Text="Search"></asp:Label>
+                    </div>
+                    <div class="col-md-2">
+                        <asp:Label ID="Label3" runat="server" CssClass="label-normal" Text="Status"></asp:Label>
+                        <asp:DropDownList ID="DropDownList_Status" runat="server" AutoPostBack="True">
+                            <asp:ListItem Value="1">All</asp:ListItem>
+                            <asp:ListItem Value="2">Dumy Value 1</asp:ListItem>
+                            <asp:ListItem Value="3">Dumy Value 2</asp:ListItem>
+                            <asp:ListItem Value="4">Dumy Value 3</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+            
+                    <div class="col-md-3 date_filter_container">
+                        <div class="label_container">
+                            <asp:Label ID="Label4" runat="server" CssClass="label-normal" Text="Date"></asp:Label>
+                        </div>
+                        <div class="input_container">
+                            <div>
+                                <ig:WebMonthCalendar runat="server" ID="webMonthCalendar2">
+                                </ig:WebMonthCalendar>
+                                <ig:WebDatePicker runat="server" id="wdpFrom" DisplayModeFormat="d" CssClass="Infragistrics_Date" DropDownCalendarID="webMonthCalendar2">
+                                </ig:WebDatePicker>    
+                            </div>
+                            <br/>
+                            <div>
+                                <ig:WebMonthCalendar runat="server" ID="webMonthCalendar1">
+                                </ig:WebMonthCalendar>
+                                <ig:WebDatePicker runat="server" id="wdpTo" DisplayModeFormat="d" CssClass="Infragistrics_Date" DropDownCalendarID="webMonthCalendar1">
+                                </ig:WebDatePicker>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <table cellpadding="0" cellspacing="0" >
-                        <tr>
-                            <td style="vertical-align: bottom; text-align: right">&nbsp;
-                                    <asp:Label ID="Label2" runat="server" Font-Names="Arial" Font-Size="10pt">Time zone:  </asp:Label>
-                                <asp:Label ID="lblTimezone" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="10pt"></asp:Label>
-&nbsp;&nbsp;
-                                
-  <asp:Label id="clock" runat ="server" Font-Bold="True" Font-Names="Arial" Font-Size="10pt" />&nbsp;&nbsp;
-                                    <asp:Label ID="lblBannerWelcome" runat="server" Font-Names="Arial" Font-Size="10pt" ForeColor="Black" Text="Welcome:"></asp:Label>&nbsp;
-                                    <asp:Label ID="lblUserName" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="10pt" ForeColor="Black" Text="Name Here" Width="157px"> </asp:Label>&nbsp; &nbsp;
-                                    <asp:Label ID="lblBannerToday" runat="server" Font-Names="Arial" Font-Size="10pt" ForeColor="Black" Text="Today: " BorderStyle="None"></asp:Label>&nbsp;&nbsp;
-                                    <asp:Label ID="lblTodayDate" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="10pt" ForeColor="Black" Text="Date Here" Width="75px"></asp:Label>&nbsp; &nbsp;
-                                    <asp:Label ID="lblVer" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="8pt" ForeColor="Black" Text="Ver Here" Width="56px"></asp:Label> &nbsp; &nbsp;&nbsp; &nbsp;
-                                    <asp:Label ID="lblDataBaseName" runat="server" ForeColor="Black" Text="Label" Font-Size="8pt" Font-Names="Arial"></asp:Label>&nbsp; &nbsp;&nbsp; &nbsp;
-                                    <asp:Button ID="btnLogout" runat="server" CssClass="VT_ActionButton" Text="Log Out" />
-
-                                      
-                            </td>
-                            <td style="vertical-align: bottom; text-align: right; width: 10px;">&nbsp;&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>
-
-                                &nbsp;</td>
-
-                            <td>&nbsp;</td>
-                        </tr>
-                    </table>
-
-
-                </td>
-            </tr>
-            <tr>
-                <td id="MasterPage_ContentSection">
-                   
-
-
-                </td>
-            </tr>
-            <tr>
-                <td style="font-family: Arial; font-size: 10px">
+                    <div class="col-md-3">
+                        <asp:Label ID="Label6" runat="server" CssClass="label-normal" Text="Customer"></asp:Label>
+                        <asp:DropDownList ID="DropDownList_Customer" runat="server" AutoPostBack="True">
+                            <asp:ListItem Value="1">All</asp:ListItem>
+                            <asp:ListItem Value="2">Dumy Value 1</asp:ListItem>
+                            <asp:ListItem Value="3">Dumy Value 2</asp:ListItem>
+                            <asp:ListItem Value="4">Dumy Value 3</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
                     
-                   &nbsp; &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td id="MasterPage_FooterSection" style="vertical-align: middle; text-align: center; background-image: url('/Verify_QualityPortal/App_Themes/Footer/Footer_Background_bar_2.jpg'); background-repeat: repeat-x;">
-                    
-                                   
+                    <div class="col-md-2 clear_all_filters_container">
+                        <a href="#"><span class="glyphicon glyphicon-minus-sign"></span> Clear All Filters</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 view_type_title_container">
+                <asp:Label ID="Label7" runat="server" CssClass="title" Text="Order Items Awaiting Dispatch"></asp:Label>  
+            </div>
+        </div>
+    </div>
+    <!-- Advance Search -->
+    <div class="advance_search_section">
+        <div class="row">
+            <div class="col-md-2 col-md-offset-10 advance_search_link_container">
+                <a href="#"><span class="glyphicon glyphicon-chevron-down"></span> ADVANCED SEARCH</a>
+            </div>
+        </div>
+    </div>
 
-
-                    &nbsp; &nbsp;</td>
-            </tr>
-            <tr>
-                <td id="Td1" style="vertical-align: middle; text-align: center; ">
-                    
-                                   
-
-
-                    &nbsp; &nbsp;</td>
-            </tr>
-            <tr>
-                <td id="Td2" style="vertical-align: middle; text-align: center; background-image: url('../App_Themes/Footer/Footer_Background_bar_2.jpg'); background-repeat: repeat-x;">
-                    
-                                   
-
-
-                    <asp:ImageMap ID="immPageFooter" runat="server" ImageUrl="~/App_Themes/Footer/PoweredByVerify_withBars.jpg">
-                        <asp:RectangleHotSpot Bottom="84" Left="2" NavigateUrl="Http://www.VerifyTechnologies.com"
-                                Right="245" Target="_blank" Top="2" />
-                    </asp:ImageMap>
-                    
-                                   
-
-
-                </td>
-            </tr>
-        </table>--%>
-        
-        
-        
-        
+</div>
 
 
     <div style="margin-left: 10px">
 
-     <asp:Label ID="lblOrderType" runat="server" Visible="False" Font-Names="Arial" 
+        <asp:Label ID="lblOrderType" runat="server" Visible="False" Font-Names="Arial" 
                             Font-Size="10pt"></asp:Label>
 
         <br />
@@ -364,7 +277,7 @@
                                                                     <table cellpadding="0" cellspacing="0" >
                                                                         <tr>
                                                                             <td>
-                                                                                <asp:Label ID="Label21" runat="server" Font-Bold="True" Font-Italic="True" Font-Names="Arial" Font-Size="14pt" ForeColor="Black" Text="Select View Type" Width="170px"></asp:Label>
+                                                                                
                                                                             </td>
                                                                             <td>
                                                                                 <asp:Image ID="Image2" runat="server" AlternateText="Select View Type" ImageUrl="~/App_Themes/Images/ArrowSolid.png" />
@@ -377,12 +290,12 @@
                                                                 <td>&nbsp;</td>
                                                                 <td>
                                
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddlView" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="11pt" Width="400px" AutoPostBack="True">
-                                                                        <asp:ListItem Value="1">Show all order ITEMs awaiting Dispatch</asp:ListItem>
-                                                                        <asp:ListItem Value="2">Show sales Orders awaiting Dispatch</asp:ListItem>
-                                                                        <asp:ListItem Value="3">Show dispatch dockets between selected dates</asp:ListItem>
-                                                                        <asp:ListItem Value="4">Show &#39;part shipped&#39; sales orders currently in the system</asp:ListItem>
-                                                                    </asp:DropDownList>
+<%--                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddlView" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="11pt" Width="400px" AutoPostBack="True">--%>
+<%--                                                                        <asp:ListItem Value="1">Show all order ITEMs awaiting Dispatch</asp:ListItem>--%>
+<%--                                                                        <asp:ListItem Value="2">Show sales Orders awaiting Dispatch</asp:ListItem>--%>
+<%--                                                                        <asp:ListItem Value="3">Show dispatch dockets between selected dates</asp:ListItem>--%>
+<%--                                                                        <asp:ListItem Value="4">Show &#39;part shipped&#39; sales orders currently in the system</asp:ListItem>--%>
+<%--                                                                    </asp:DropDownList>--%>
                                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnBackTop" runat="server" CssClass="VT_ActionButton" Text="View Sales Portal Tabs" />
                                                                     &nbsp;  
 
@@ -400,19 +313,13 @@
                                                <asp:Label ID="lblFrom" runat="server" Text="From:" Font-Bold="True" Font-Names="Arial" Font-Size="11pt"></asp:Label>
                                            </td>
                                            <td class="auto-style17">
-                                               <ig:WebMonthCalendar runat="server" ID="webMonthCalendar2">
-                                               </ig:WebMonthCalendar>
-                                               <ig:WebDatePicker runat="server" id="wdpFrom" DisplayModeFormat="d" Width="140px" DropDownCalendarID="webMonthCalendar2">
-                                               </ig:WebDatePicker>
+                                               
                                            </td>
                                            <td style="vertical-align: top; text-align: right">
                                                <asp:Label ID="lblTo" runat="server" Text="To:" Font-Bold="True" Font-Names="Arial" Font-Size="11pt"></asp:Label>
                                            </td>
                                            <td class="auto-style17">
-                                               <ig:WebMonthCalendar runat="server" ID="webMonthCalendar1">
-                                               </ig:WebMonthCalendar>
-                                               <ig:WebDatePicker runat="server" id="wdpTo" DisplayModeFormat="d" Width="140px" DropDownCalendarID="webMonthCalendar1">
-                                               </ig:WebDatePicker>
+                                               
                                            </td>
                                            <td class="auto-style17">
                                                <asp:Button ID="btnRefresh" runat="server" Text="Refresh" />

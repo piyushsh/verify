@@ -1,5 +1,9 @@
 ﻿/*Some Basic Styles*/
 
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;    
+}
+
 h1,h2,h3,h4,h5,h6 {
     margin: 0px;
     padding: 0px;
@@ -40,6 +44,10 @@ header {
 header .navbar {
     min-height: 25px;
     border: none;
+}
+
+header .navbar-default {
+    background: #ffffff;
 }
 
 header .navbar .container {
@@ -168,6 +176,9 @@ header .portal_title {
 /*Navigation Button*/
 header .navbar .navbar-nav input[type="button"], header .navbar .navbar-nav input[type="submit"] {
     border: none !important;
+    border-radius: 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
     color: #009100 !important;
     padding: 10px 12px !important;
     padding-bottom: 15px;
@@ -181,6 +192,7 @@ header .navbar .navbar-nav input[type="button"], header .navbar .navbar-nav inpu
     border-top-right-radius: 2px;
     -moz-boder-radius-topleft: 2px;
     -moz-border-radius-topright: 2px;
+    margin-bottom: 0px;
 }
 header .navbar:hover .navbar-nav input[type="button"], header .navbar:hover .navbar-nav input[type="submit"] {
     color: #ffffff !important;
@@ -209,41 +221,6 @@ header .navbar .navbar-nav input[type="button"]:hover, header .navbar .navbar-na
     to {
         color: #009100;
     }
-}
-
-
-/*Style form Body-content*/
-section.main-body {
-    min-height: 500px;
-}
-.container.body-content {
-    margin-top: 55px;
-}
-
-.body-content .page-title {
-    font-size: 24px;
-    color: #828282;
-    font-weight: normal;
-}
-
-.body-content .user_info_container {
-    margin-top: 10px;
-}
-
-.body-content .user-info {
-    font-size: 11px;
-    color: #000000;
-}
-.body-content .user-info > span {
-    margin-right: 10px;
-}
-.body-content .logout {
-    margin-top: -3px;
-}
-.body-content .logout > a{
-    color: #cc0000;
-    font-size: 12px;
-    line-height: 100%;
 }
 
 
