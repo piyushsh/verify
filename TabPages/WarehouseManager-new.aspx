@@ -248,106 +248,17 @@
 </div>
 
 
-    <div style="margin-left: 10px">
-
-        <asp:Label ID="lblOrderType" runat="server" Visible="False" Font-Names="Arial" 
-                            Font-Size="10pt"></asp:Label>
-
-        <br />
-                               
-                                            <asp:Label ID="Label5" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="14pt" ForeColor="Black" Text="Dispatches Management dashboard   [ Sales Orders ]"></asp:Label>
-                                        &nbsp;&nbsp;&nbsp;
-
-        <br />
-
+    <div class="container">
+    
         <table cellpadding="0" cellspacing="0"  style="width: 100%">
-            <tr>
-                <td>
-                    
-                    
-                   <div id="Div1"  style=" width:900px; margin: 0 auto;" runat="server">
-
-                           <div class="VT_TabBackground_Light" style="width: 900px; margin: 0 auto">
-
-                            <div  style="width: 900px; margin: 0 auto">
-                                     <table cellpadding="0" cellspacing="0" class="VT_TabBackground_Light">
-                                                            <tr style="height: 32px">
-                                                                <td >
-
-                                                                    <table cellpadding="0" cellspacing="0" >
-                                                                        <tr>
-                                                                            <td>
-                                                                                
-                                                                            </td>
-                                                                            <td>
-                                                                                <asp:Image ID="Image2" runat="server" AlternateText="Select View Type" ImageUrl="~/App_Themes/Images/ArrowSolid.png" />
-
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-
-                                                                </td>
-                                                                <td>&nbsp;</td>
-                                                                <td>
-                               
-<%--                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddlView" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="11pt" Width="400px" AutoPostBack="True">--%>
-<%--                                                                        <asp:ListItem Value="1">Show all order ITEMs awaiting Dispatch</asp:ListItem>--%>
-<%--                                                                        <asp:ListItem Value="2">Show sales Orders awaiting Dispatch</asp:ListItem>--%>
-<%--                                                                        <asp:ListItem Value="3">Show dispatch dockets between selected dates</asp:ListItem>--%>
-<%--                                                                        <asp:ListItem Value="4">Show &#39;part shipped&#39; sales orders currently in the system</asp:ListItem>--%>
-<%--                                                                    </asp:DropDownList>--%>
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnBackTop" runat="server" CssClass="VT_ActionButton" Text="View Sales Portal Tabs" />
-                                                                    &nbsp;  
-
-
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-                            </div>
-
-                               <asp:Panel ID="pnlDateSelect" runat="server">
-                                   <table class="auto-style16">
-                                       <tr>
-                                           <td style="vertical-align: top; text-align: right">
-                                               <asp:Label ID="lblFrom" runat="server" Text="From:" Font-Bold="True" Font-Names="Arial" Font-Size="11pt"></asp:Label>
-                                           </td>
-                                           <td class="auto-style17">
-                                               
-                                           </td>
-                                           <td style="vertical-align: top; text-align: right">
-                                               <asp:Label ID="lblTo" runat="server" Text="To:" Font-Bold="True" Font-Names="Arial" Font-Size="11pt"></asp:Label>
-                                           </td>
-                                           <td class="auto-style17">
-                                               
-                                           </td>
-                                           <td class="auto-style17">
-                                               <asp:Button ID="btnRefresh" runat="server" Text="Refresh" />
-                                           </td>
-                                       </tr>
-                                   </table>
-                               </asp:Panel>
-
-                              <br />
-
-
-                        </div>
-                            
-                            
-                       
-                            
-
-                        </div> 
-                    
-                </td>
-            </tr>
             <tr>
                 <td>
                                             <asp:Label ID="Label11" runat="server" Font-Italic="True" ForeColor="#993300" Text="Number of Order Items:" Visible="False"></asp:Label>
                                
                                 &nbsp;&nbsp;&nbsp;<asp:Label ID="lblNumItems" runat="server" Text="Label" Visible="False"></asp:Label>
                                             &nbsp;
-                    <div><ig:WebDataGrid ID="wdgOrders" runat="server" AltItemCssClass="VerifyGrid_Report_AlternateRow" AutoGenerateColumns="False" BackColor="White" CssClass="VerifyGrid_Report_Frame" EnableAjax="False" EnableTheming="True" Font-Names="Arial" FooterCaptionCssClass="VerifyGrid_Report_Footer" HeaderCaptionCssClass="VerifyGrid_Report_HeaderGreen_10pt" Height="200px" ItemCssClass="VerifyGrid_Report_Row" Visible="False">
+                    <div>
+                        <ig:WebDataGrid ID="wdgOrders" runat="server" AltItemCssClass="VerifyGrid_Report_AlternateRow" AutoGenerateColumns="False" BackColor="White" CssClass="VerifyGrid_Report_Frame" EnableAjax="False" EnableTheming="True" Font-Names="Arial" FooterCaptionCssClass="VerifyGrid_Report_Footer" HeaderCaptionCssClass="VerifyGrid_Report_HeaderGreen_10pt" Height="200px" ItemCssClass="VerifyGrid_Report_Row" Visible="False">
                         <Columns>
                             <ig:BoundDataField DataFieldName="OrderNumber" Key="OrderNumber" Width="100px">
                                 <Header Text="Order:" />
@@ -410,7 +321,8 @@
                             <ig:Sorting AscendingImageUrl="~/App_Themes/Buttons/Up_Arrow_small.gif" DescendingImageUrl="~/App_Themes/Buttons/Down_Arrow_small.gif" Enabled="True">
                             </ig:Sorting>
                         </Behaviors>
-                    </ig:WebDataGrid></div>
+                    </ig:WebDataGrid>
+                    </div>
                                             &nbsp; &nbsp;</td>
             </tr>
             <tr>
