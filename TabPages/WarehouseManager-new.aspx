@@ -66,9 +66,6 @@
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/respond.min.js"></script>
     
-    
-
-     <center>
 
 
     <form id="form1" runat="server">
@@ -249,6 +246,31 @@
 
 
     <div class="container">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    </div>
+        
+    <footer>
+        <div class="container">
+            <p class="text-center powered_by">POWERED BY</p>
+            <div class="green_horizontal_line">
+                <div class="verify_signature"><img src="../assets/images/logo.png"/></div>
+            </div>
+        </div>
+    </footer>
+        
+    <div class="hidden">
     
         <table cellpadding="0" cellspacing="0"  style="width: 100%">
             <tr>
@@ -1173,14 +1195,10 @@
                   
                 <br />
                 <asp:HiddenField ID="hdnProductValue" runat="server" />
-
-   
-    
-     </div>
-
+                
+    </div>
+        
     </form>
-
-         </center>
 </body>
 </html>
 
