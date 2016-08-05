@@ -228,6 +228,7 @@ header .navbar .navbar-nav input[type="button"]:hover, header .navbar .navbar-na
 /*Footer Styles*/
 footer {
     margin-top: 50px;
+    padding: 30px 0px;
 }
 
 footer .powered_by {
