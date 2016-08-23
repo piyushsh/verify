@@ -131,17 +131,23 @@ input, select, textarea {
 .advance_search_section{
     margin: 0px;
 }
+.advance_search_section .advance_search_filter_container {
+    background: #eee8ba;
+}
+.advance_search_section .advance_search_filter_container .in, .advance_search_section .advance_search_filter_container .collapsing {
+    border-top: 1px solid #e5dfb3;
+}
 .advance_search_section .advance_search_link_container {
     background: #eee8ba;
     text-align: center;
 }
 .advance_search_section .advance_search_link_container:before {
     position: absolute;
-    left: -30px;
+    left: -28px;
     display: table;
     clear: both;
     width: 30px;
-    height: 24px;
+    height: 22px;
     background-image: url('../../assets/images/dispatch/tilt-bg-brown.png');
     background-repeat: no-repeat;
     background-size: auto 100%;
@@ -154,4 +160,16 @@ input, select, textarea {
     font-size: 12px;
     padding: 2px 5px;
     display: block;
+    line-height: 22px;
+    max-height: 22px;
 }
+.advance_search_section .advance_search_link_container a.close_link {
+    display: none;
+}
+.advance_search_section .advance_search_link_container  a.advance_search_link[aria-expanded="true"] {
+    display: none;
+}
+.advance_search_section .advance_search_link_container  a.close_link[aria-expanded="true"]{
+    display: block;
+}
+
