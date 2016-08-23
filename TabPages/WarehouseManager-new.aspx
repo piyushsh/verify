@@ -65,6 +65,7 @@
     <!-- Library Scripts -->
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/respond.min.js"></script>
+    <script src="../Scripts/resp_common_scripts.js"></script>
     
 
 
@@ -235,9 +236,25 @@
     </div>
     <!-- Advance Search -->
     <div class="advance_search_section">
+        <div class="row advance_search_filter_container">
+            <div class="col-xs-12">
+                <div class="collapse" id="advance_search">
+                //This is Advance Search Section<br/>
+                <br/><br/><br/><br/>
+                //Implement all your Advance search options here
+            </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-2 col-md-offset-10 advance_search_link_container">
-                <a href="#"><span class="glyphicon glyphicon-chevron-down"></span> ADVANCED SEARCH</a>
+                <a class="advance_search_link" role="button" data-toggle="collapse" href="#advance_search" 
+                    aria-expanded="false" aria-controls="advance_search" onclick="hideThisShowAnother(this, 'a.close_link')">
+                    <span class="glyphicon glyphicon-chevron-down"></span> ADVANCED SEARCH
+                </a>
+                <a class="close_link" role="button" data-toggle="collapse" href="#advance_search" 
+                    aria-expanded="false" aria-controls="advance_search" onclick="hideThisShowAnother(this, 'a.advance_search_link')">
+                    <span class="glyphicon glyphicon-remove-sign"></span> CLOSE
+                </a>
             </div>
         </div>
     </div>
