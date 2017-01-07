@@ -34,6 +34,17 @@ a,a:hover {
 }
 
 
+/*Fixing Container on the Top of the page*/
+.fixed-on-top {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: auto;
+    background: #FFFFFF;
+    z-index: 1000;
+}
+
 
 
 /*Style for Header*/
@@ -258,4 +269,11 @@ footer .green_horizontal_line .verify_signature {
 }
 footer .green_horizontal_line .verify_signature img {
     max-height: 40px;
+}
+
+.main-body {
+    
+}
+.main-body.after-fix-header {
+    margin-top: 150px;
 }
