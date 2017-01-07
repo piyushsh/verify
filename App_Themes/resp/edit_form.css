@@ -84,3 +84,58 @@
     text-align: right;
     display: block;
 }
+
+.section-form-container {
+    padding: 15px;
+    margin-bottom: 25px;
+}
+.dark_yellow_background {
+    background: #ebe6a4;
+}
+.light_yellow_background {
+    background: #f2f1bf;
+}
+.section-form-container .section-form-heading {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.form-group .refresh_btn {
+    border: 1px solid #d1c78e;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -mox-border-radius: 10px;
+    color: #181e40;
+    padding: 5px 20px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#faf1c5+0,ffffff+49,eff0c2+100 */
+    background: #faf1c5; /* Old browsers */
+    background: -moz-linear-gradient(top,  #faf1c5 0%, #ffffff 49%, #eff0c2 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #faf1c5 0%,#ffffff 49%,#eff0c2 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #faf1c5 0%,#ffffff 49%,#eff0c2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#faf1c5', endColorstr='#eff0c2',GradientType=0 ); /* IE6-9 */
+
+}
+
+.action-section-container {
+    margin-bottom: 5px;
+}
+.action-section-container span,.action-section-container label {
+    margin: 0px;
+    font-size: 20px;
+    color: #000000;
+    font-weight: 300;
+    margin: 0px 5px;
+    line-height: 150%;
+    vertical-align: text-bottom;
+    cursor: inherit;
+}
+.action-section-container .action-link {
+    cursor: pointer;
+    display: inline-block;
+}
+.action-section-container .action-link .glyphicon {
+    font-size: 28px;
+    margin-left: 0px;
+}

@@ -185,6 +185,7 @@
         </div>
         
         <div class="main-body after-fix-header">
+            <!-- Section Detail -->
             <div class="container">
                 <div class="section_detail_container">
                     <div class="row">
@@ -200,11 +201,366 @@
                     </div>
                 </div>
             </div>
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            <!-- Sold-to-Customer-Detail Form -->
+            <div class="container section-form-container dark_yellow_background">
+                <!-- Section heading -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2 class="section-form-heading">Sold To - Customer Details:</h2>
+                    </div>
+                </div>
+                <!-- Form fields -->
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Customer:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select name="customer">
+                                        <option value="">Lidl Ireland Ltd.</option>
+                                        <option value="">Dummy 1</option>
+                                        <option value="">Dummy 2</option>
+                                        <option value="">Dummy 3</option>
+                                        <option value="">Dummy 4</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Categorey:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select name="category">
+                                        <option value="">D</option>
+                                        <option value="">A</option>
+                                        <option value="">B</option>
+                                        <option value="">C</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Priority:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select name="priority">
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                        <option value="">4</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Contact:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select name="customer">
+                                        <option value="">John Ryan</option>
+                                        <option value="">John Ryan 2</option>
+                                        <option value="">John Ryan 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Currency:</label>
+                                </div>
+                                <div class="col-md-8">
+                                   <span>N/A</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Phone:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <span>01 9876543</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>% Discount:</label>
+                                </div>
+                                <div class="col-md-8">
+                                   <span>0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Country:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <span>Ireland</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Tax Exempt?</label>
+                                </div>
+                                <div class="col-md-8">
+                                   <span>No</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Deliver-to-customer-details Form -->
+            <div class="container section-form-container light_yellow_background">
+                <!-- Section heading -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2 class="section-form-heading">Deliver To - Customer Details:</h2>
+                    </div>
+                    <div class="col-md-5 form-group">
+                        <input type="checkbox" class="inline-form-field"/> <label class="inline-label">Only show delivery customers for this billing customer</label>
+                    </div>
+                    <div class="col-md-1 form-group">
+                        <button class="refresh_btn">Refresh</button>
+                    </div>
+                </div>
+                <!-- Form fields -->
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Category:</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <select name="category">
+                                                <option value="">Dummy</option>
+                                                <option value="">Dummy 1</option>
+                                                <option value="">Dummy 2</option>
+                                                <option value="">Dummy 3</option>
+                                                <option value="">Dummy 4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Customer:</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <select name="customer">
+                                                <option value="">C1</option>
+                                                <option value="">C2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>Delivery Address:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>Unit 2B, Beechwood Drive, Sandyford Ind. Est. Dublin 18</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Route:</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <textarea></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Alt. Route:</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <textarea></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bill-to-customer-details Form -->
+            <div class="container section-form-container light_yellow_background">
+                <!-- Section heading -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2 class="section-form-heading">Bill To - Customer Details:</h2>
+                    </div>
+                </div>
+                <!-- Form fields -->
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Customer:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <span>Lidl Ireland Ltd.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label>Address:</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <p>Unit 2B, Beechwood Drive, Sandyford Ind. Est. Dublin 18</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Contact:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <span>John Ryan</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Phone:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <span>01 9876543</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Date&Other-information-details Form -->
+            <div class="container section-form-container light_yellow_background">
+                <!-- Section heading -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2 class="section-form-heading">Dates & Other Information</h2>
+                    </div>
+                </div>
+                <!-- Form fields -->
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Customer Order Date:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="date" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Customer PO No.</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Requested Delivery Date:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="date" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Delivery Terms:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span>30 days</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label class="allow-word-wrap">Comment for this Sales Order:</label>
+                                    <label class="informative-text allow-word-wrap">(This comment is displayed on the customer acknowledgement)</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
-    <footer>
+        <div class="action-section-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-10 text-right">
+                        <a href="#" class="action-link"><label>Next Section</label><span class="glyphicon glyphicon-circle-arrow-right"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <footer class="top-margin-0">
         <div class="container">
             <p class="text-center powered_by">POWERED BY</p>
             <div class="green_horizontal_line">

@@ -241,6 +241,9 @@ footer {
     margin-top: 50px;
     padding: 30px 0px;
 }
+footer.top-margin-0 {
+    margin-top: 0px;
+}
 
 footer .powered_by {
     color: #b38700;
@@ -276,4 +279,61 @@ footer .green_horizontal_line .verify_signature img {
 }
 .main-body.after-fix-header {
     margin-top: 150px;
+}
+
+
+.form-group label,.form-group .inline-label {
+    font-size: 14px;
+    line-height: 200%;
+    margin-bottom: 0px;
+    display: block;
+    text-align: right;
+    color: #4d4d4a;
+    white-space: nowrap;
+}
+.form-group label.allow-word-wrap {
+    white-space: normal;
+    text-align: center;
+    line-height: 120%;
+}
+.form-group label.informative-text {
+    font-size: 9px;
+    color: #d05944;
+    margin-top: 5px;
+}
+.form-group .inline-label {
+    display: inline-block;
+    text-align: left;
+}
+.form-group span,.form-group p {
+    font-size: 14px;
+    color: #4d4d4a;
+    line-height: 200%;
+}
+.form-group input,.form-group select,.form-group textarea {
+    background: #FFFFFF;
+    border: 1px solid #c9c9c9;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    -mox-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+.form-group textarea {
+    width: 100%;
+    min-height: 60px;
+    resize: none;
+}
+.form-group .inline-form-field {
+    display: inline-block;
+    width: auto;
+    margin: 0px 5px;
+}
+.form-group input[type='checkbox'] {
+    background: #858585;
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    margin: 0px;
+    vertical-align: middle;
 }
